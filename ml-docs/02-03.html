@@ -1,0 +1,2693 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>nltk.NaiveBayesClassifier &#8212; Machine Learning</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="sklearn.naive_bayes" href="02-04.html" />
+    <link rel="prev" title="R | e1071" href="02-02.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Machine Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   머신러닝 (machine learning)
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  MACHINE LEARNING
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="01-01-kNN.html">
+   01. kNN 알고리즘
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-02.html">
+     파이썬 | sklearn.neighbors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-03.html">
+     Feature Scaling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-04.html">
+     실습 | 붓꽃 · 유방암
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-05.html">
+     혼동행렬
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-06.html">
+     R | kNN
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="02-01-naive-bayes.html">
+   02. 나이브베이즈 (Naive Bayes)
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-01-01.html">
+     확률 (probability)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-02.html">
+     R | e1071
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     nltk.NaiveBayesClassifier
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-04.html">
+     sklearn.naive_bayes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-05.html">
+     Naive Bayes를 이용한 네이버 영화 리뷰 분석
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-06.html">
+     실습 | 네이버 영화 리뷰
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03-01.html">
+   03. 의사결정나무 (DECISION TREE)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/ml-docs/02-03.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/ml-docs/02-03.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/ml-docs/02-03.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   2.6 설치
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nltk-tokenize-word-tokenize">
+   2.7 nltk.tokenize.word_tokenize
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#naive-bayes">
+   2.8 Naive Bayes 실행
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#konlpy">
+   2.9 konlpy를 이용한 형태소 분석
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   2.10 Naive Bayes 실행
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="nltk-naivebayesclassifier">
+<h1>nltk.NaiveBayesClassifier<a class="headerlink" href="#nltk-naivebayesclassifier" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>2.6 설치<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">word_tokenize</span>
+<span class="kn">import</span> <span class="nn">nltk</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">)</span> <span class="c1"># 한번만 하면 된다.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading collection &#39;all&#39;
+[nltk_data]    | 
+[nltk_data]    | Downloading package abc to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/abc.zip.
+[nltk_data]    | Downloading package alpino to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/alpino.zip.
+[nltk_data]    | Downloading package biocreative_ppi to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/biocreative_ppi.zip.
+[nltk_data]    | Downloading package brown to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/brown.zip.
+[nltk_data]    | Downloading package brown_tei to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/brown_tei.zip.
+[nltk_data]    | Downloading package cess_cat to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/cess_cat.zip.
+[nltk_data]    | Downloading package cess_esp to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/cess_esp.zip.
+[nltk_data]    | Downloading package chat80 to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/chat80.zip.
+[nltk_data]    | Downloading package city_database to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/city_database.zip.
+[nltk_data]    | Downloading package cmudict to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/cmudict.zip.
+[nltk_data]    | Downloading package comparative_sentences to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/comparative_sentences.zip.
+[nltk_data]    | Downloading package comtrans to /root/nltk_data...
+[nltk_data]    | Downloading package conll2000 to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/conll2000.zip.
+[nltk_data]    | Downloading package conll2002 to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/conll2002.zip.
+[nltk_data]    | Downloading package conll2007 to /root/nltk_data...
+[nltk_data]    | Downloading package crubadan to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/crubadan.zip.
+[nltk_data]    | Downloading package dependency_treebank to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/dependency_treebank.zip.
+[nltk_data]    | Downloading package dolch to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/dolch.zip.
+[nltk_data]    | Downloading package europarl_raw to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/europarl_raw.zip.
+[nltk_data]    | Downloading package floresta to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/floresta.zip.
+[nltk_data]    | Downloading package framenet_v15 to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/framenet_v15.zip.
+[nltk_data]    | Downloading package framenet_v17 to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/framenet_v17.zip.
+[nltk_data]    | Downloading package gazetteers to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/gazetteers.zip.
+[nltk_data]    | Downloading package genesis to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/genesis.zip.
+[nltk_data]    | Downloading package gutenberg to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/gutenberg.zip.
+[nltk_data]    | Downloading package ieer to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/ieer.zip.
+[nltk_data]    | Downloading package inaugural to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/inaugural.zip.
+[nltk_data]    | Downloading package indian to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/indian.zip.
+[nltk_data]    | Downloading package jeita to /root/nltk_data...
+[nltk_data]    | Downloading package kimmo to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/kimmo.zip.
+[nltk_data]    | Downloading package knbc to /root/nltk_data...
+[nltk_data]    | Downloading package lin_thesaurus to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/lin_thesaurus.zip.
+[nltk_data]    | Downloading package mac_morpho to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/mac_morpho.zip.
+[nltk_data]    | Downloading package machado to /root/nltk_data...
+[nltk_data]    | Downloading package masc_tagged to /root/nltk_data...
+[nltk_data]    | Downloading package moses_sample to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping models/moses_sample.zip.
+[nltk_data]    | Downloading package movie_reviews to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/movie_reviews.zip.
+[nltk_data]    | Downloading package names to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/names.zip.
+[nltk_data]    | Downloading package nombank.1.0 to /root/nltk_data...
+[nltk_data]    | Downloading package nps_chat to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/nps_chat.zip.
+[nltk_data]    | Downloading package omw to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/omw.zip.
+[nltk_data]    | Downloading package opinion_lexicon to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/opinion_lexicon.zip.
+[nltk_data]    | Downloading package paradigms to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/paradigms.zip.
+[nltk_data]    | Downloading package pil to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/pil.zip.
+[nltk_data]    | Downloading package pl196x to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/pl196x.zip.
+[nltk_data]    | Downloading package ppattach to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/ppattach.zip.
+[nltk_data]    | Downloading package problem_reports to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/problem_reports.zip.
+[nltk_data]    | Downloading package propbank to /root/nltk_data...
+[nltk_data]    | Downloading package ptb to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/ptb.zip.
+[nltk_data]    | Downloading package product_reviews_1 to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/product_reviews_1.zip.
+[nltk_data]    | Downloading package product_reviews_2 to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/product_reviews_2.zip.
+[nltk_data]    | Downloading package pros_cons to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/pros_cons.zip.
+[nltk_data]    | Downloading package qc to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/qc.zip.
+[nltk_data]    | Downloading package reuters to /root/nltk_data...
+[nltk_data]    | Downloading package rte to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/rte.zip.
+[nltk_data]    | Downloading package semcor to /root/nltk_data...
+[nltk_data]    | Downloading package senseval to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/senseval.zip.
+[nltk_data]    | Downloading package sentiwordnet to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/sentiwordnet.zip.
+[nltk_data]    | Downloading package sentence_polarity to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/sentence_polarity.zip.
+[nltk_data]    | Downloading package shakespeare to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/shakespeare.zip.
+[nltk_data]    | Downloading package sinica_treebank to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/sinica_treebank.zip.
+[nltk_data]    | Downloading package smultron to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/smultron.zip.
+[nltk_data]    | Downloading package state_union to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/state_union.zip.
+[nltk_data]    | Downloading package stopwords to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/stopwords.zip.
+[nltk_data]    | Downloading package subjectivity to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/subjectivity.zip.
+[nltk_data]    | Downloading package swadesh to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/swadesh.zip.
+[nltk_data]    | Downloading package switchboard to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/switchboard.zip.
+[nltk_data]    | Downloading package timit to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/timit.zip.
+[nltk_data]    | Downloading package toolbox to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/toolbox.zip.
+[nltk_data]    | Downloading package treebank to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/treebank.zip.
+[nltk_data]    | Downloading package twitter_samples to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/twitter_samples.zip.
+[nltk_data]    | Downloading package udhr to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/udhr.zip.
+[nltk_data]    | Downloading package udhr2 to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/udhr2.zip.
+[nltk_data]    | Downloading package unicode_samples to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/unicode_samples.zip.
+[nltk_data]    | Downloading package universal_treebanks_v20 to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    | Downloading package verbnet to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/verbnet.zip.
+[nltk_data]    | Downloading package verbnet3 to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/verbnet3.zip.
+[nltk_data]    | Downloading package webtext to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/webtext.zip.
+[nltk_data]    | Downloading package wordnet to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/wordnet.zip.
+[nltk_data]    | Downloading package wordnet_ic to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/wordnet_ic.zip.
+[nltk_data]    | Downloading package words to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/words.zip.
+[nltk_data]    | Downloading package ycoe to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/ycoe.zip.
+[nltk_data]    | Downloading package rslp to /root/nltk_data...
+[nltk_data]    |   Unzipping stemmers/rslp.zip.
+[nltk_data]    | Downloading package maxent_treebank_pos_tagger to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping taggers/maxent_treebank_pos_tagger.zip.
+[nltk_data]    | Downloading package universal_tagset to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping taggers/universal_tagset.zip.
+[nltk_data]    | Downloading package maxent_ne_chunker to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping chunkers/maxent_ne_chunker.zip.
+[nltk_data]    | Downloading package punkt to /root/nltk_data...
+[nltk_data]    |   Unzipping tokenizers/punkt.zip.
+[nltk_data]    | Downloading package book_grammars to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping grammars/book_grammars.zip.
+[nltk_data]    | Downloading package sample_grammars to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping grammars/sample_grammars.zip.
+[nltk_data]    | Downloading package spanish_grammars to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping grammars/spanish_grammars.zip.
+[nltk_data]    | Downloading package basque_grammars to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping grammars/basque_grammars.zip.
+[nltk_data]    | Downloading package large_grammars to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping grammars/large_grammars.zip.
+[nltk_data]    | Downloading package tagsets to /root/nltk_data...
+[nltk_data]    |   Unzipping help/tagsets.zip.
+[nltk_data]    | Downloading package snowball_data to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    | Downloading package bllip_wsj_no_aux to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping models/bllip_wsj_no_aux.zip.
+[nltk_data]    | Downloading package word2vec_sample to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping models/word2vec_sample.zip.
+[nltk_data]    | Downloading package panlex_swadesh to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    | Downloading package mte_teip5 to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/mte_teip5.zip.
+[nltk_data]    | Downloading package averaged_perceptron_tagger to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping taggers/averaged_perceptron_tagger.zip.
+[nltk_data]    | Downloading package averaged_perceptron_tagger_ru to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping
+[nltk_data]    |       taggers/averaged_perceptron_tagger_ru.zip.
+[nltk_data]    | Downloading package perluniprops to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping misc/perluniprops.zip.
+[nltk_data]    | Downloading package nonbreaking_prefixes to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/nonbreaking_prefixes.zip.
+[nltk_data]    | Downloading package vader_lexicon to
+[nltk_data]    |     /root/nltk_data...
+[nltk_data]    | Downloading package porter_test to /root/nltk_data...
+[nltk_data]    |   Unzipping stemmers/porter_test.zip.
+[nltk_data]    | Downloading package wmt15_eval to /root/nltk_data...
+[nltk_data]    |   Unzipping models/wmt15_eval.zip.
+[nltk_data]    | Downloading package mwa_ppdb to /root/nltk_data...
+[nltk_data]    |   Unzipping misc/mwa_ppdb.zip.
+[nltk_data]    | 
+[nltk_data]  Done downloading collection all
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="nltk-tokenize-word-tokenize">
+<h2>2.7 nltk.tokenize.word_tokenize<a class="headerlink" href="#nltk-tokenize-word-tokenize" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">survey</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;c:/data/naive_survey.csv&quot;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sentence&#39;</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span><span class="p">])</span>
+<span class="n">survey</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sentence</th>
+      <th>class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>홍길동은 좋아</td>
+      <td>긍정</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>강아지는 무지 좋아</td>
+      <td>긍정</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>수업이 재미없어</td>
+      <td>부정</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>홍길동은 이쁜 강아지야</td>
+      <td>긍정</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>난 수업 마치고 홍길동이랑 놀거야</td>
+      <td>긍정</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>오늘 하루는 너무 짜증스러운 날이야</td>
+      <td>부정</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>하루가 너무 짜증스러운 날이야</td>
+      <td>부정</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>날이 맑아서 좋아</td>
+      <td>긍정</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>오늘 지하철에 사람이 너무 많아서 짜증이 난다</td>
+      <td>부정</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>지하철에서 질서는 너무 없어 짜증이 난다</td>
+      <td>부정</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>비가 오니 짜증난다</td>
+      <td>부정</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>친구가 짜증낸다</td>
+      <td>부정</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>하늘이 맑아서 행복하다</td>
+      <td>긍정</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>공기가 맑아서 좋다</td>
+      <td>긍정</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>밝게 인사해주니 행복하다</td>
+      <td>긍정</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">survey</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 15 entries, 0 to 14
+Data columns (total 2 columns):
+ #   Column    Non-Null Count  Dtype 
+---  ------    --------------  ----- 
+ 0   sentence  15 non-null     object
+ 1   class     15 non-null     object
+dtypes: object(2)
+memory usage: 368.0+ bytes
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">allword</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">word</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">survey</span><span class="p">[</span><span class="s1">&#39;sentence&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+<span class="n">allword</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;강아지는&#39;,
+ &#39;강아지야&#39;,
+ &#39;공기가&#39;,
+ &#39;난&#39;,
+ &#39;난다&#39;,
+ &#39;날이&#39;,
+ &#39;날이야&#39;,
+ &#39;너무&#39;,
+ &#39;놀거야&#39;,
+ &#39;마치고&#39;,
+ &#39;많아서&#39;,
+ &#39;맑아서&#39;,
+ &#39;무지&#39;,
+ &#39;밝게&#39;,
+ &#39;비가&#39;,
+ &#39;사람이&#39;,
+ &#39;수업&#39;,
+ &#39;수업이&#39;,
+ &#39;없어&#39;,
+ &#39;오늘&#39;,
+ &#39;오니&#39;,
+ &#39;이쁜&#39;,
+ &#39;인사해주니&#39;,
+ &#39;재미없어&#39;,
+ &#39;좋다&#39;,
+ &#39;좋아&#39;,
+ &#39;지하철에&#39;,
+ &#39;지하철에서&#39;,
+ &#39;질서는&#39;,
+ &#39;짜증난다&#39;,
+ &#39;짜증낸다&#39;,
+ &#39;짜증스러운&#39;,
+ &#39;짜증이&#39;,
+ &#39;친구가&#39;,
+ &#39;하늘이&#39;,
+ &#39;하루가&#39;,
+ &#39;하루는&#39;,
+ &#39;행복하다&#39;,
+ &#39;홍길동은&#39;,
+ &#39;홍길동이랑&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">survey</span><span class="p">[[</span><span class="s1">&#39;sentence&#39;</span><span class="p">,</span><span class="s1">&#39;class&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[&#39;홍길동은 좋아&#39;, &#39;긍정&#39;],
+ [&#39;강아지는 무지 좋아&#39;, &#39;긍정&#39;],
+ [&#39;수업이 재미없어&#39;, &#39;부정&#39;],
+ [&#39;홍길동은 이쁜 강아지야&#39;, &#39;긍정&#39;],
+ [&#39;난 수업 마치고 홍길동이랑 놀거야&#39;, &#39;긍정&#39;],
+ [&#39;오늘 하루는 너무 짜증스러운 날이야&#39;, &#39;부정&#39;],
+ [&#39;하루가 너무 짜증스러운 날이야&#39;, &#39;부정&#39;],
+ [&#39;날이 맑아서 좋아&#39;, &#39;긍정&#39;],
+ [&#39;오늘 지하철에 사람이 너무 많아서 짜증이 난다&#39;, &#39;부정&#39;],
+ [&#39;지하철에서 질서는 너무 없어 짜증이 난다&#39;, &#39;부정&#39;],
+ [&#39;비가 오니 짜증난다&#39;, &#39;부정&#39;],
+ [&#39;친구가 짜증낸다&#39;, &#39;부정&#39;],
+ [&#39;하늘이 맑아서 행복하다&#39;, &#39;긍정&#39;],
+ [&#39;공기가 맑아서 좋다&#39;, &#39;긍정&#39;],
+ [&#39;밝게 인사해주니 행복하다&#39;, &#39;긍정&#39;]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">[({</span><span class="n">word</span> <span class="p">:</span> <span class="p">(</span><span class="n">word</span> <span class="ow">in</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">allword</span><span class="p">},</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span>
+<span class="n">t</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[({&#39;강아지는&#39;: False,
+   &#39;강아지야&#39;: False,
+   &#39;공기가&#39;: False,
+   &#39;난&#39;: False,
+   &#39;난다&#39;: False,
+   &#39;날이&#39;: False,
+   &#39;날이야&#39;: False,
+   &#39;너무&#39;: False,
+   &#39;놀거야&#39;: False,
+   &#39;마치고&#39;: False,
+   &#39;많아서&#39;: False,
+   &#39;맑아서&#39;: False,
+   &#39;무지&#39;: False,
+   &#39;밝게&#39;: False,
+   &#39;비가&#39;: False,
+   &#39;사람이&#39;: False,
+   &#39;수업&#39;: False,
+   &#39;수업이&#39;: False,
+   &#39;없어&#39;: False,
+   &#39;오늘&#39;: False,
+   &#39;오니&#39;: False,
+   &#39;이쁜&#39;: False,
+   &#39;인사해주니&#39;: False,
+   &#39;재미없어&#39;: False,
+   &#39;좋다&#39;: False,
+   &#39;좋아&#39;: True,
+   &#39;지하철에&#39;: False,
+   &#39;지하철에서&#39;: False,
+   &#39;질서는&#39;: False,
+   &#39;짜증난다&#39;: False,
+   &#39;짜증낸다&#39;: False,
+   &#39;짜증스러운&#39;: False,
+   &#39;짜증이&#39;: False,
+   &#39;친구가&#39;: False,
+   &#39;하늘이&#39;: False,
+   &#39;하루가&#39;: False,
+   &#39;하루는&#39;: False,
+   &#39;행복하다&#39;: False,
+   &#39;홍길동은&#39;: True,
+   &#39;홍길동이랑&#39;: False},
+  &#39;긍정&#39;),
+ ({&#39;강아지는&#39;: True,
+   &#39;강아지야&#39;: False,
+   &#39;공기가&#39;: False,
+   &#39;난&#39;: False,
+   &#39;난다&#39;: False,
+   &#39;날이&#39;: False,
+   &#39;날이야&#39;: False,
+   &#39;너무&#39;: False,
+   &#39;놀거야&#39;: False,
+   &#39;마치고&#39;: False,
+   &#39;많아서&#39;: False,
+   &#39;맑아서&#39;: False,
+   &#39;무지&#39;: True,
+   &#39;밝게&#39;: False,
+   &#39;비가&#39;: False,
+   &#39;사람이&#39;: False,
+   &#39;수업&#39;: False,
+   &#39;수업이&#39;: False,
+   &#39;없어&#39;: False,
+   &#39;오늘&#39;: False,
+   &#39;오니&#39;: False,
+   &#39;이쁜&#39;: False,
+   &#39;인사해주니&#39;: False,
+   &#39;재미없어&#39;: False,
+   &#39;좋다&#39;: False,
+   &#39;좋아&#39;: True,
+   &#39;지하철에&#39;: False,
+   &#39;지하철에서&#39;: False,
+   &#39;질서는&#39;: False,
+   &#39;짜증난다&#39;: False,
+   &#39;짜증낸다&#39;: False,
+   &#39;짜증스러운&#39;: False,
+   &#39;짜증이&#39;: False,
+   &#39;친구가&#39;: False,
+   &#39;하늘이&#39;: False,
+   &#39;하루가&#39;: False,
+   &#39;하루는&#39;: False,
+   &#39;행복하다&#39;: False,
+   &#39;홍길동은&#39;: False,
+   &#39;홍길동이랑&#39;: False},
+  &#39;긍정&#39;),
+ ({&#39;강아지는&#39;: False,
+   &#39;강아지야&#39;: False,
+   &#39;공기가&#39;: False,
+   &#39;난&#39;: False,
+   &#39;난다&#39;: False,
+   &#39;날이&#39;: False,
+   &#39;날이야&#39;: False,
+   &#39;너무&#39;: False,
+   &#39;놀거야&#39;: False,
+   &#39;마치고&#39;: False,
+   &#39;많아서&#39;: False,
+   &#39;맑아서&#39;: False,
+   &#39;무지&#39;: False,
+   &#39;밝게&#39;: False,
+   &#39;비가&#39;: False,
+   &#39;사람이&#39;: False,
+   &#39;수업&#39;: False,
+   &#39;수업이&#39;: True,
+   &#39;없어&#39;: False,
+   &#39;오늘&#39;: False,
+   &#39;오니&#39;: False,
+   &#39;이쁜&#39;: False,
+   &#39;인사해주니&#39;: False,
+   &#39;재미없어&#39;: True,
+   &#39;좋다&#39;: False,
+   &#39;좋아&#39;: False,
+   &#39;지하철에&#39;: False,
+   &#39;지하철에서&#39;: False,
+   &#39;질서는&#39;: False,
+   &#39;짜증난다&#39;: False,
+   &#39;짜증낸다&#39;: False,
+   &#39;짜증스러운&#39;: False,
+   &#39;짜증이&#39;: False,
+   &#39;친구가&#39;: False,
+   &#39;하늘이&#39;: False,
+   &#39;하루가&#39;: False,
+   &#39;하루는&#39;: False,
+   &#39;행복하다&#39;: False,
+   &#39;홍길동은&#39;: False,
+   &#39;홍길동이랑&#39;: False},
+  &#39;부정&#39;),
+ ({&#39;강아지는&#39;: False,
+   &#39;강아지야&#39;: True,
+   &#39;공기가&#39;: False,
+   &#39;난&#39;: False,
+   &#39;난다&#39;: False,
+   &#39;날이&#39;: False,
+   &#39;날이야&#39;: False,
+   &#39;너무&#39;: False,
+   &#39;놀거야&#39;: False,
+   &#39;마치고&#39;: False,
+   &#39;많아서&#39;: False,
+   &#39;맑아서&#39;: False,
+   &#39;무지&#39;: False,
+   &#39;밝게&#39;: False,
+   &#39;비가&#39;: False,
+   &#39;사람이&#39;: False,
+   &#39;수업&#39;: False,
+   &#39;수업이&#39;: False,
+   &#39;없어&#39;: False,
+   &#39;오늘&#39;: False,
+   &#39;오니&#39;: False,
+   &#39;이쁜&#39;: True,
+   &#39;인사해주니&#39;: False,
+   &#39;재미없어&#39;: False,
+   &#39;좋다&#39;: False,
+   &#39;좋아&#39;: False,
+   &#39;지하철에&#39;: False,
+   &#39;지하철에서&#39;: False,
+   &#39;질서는&#39;: False,
+   &#39;짜증난다&#39;: False,
+   &#39;짜증낸다&#39;: False,
+   &#39;짜증스러운&#39;: False,
+   &#39;짜증이&#39;: False,
+   &#39;친구가&#39;: False,
+   &#39;하늘이&#39;: False,
+   &#39;하루가&#39;: False,
+   &#39;하루는&#39;: False,
+   &#39;행복하다&#39;: False,
+   &#39;홍길동은&#39;: True,
+   &#39;홍길동이랑&#39;: False},
+  &#39;긍정&#39;),
+ ({&#39;강아지는&#39;: False,
+   &#39;강아지야&#39;: False,
+   &#39;공기가&#39;: False,
+   &#39;난&#39;: True,
+   &#39;난다&#39;: False,
+   &#39;날이&#39;: False,
+   &#39;날이야&#39;: False,
+   &#39;너무&#39;: False,
+   &#39;놀거야&#39;: True,
+   &#39;마치고&#39;: True,
+   &#39;많아서&#39;: False,
+   &#39;맑아서&#39;: False,
+   &#39;무지&#39;: False,
+   &#39;밝게&#39;: False,
+   &#39;비가&#39;: False,
+   &#39;사람이&#39;: False,
+   &#39;수업&#39;: True,
+   &#39;수업이&#39;: False,
+   &#39;없어&#39;: False,
+   &#39;오늘&#39;: False,
+   &#39;오니&#39;: False,
+   &#39;이쁜&#39;: False,
+   &#39;인사해주니&#39;: False,
+   &#39;재미없어&#39;: False,
+   &#39;좋다&#39;: False,
+   &#39;좋아&#39;: False,
+   &#39;지하철에&#39;: False,
+   &#39;지하철에서&#39;: False,
+   &#39;질서는&#39;: False,
+   &#39;짜증난다&#39;: False,
+   &#39;짜증낸다&#39;: False,
+   &#39;짜증스러운&#39;: False,
+   &#39;짜증이&#39;: False,
+   &#39;친구가&#39;: False,
+   &#39;하늘이&#39;: False,
+   &#39;하루가&#39;: False,
+   &#39;하루는&#39;: False,
+   &#39;행복하다&#39;: False,
+   &#39;홍길동은&#39;: False,
+   &#39;홍길동이랑&#39;: True},
+  &#39;긍정&#39;),
+ ({&#39;강아지는&#39;: False,
+   &#39;강아지야&#39;: False,
+   &#39;공기가&#39;: False,
+   &#39;난&#39;: False,
+   &#39;난다&#39;: False,
+   &#39;날이&#39;: False,
+   &#39;날이야&#39;: True,
+   &#39;너무&#39;: True,
+   &#39;놀거야&#39;: False,
+   &#39;마치고&#39;: False,
+   &#39;많아서&#39;: False,
+   &#39;맑아서&#39;: False,
+   &#39;무지&#39;: False,
+   &#39;밝게&#39;: False,
+   &#39;비가&#39;: False,
+   &#39;사람이&#39;: False,
+   &#39;수업&#39;: False,
+   &#39;수업이&#39;: False,
+   &#39;없어&#39;: False,
+   &#39;오늘&#39;: True,
+   &#39;오니&#39;: False,
+   &#39;이쁜&#39;: False,
+   &#39;인사해주니&#39;: False,
+   &#39;재미없어&#39;: False,
+   &#39;좋다&#39;: False,
+   &#39;좋아&#39;: False,
+   &#39;지하철에&#39;: False,
+   &#39;지하철에서&#39;: False,
+   &#39;질서는&#39;: False,
+   &#39;짜증난다&#39;: False,
+   &#39;짜증낸다&#39;: False,
+   &#39;짜증스러운&#39;: True,
+   &#39;짜증이&#39;: False,
+   &#39;친구가&#39;: False,
+   &#39;하늘이&#39;: False,
+   &#39;하루가&#39;: False,
+   &#39;하루는&#39;: True,
+   &#39;행복하다&#39;: False,
+   &#39;홍길동은&#39;: False,
+   &#39;홍길동이랑&#39;: False},
+  &#39;부정&#39;),
+ ({&#39;강아지는&#39;: False,
+   &#39;강아지야&#39;: False,
+   &#39;공기가&#39;: False,
+   &#39;난&#39;: False,
+   &#39;난다&#39;: False,
+   &#39;날이&#39;: False,
+   &#39;날이야&#39;: True,
+   &#39;너무&#39;: True,
+   &#39;놀거야&#39;: False,
+   &#39;마치고&#39;: False,
+   &#39;많아서&#39;: False,
+   &#39;맑아서&#39;: False,
+   &#39;무지&#39;: False,
+   &#39;밝게&#39;: False,
+   &#39;비가&#39;: False,
+   &#39;사람이&#39;: False,
+   &#39;수업&#39;: False,
+   &#39;수업이&#39;: False,
+   &#39;없어&#39;: False,
+   &#39;오늘&#39;: False,
+   &#39;오니&#39;: False,
+   &#39;이쁜&#39;: False,
+   &#39;인사해주니&#39;: False,
+   &#39;재미없어&#39;: False,
+   &#39;좋다&#39;: False,
+   &#39;좋아&#39;: False,
+   &#39;지하철에&#39;: False,
+   &#39;지하철에서&#39;: False,
+   &#39;질서는&#39;: False,
+   &#39;짜증난다&#39;: False,
+   &#39;짜증낸다&#39;: False,
+   &#39;짜증스러운&#39;: True,
+   &#39;짜증이&#39;: False,
+   &#39;친구가&#39;: False,
+   &#39;하늘이&#39;: False,
+   &#39;하루가&#39;: True,
+   &#39;하루는&#39;: False,
+   &#39;행복하다&#39;: False,
+   &#39;홍길동은&#39;: False,
+   &#39;홍길동이랑&#39;: False},
+  &#39;부정&#39;),
+ ({&#39;강아지는&#39;: False,
+   &#39;강아지야&#39;: False,
+   &#39;공기가&#39;: False,
+   &#39;난&#39;: False,
+   &#39;난다&#39;: False,
+   &#39;날이&#39;: True,
+   &#39;날이야&#39;: False,
+   &#39;너무&#39;: False,
+   &#39;놀거야&#39;: False,
+   &#39;마치고&#39;: False,
+   &#39;많아서&#39;: False,
+   &#39;맑아서&#39;: True,
+   &#39;무지&#39;: False,
+   &#39;밝게&#39;: False,
+   &#39;비가&#39;: False,
+   &#39;사람이&#39;: False,
+   &#39;수업&#39;: False,
+   &#39;수업이&#39;: False,
+   &#39;없어&#39;: False,
+   &#39;오늘&#39;: False,
+   &#39;오니&#39;: False,
+   &#39;이쁜&#39;: False,
+   &#39;인사해주니&#39;: False,
+   &#39;재미없어&#39;: False,
+   &#39;좋다&#39;: False,
+   &#39;좋아&#39;: True,
+   &#39;지하철에&#39;: False,
+   &#39;지하철에서&#39;: False,
+   &#39;질서는&#39;: False,
+   &#39;짜증난다&#39;: False,
+   &#39;짜증낸다&#39;: False,
+   &#39;짜증스러운&#39;: False,
+   &#39;짜증이&#39;: False,
+   &#39;친구가&#39;: False,
+   &#39;하늘이&#39;: False,
+   &#39;하루가&#39;: False,
+   &#39;하루는&#39;: False,
+   &#39;행복하다&#39;: False,
+   &#39;홍길동은&#39;: False,
+   &#39;홍길동이랑&#39;: False},
+  &#39;긍정&#39;),
+ ({&#39;강아지는&#39;: False,
+   &#39;강아지야&#39;: False,
+   &#39;공기가&#39;: False,
+   &#39;난&#39;: False,
+   &#39;난다&#39;: True,
+   &#39;날이&#39;: False,
+   &#39;날이야&#39;: False,
+   &#39;너무&#39;: True,
+   &#39;놀거야&#39;: False,
+   &#39;마치고&#39;: False,
+   &#39;많아서&#39;: True,
+   &#39;맑아서&#39;: False,
+   &#39;무지&#39;: False,
+   &#39;밝게&#39;: False,
+   &#39;비가&#39;: False,
+   &#39;사람이&#39;: True,
+   &#39;수업&#39;: False,
+   &#39;수업이&#39;: False,
+   &#39;없어&#39;: False,
+   &#39;오늘&#39;: True,
+   &#39;오니&#39;: False,
+   &#39;이쁜&#39;: False,
+   &#39;인사해주니&#39;: False,
+   &#39;재미없어&#39;: False,
+   &#39;좋다&#39;: False,
+   &#39;좋아&#39;: False,
+   &#39;지하철에&#39;: True,
+   &#39;지하철에서&#39;: False,
+   &#39;질서는&#39;: False,
+   &#39;짜증난다&#39;: False,
+   &#39;짜증낸다&#39;: False,
+   &#39;짜증스러운&#39;: False,
+   &#39;짜증이&#39;: True,
+   &#39;친구가&#39;: False,
+   &#39;하늘이&#39;: False,
+   &#39;하루가&#39;: False,
+   &#39;하루는&#39;: False,
+   &#39;행복하다&#39;: False,
+   &#39;홍길동은&#39;: False,
+   &#39;홍길동이랑&#39;: False},
+  &#39;부정&#39;),
+ ({&#39;강아지는&#39;: False,
+   &#39;강아지야&#39;: False,
+   &#39;공기가&#39;: False,
+   &#39;난&#39;: False,
+   &#39;난다&#39;: True,
+   &#39;날이&#39;: False,
+   &#39;날이야&#39;: False,
+   &#39;너무&#39;: True,
+   &#39;놀거야&#39;: False,
+   &#39;마치고&#39;: False,
+   &#39;많아서&#39;: False,
+   &#39;맑아서&#39;: False,
+   &#39;무지&#39;: False,
+   &#39;밝게&#39;: False,
+   &#39;비가&#39;: False,
+   &#39;사람이&#39;: False,
+   &#39;수업&#39;: False,
+   &#39;수업이&#39;: False,
+   &#39;없어&#39;: True,
+   &#39;오늘&#39;: False,
+   &#39;오니&#39;: False,
+   &#39;이쁜&#39;: False,
+   &#39;인사해주니&#39;: False,
+   &#39;재미없어&#39;: False,
+   &#39;좋다&#39;: False,
+   &#39;좋아&#39;: False,
+   &#39;지하철에&#39;: False,
+   &#39;지하철에서&#39;: True,
+   &#39;질서는&#39;: True,
+   &#39;짜증난다&#39;: False,
+   &#39;짜증낸다&#39;: False,
+   &#39;짜증스러운&#39;: False,
+   &#39;짜증이&#39;: True,
+   &#39;친구가&#39;: False,
+   &#39;하늘이&#39;: False,
+   &#39;하루가&#39;: False,
+   &#39;하루는&#39;: False,
+   &#39;행복하다&#39;: False,
+   &#39;홍길동은&#39;: False,
+   &#39;홍길동이랑&#39;: False},
+  &#39;부정&#39;),
+ ({&#39;강아지는&#39;: False,
+   &#39;강아지야&#39;: False,
+   &#39;공기가&#39;: False,
+   &#39;난&#39;: False,
+   &#39;난다&#39;: False,
+   &#39;날이&#39;: False,
+   &#39;날이야&#39;: False,
+   &#39;너무&#39;: False,
+   &#39;놀거야&#39;: False,
+   &#39;마치고&#39;: False,
+   &#39;많아서&#39;: False,
+   &#39;맑아서&#39;: False,
+   &#39;무지&#39;: False,
+   &#39;밝게&#39;: False,
+   &#39;비가&#39;: True,
+   &#39;사람이&#39;: False,
+   &#39;수업&#39;: False,
+   &#39;수업이&#39;: False,
+   &#39;없어&#39;: False,
+   &#39;오늘&#39;: False,
+   &#39;오니&#39;: True,
+   &#39;이쁜&#39;: False,
+   &#39;인사해주니&#39;: False,
+   &#39;재미없어&#39;: False,
+   &#39;좋다&#39;: False,
+   &#39;좋아&#39;: False,
+   &#39;지하철에&#39;: False,
+   &#39;지하철에서&#39;: False,
+   &#39;질서는&#39;: False,
+   &#39;짜증난다&#39;: True,
+   &#39;짜증낸다&#39;: False,
+   &#39;짜증스러운&#39;: False,
+   &#39;짜증이&#39;: False,
+   &#39;친구가&#39;: False,
+   &#39;하늘이&#39;: False,
+   &#39;하루가&#39;: False,
+   &#39;하루는&#39;: False,
+   &#39;행복하다&#39;: False,
+   &#39;홍길동은&#39;: False,
+   &#39;홍길동이랑&#39;: False},
+  &#39;부정&#39;),
+ ({&#39;강아지는&#39;: False,
+   &#39;강아지야&#39;: False,
+   &#39;공기가&#39;: False,
+   &#39;난&#39;: False,
+   &#39;난다&#39;: False,
+   &#39;날이&#39;: False,
+   &#39;날이야&#39;: False,
+   &#39;너무&#39;: False,
+   &#39;놀거야&#39;: False,
+   &#39;마치고&#39;: False,
+   &#39;많아서&#39;: False,
+   &#39;맑아서&#39;: False,
+   &#39;무지&#39;: False,
+   &#39;밝게&#39;: False,
+   &#39;비가&#39;: False,
+   &#39;사람이&#39;: False,
+   &#39;수업&#39;: False,
+   &#39;수업이&#39;: False,
+   &#39;없어&#39;: False,
+   &#39;오늘&#39;: False,
+   &#39;오니&#39;: False,
+   &#39;이쁜&#39;: False,
+   &#39;인사해주니&#39;: False,
+   &#39;재미없어&#39;: False,
+   &#39;좋다&#39;: False,
+   &#39;좋아&#39;: False,
+   &#39;지하철에&#39;: False,
+   &#39;지하철에서&#39;: False,
+   &#39;질서는&#39;: False,
+   &#39;짜증난다&#39;: False,
+   &#39;짜증낸다&#39;: True,
+   &#39;짜증스러운&#39;: False,
+   &#39;짜증이&#39;: False,
+   &#39;친구가&#39;: True,
+   &#39;하늘이&#39;: False,
+   &#39;하루가&#39;: False,
+   &#39;하루는&#39;: False,
+   &#39;행복하다&#39;: False,
+   &#39;홍길동은&#39;: False,
+   &#39;홍길동이랑&#39;: False},
+  &#39;부정&#39;),
+ ({&#39;강아지는&#39;: False,
+   &#39;강아지야&#39;: False,
+   &#39;공기가&#39;: False,
+   &#39;난&#39;: False,
+   &#39;난다&#39;: False,
+   &#39;날이&#39;: False,
+   &#39;날이야&#39;: False,
+   &#39;너무&#39;: False,
+   &#39;놀거야&#39;: False,
+   &#39;마치고&#39;: False,
+   &#39;많아서&#39;: False,
+   &#39;맑아서&#39;: True,
+   &#39;무지&#39;: False,
+   &#39;밝게&#39;: False,
+   &#39;비가&#39;: False,
+   &#39;사람이&#39;: False,
+   &#39;수업&#39;: False,
+   &#39;수업이&#39;: False,
+   &#39;없어&#39;: False,
+   &#39;오늘&#39;: False,
+   &#39;오니&#39;: False,
+   &#39;이쁜&#39;: False,
+   &#39;인사해주니&#39;: False,
+   &#39;재미없어&#39;: False,
+   &#39;좋다&#39;: False,
+   &#39;좋아&#39;: False,
+   &#39;지하철에&#39;: False,
+   &#39;지하철에서&#39;: False,
+   &#39;질서는&#39;: False,
+   &#39;짜증난다&#39;: False,
+   &#39;짜증낸다&#39;: False,
+   &#39;짜증스러운&#39;: False,
+   &#39;짜증이&#39;: False,
+   &#39;친구가&#39;: False,
+   &#39;하늘이&#39;: True,
+   &#39;하루가&#39;: False,
+   &#39;하루는&#39;: False,
+   &#39;행복하다&#39;: True,
+   &#39;홍길동은&#39;: False,
+   &#39;홍길동이랑&#39;: False},
+  &#39;긍정&#39;),
+ ({&#39;강아지는&#39;: False,
+   &#39;강아지야&#39;: False,
+   &#39;공기가&#39;: True,
+   &#39;난&#39;: False,
+   &#39;난다&#39;: False,
+   &#39;날이&#39;: False,
+   &#39;날이야&#39;: False,
+   &#39;너무&#39;: False,
+   &#39;놀거야&#39;: False,
+   &#39;마치고&#39;: False,
+   &#39;많아서&#39;: False,
+   &#39;맑아서&#39;: True,
+   &#39;무지&#39;: False,
+   &#39;밝게&#39;: False,
+   &#39;비가&#39;: False,
+   &#39;사람이&#39;: False,
+   &#39;수업&#39;: False,
+   &#39;수업이&#39;: False,
+   &#39;없어&#39;: False,
+   &#39;오늘&#39;: False,
+   &#39;오니&#39;: False,
+   &#39;이쁜&#39;: False,
+   &#39;인사해주니&#39;: False,
+   &#39;재미없어&#39;: False,
+   &#39;좋다&#39;: True,
+   &#39;좋아&#39;: False,
+   &#39;지하철에&#39;: False,
+   &#39;지하철에서&#39;: False,
+   &#39;질서는&#39;: False,
+   &#39;짜증난다&#39;: False,
+   &#39;짜증낸다&#39;: False,
+   &#39;짜증스러운&#39;: False,
+   &#39;짜증이&#39;: False,
+   &#39;친구가&#39;: False,
+   &#39;하늘이&#39;: False,
+   &#39;하루가&#39;: False,
+   &#39;하루는&#39;: False,
+   &#39;행복하다&#39;: False,
+   &#39;홍길동은&#39;: False,
+   &#39;홍길동이랑&#39;: False},
+  &#39;긍정&#39;),
+ ({&#39;강아지는&#39;: False,
+   &#39;강아지야&#39;: False,
+   &#39;공기가&#39;: False,
+   &#39;난&#39;: False,
+   &#39;난다&#39;: False,
+   &#39;날이&#39;: False,
+   &#39;날이야&#39;: False,
+   &#39;너무&#39;: False,
+   &#39;놀거야&#39;: False,
+   &#39;마치고&#39;: False,
+   &#39;많아서&#39;: False,
+   &#39;맑아서&#39;: False,
+   &#39;무지&#39;: False,
+   &#39;밝게&#39;: True,
+   &#39;비가&#39;: False,
+   &#39;사람이&#39;: False,
+   &#39;수업&#39;: False,
+   &#39;수업이&#39;: False,
+   &#39;없어&#39;: False,
+   &#39;오늘&#39;: False,
+   &#39;오니&#39;: False,
+   &#39;이쁜&#39;: False,
+   &#39;인사해주니&#39;: True,
+   &#39;재미없어&#39;: False,
+   &#39;좋다&#39;: False,
+   &#39;좋아&#39;: False,
+   &#39;지하철에&#39;: False,
+   &#39;지하철에서&#39;: False,
+   &#39;질서는&#39;: False,
+   &#39;짜증난다&#39;: False,
+   &#39;짜증낸다&#39;: False,
+   &#39;짜증스러운&#39;: False,
+   &#39;짜증이&#39;: False,
+   &#39;친구가&#39;: False,
+   &#39;하늘이&#39;: False,
+   &#39;하루가&#39;: False,
+   &#39;하루는&#39;: False,
+   &#39;행복하다&#39;: True,
+   &#39;홍길동은&#39;: False,
+   &#39;홍길동이랑&#39;: False},
+  &#39;긍정&#39;)]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="naive-bayes">
+<h2>2.8 Naive Bayes 실행<a class="headerlink" href="#naive-bayes" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">classifier</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">NaiveBayesClassifier</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">classifier</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;nltk.classify.naivebayes.NaiveBayesClassifier at 0x7f100590fb38&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">classifier</span><span class="o">.</span><span class="n">show_most_informative_features</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Most Informative Features
+                      너무 = False              긍정 : 부정     =      2.2 : 1.0
+                      좋아 = False              부정 : 긍정     =      1.5 : 1.0
+                     맑아서 = False              부정 : 긍정     =      1.5 : 1.0
+                   짜증스러운 = False              긍정 : 부정     =      1.4 : 1.0
+                      난다 = False              긍정 : 부정     =      1.4 : 1.0
+                      오늘 = False              긍정 : 부정     =      1.4 : 1.0
+                     짜증이 = False              긍정 : 부정     =      1.4 : 1.0
+                     날이야 = False              긍정 : 부정     =      1.4 : 1.0
+                    홍길동은 = False              부정 : 긍정     =      1.3 : 1.0
+                    행복하다 = False              부정 : 긍정     =      1.3 : 1.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>긍정과 부정에 대해 분석하고자 한다.<br />
+‘너무’ 라는 단어가 없을 경우 긍정과 부정 중 긍정이 확률적으로 더 높다는 의미</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="s1">&#39;난 수업을 마치면 홍길동이랑 놀거야&#39;</span>
+<span class="n">test_f</span> <span class="o">=</span> <span class="p">{</span><span class="n">word</span> <span class="p">:</span> <span class="p">(</span><span class="n">word</span> <span class="ow">in</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">test</span><span class="p">))</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">allword</span><span class="p">}</span>
+<span class="n">test_f</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;강아지는&#39;: False,
+ &#39;강아지야&#39;: False,
+ &#39;공기가&#39;: False,
+ &#39;난&#39;: True,
+ &#39;난다&#39;: False,
+ &#39;날이&#39;: False,
+ &#39;날이야&#39;: False,
+ &#39;너무&#39;: False,
+ &#39;놀거야&#39;: True,
+ &#39;마치고&#39;: False,
+ &#39;많아서&#39;: False,
+ &#39;맑아서&#39;: False,
+ &#39;무지&#39;: False,
+ &#39;밝게&#39;: False,
+ &#39;비가&#39;: False,
+ &#39;사람이&#39;: False,
+ &#39;수업&#39;: False,
+ &#39;수업이&#39;: False,
+ &#39;없어&#39;: False,
+ &#39;오늘&#39;: False,
+ &#39;오니&#39;: False,
+ &#39;이쁜&#39;: False,
+ &#39;인사해주니&#39;: False,
+ &#39;재미없어&#39;: False,
+ &#39;좋다&#39;: False,
+ &#39;좋아&#39;: False,
+ &#39;지하철에&#39;: False,
+ &#39;지하철에서&#39;: False,
+ &#39;질서는&#39;: False,
+ &#39;짜증난다&#39;: False,
+ &#39;짜증낸다&#39;: False,
+ &#39;짜증스러운&#39;: False,
+ &#39;짜증이&#39;: False,
+ &#39;친구가&#39;: False,
+ &#39;하늘이&#39;: False,
+ &#39;하루가&#39;: False,
+ &#39;하루는&#39;: False,
+ &#39;행복하다&#39;: False,
+ &#39;홍길동은&#39;: False,
+ &#39;홍길동이랑&#39;: True}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">classifier</span><span class="o">.</span><span class="n">classify</span><span class="p">(</span><span class="n">test_f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;긍정&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="s1">&#39;오늘 웬일인지 짜증난다&#39;</span>
+<span class="n">test_f</span> <span class="o">=</span> <span class="p">{</span><span class="n">word</span> <span class="p">:</span> <span class="p">(</span><span class="n">word</span> <span class="ow">in</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">test</span><span class="p">))</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">allword</span><span class="p">}</span>
+<span class="n">classifier</span><span class="o">.</span><span class="n">classify</span><span class="p">(</span><span class="n">test_f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;부정&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="konlpy">
+<h2>2.9 konlpy를 이용한 형태소 분석<a class="headerlink" href="#konlpy" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install konlpy
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting konlpy
+?25l  Downloading https://files.pythonhosted.org/packages/85/0e/f385566fec837c0b83f216b2da65db9997b35dd675e107752005b7d392b1/konlpy-0.5.2-py2.py3-none-any.whl (19.4MB)
+     |████████████████████████████████| 19.4MB 1.3MB/s 
+?25hCollecting JPype1&gt;=0.7.0
+?25l  Downloading https://files.pythonhosted.org/packages/8b/f7/a368401e630f0e390dd0e62c39fb928e5b23741b53c2360ee7d376660927/JPype1-1.0.2-cp36-cp36m-manylinux2010_x86_64.whl (3.8MB)
+     |████████████████████████████████| 3.8MB 48.1MB/s 
+?25hCollecting colorama
+  Downloading https://files.pythonhosted.org/packages/c9/dc/45cdef1b4d119eb96316b3117e6d5708a08029992b2fee2c143c7a0a5cc5/colorama-0.4.3-py2.py3-none-any.whl
+Requirement already satisfied: lxml&gt;=4.1.0 in /usr/local/lib/python3.6/dist-packages (from konlpy) (4.2.6)
+Requirement already satisfied: numpy&gt;=1.6 in /usr/local/lib/python3.6/dist-packages (from konlpy) (1.18.5)
+Collecting tweepy&gt;=3.7.0
+  Downloading https://files.pythonhosted.org/packages/bb/7c/99d51f80f3b77b107ebae2634108717362c059a41384a1810d13e2429a81/tweepy-3.9.0-py2.py3-none-any.whl
+Collecting beautifulsoup4==4.6.0
+?25l  Downloading https://files.pythonhosted.org/packages/9e/d4/10f46e5cfac773e22707237bfcd51bbffeaf0a576b0a847ec7ab15bd7ace/beautifulsoup4-4.6.0-py3-none-any.whl (86kB)
+     |████████████████████████████████| 92kB 10.3MB/s 
+?25hRequirement already satisfied: typing-extensions; python_version &lt; &quot;3.8&quot; in /usr/local/lib/python3.6/dist-packages (from JPype1&gt;=0.7.0-&gt;konlpy) (3.7.4.3)
+Requirement already satisfied: requests-oauthlib&gt;=0.7.0 in /usr/local/lib/python3.6/dist-packages (from tweepy&gt;=3.7.0-&gt;konlpy) (1.3.0)
+Requirement already satisfied: requests[socks]&gt;=2.11.1 in /usr/local/lib/python3.6/dist-packages (from tweepy&gt;=3.7.0-&gt;konlpy) (2.23.0)
+Requirement already satisfied: six&gt;=1.10.0 in /usr/local/lib/python3.6/dist-packages (from tweepy&gt;=3.7.0-&gt;konlpy) (1.15.0)
+Requirement already satisfied: oauthlib&gt;=3.0.0 in /usr/local/lib/python3.6/dist-packages (from requests-oauthlib&gt;=0.7.0-&gt;tweepy&gt;=3.7.0-&gt;konlpy) (3.1.0)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /usr/local/lib/python3.6/dist-packages (from requests[socks]&gt;=2.11.1-&gt;tweepy&gt;=3.7.0-&gt;konlpy) (1.24.3)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.6/dist-packages (from requests[socks]&gt;=2.11.1-&gt;tweepy&gt;=3.7.0-&gt;konlpy) (2020.6.20)
+Requirement already satisfied: chardet&lt;4,&gt;=3.0.2 in /usr/local/lib/python3.6/dist-packages (from requests[socks]&gt;=2.11.1-&gt;tweepy&gt;=3.7.0-&gt;konlpy) (3.0.4)
+Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/local/lib/python3.6/dist-packages (from requests[socks]&gt;=2.11.1-&gt;tweepy&gt;=3.7.0-&gt;konlpy) (2.10)
+Requirement already satisfied: PySocks!=1.5.7,&gt;=1.5.6; extra == &quot;socks&quot; in /usr/local/lib/python3.6/dist-packages (from requests[socks]&gt;=2.11.1-&gt;tweepy&gt;=3.7.0-&gt;konlpy) (1.7.1)
+Installing collected packages: JPype1, colorama, tweepy, beautifulsoup4, konlpy
+  Found existing installation: tweepy 3.6.0
+    Uninstalling tweepy-3.6.0:
+      Successfully uninstalled tweepy-3.6.0
+  Found existing installation: beautifulsoup4 4.6.3
+    Uninstalling beautifulsoup4-4.6.3:
+      Successfully uninstalled beautifulsoup4-4.6.3
+Successfully installed JPype1-1.0.2 beautifulsoup4-4.6.0 colorama-0.4.3 konlpy-0.5.2 tweepy-3.9.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">konlpy.tag</span> <span class="kn">import</span> <span class="n">Okt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pos_tagger</span> <span class="o">=</span> <span class="n">Okt</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="s1">&#39;난 수업을 마치면 홍길동이랑 놀거야&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pos_tagger</span><span class="o">.</span><span class="n">pos</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;난&#39;, &#39;Noun&#39;),
+ (&#39;수업&#39;, &#39;Noun&#39;),
+ (&#39;을&#39;, &#39;Josa&#39;),
+ (&#39;마치&#39;, &#39;Noun&#39;),
+ (&#39;면&#39;, &#39;Josa&#39;),
+ (&#39;홍길동&#39;, &#39;Noun&#39;),
+ (&#39;이랑&#39;, &#39;Josa&#39;),
+ (&#39;놀거야&#39;, &#39;Verb&#39;)]
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">[('난/Noun'),</span> <span class="pre">('수업/Noun'),</span> <span class="pre">('을/Josa'),</span> <span class="pre">...]</span></code> 형식으로 바꾸기</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lst</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">pos_tagger</span><span class="o">.</span><span class="n">pos</span><span class="p">(</span><span class="n">test</span><span class="p">):</span>
+  <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">lst</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;난/Noun&#39;,
+ &#39;수업/Noun&#39;,
+ &#39;을/Josa&#39;,
+ &#39;마치/Noun&#39;,
+ &#39;면/Josa&#39;,
+ &#39;홍길동/Noun&#39;,
+ &#39;이랑/Josa&#39;,
+ &#39;놀거야/Verb&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">pos_tagger</span><span class="o">.</span><span class="n">pos</span><span class="p">(</span><span class="n">test</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;난/Noun&#39;,
+ &#39;수업/Noun&#39;,
+ &#39;을/Josa&#39;,
+ &#39;마치/Noun&#39;,
+ &#39;면/Josa&#39;,
+ &#39;홍길동/Noun&#39;,
+ &#39;이랑/Josa&#39;,
+ &#39;놀거야/Verb&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tokenize</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
+  <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">pos_tagger</span><span class="o">.</span><span class="n">pos</span><span class="p">(</span><span class="n">doc</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tokenize</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;난/Noun&#39;,
+ &#39;수업/Noun&#39;,
+ &#39;을/Josa&#39;,
+ &#39;마치/Noun&#39;,
+ &#39;면/Josa&#39;,
+ &#39;홍길동/Noun&#39;,
+ &#39;이랑/Josa&#39;,
+ &#39;놀거야/Verb&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[&#39;홍길동은 좋아&#39;, &#39;긍정&#39;],
+ [&#39;강아지는 무지 좋아&#39;, &#39;긍정&#39;],
+ [&#39;수업이 재미없어&#39;, &#39;부정&#39;],
+ [&#39;홍길동은 이쁜 강아지야&#39;, &#39;긍정&#39;],
+ [&#39;난 수업 마치고 홍길동이랑 놀거야&#39;, &#39;긍정&#39;],
+ [&#39;오늘 하루는 너무 짜증스러운 날이야&#39;, &#39;부정&#39;],
+ [&#39;하루가 너무 짜증스러운 날이야&#39;, &#39;부정&#39;],
+ [&#39;날이 맑아서 좋아&#39;, &#39;긍정&#39;],
+ [&#39;오늘 지하철에 사람이 너무 많아서 짜증이 난다&#39;, &#39;부정&#39;],
+ [&#39;지하철에서 질서는 너무 없어 짜증이 난다&#39;, &#39;부정&#39;],
+ [&#39;비가 오니 짜증난다&#39;, &#39;부정&#39;],
+ [&#39;친구가 짜증낸다&#39;, &#39;부정&#39;],
+ [&#39;하늘이 맑아서 행복하다&#39;, &#39;긍정&#39;],
+ [&#39;공기가 맑아서 좋다&#39;, &#39;긍정&#39;],
+ [&#39;밝게 인사해주니 행복하다&#39;, &#39;긍정&#39;]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_doc</span> <span class="o">=</span> <span class="p">[(</span><span class="n">tokenize</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span>
+<span class="n">train_doc</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[([&#39;홍길동/Noun&#39;, &#39;은/Josa&#39;, &#39;좋아/Adjective&#39;], &#39;긍정&#39;),
+ ([&#39;강아지/Noun&#39;, &#39;는/Josa&#39;, &#39;무지/Noun&#39;, &#39;좋아/Adjective&#39;], &#39;긍정&#39;),
+ ([&#39;수업/Noun&#39;, &#39;이/Josa&#39;, &#39;재미없어/Adjective&#39;], &#39;부정&#39;),
+ ([&#39;홍길동/Noun&#39;, &#39;은/Josa&#39;, &#39;이쁜/Adjective&#39;, &#39;강아지/Noun&#39;, &#39;야/Josa&#39;], &#39;긍정&#39;),
+ ([&#39;난/Noun&#39;,
+   &#39;수업/Noun&#39;,
+   &#39;마치/Noun&#39;,
+   &#39;고/Josa&#39;,
+   &#39;홍길동/Noun&#39;,
+   &#39;이랑/Josa&#39;,
+   &#39;놀거야/Verb&#39;],
+  &#39;긍정&#39;),
+ ([&#39;오늘/Noun&#39;,
+   &#39;하루/Noun&#39;,
+   &#39;는/Josa&#39;,
+   &#39;너무/Adverb&#39;,
+   &#39;짜증스러운/Adjective&#39;,
+   &#39;날/Noun&#39;,
+   &#39;이야/Josa&#39;],
+  &#39;부정&#39;),
+ ([&#39;하루/Noun&#39;, &#39;가/Josa&#39;, &#39;너무/Adverb&#39;, &#39;짜증스러운/Adjective&#39;, &#39;날/Noun&#39;, &#39;이야/Josa&#39;],
+  &#39;부정&#39;),
+ ([&#39;날/Noun&#39;, &#39;이/Josa&#39;, &#39;맑아서/Adjective&#39;, &#39;좋아/Adjective&#39;], &#39;긍정&#39;),
+ ([&#39;오늘/Noun&#39;,
+   &#39;지하철/Noun&#39;,
+   &#39;에/Josa&#39;,
+   &#39;사람/Noun&#39;,
+   &#39;이/Josa&#39;,
+   &#39;너무/Adverb&#39;,
+   &#39;많아서/Adjective&#39;,
+   &#39;짜증/Noun&#39;,
+   &#39;이/Josa&#39;,
+   &#39;난다/Verb&#39;],
+  &#39;부정&#39;),
+ ([&#39;지하철/Noun&#39;,
+   &#39;에서/Josa&#39;,
+   &#39;질서/Noun&#39;,
+   &#39;는/Josa&#39;,
+   &#39;너무/Adverb&#39;,
+   &#39;없어/Adjective&#39;,
+   &#39;짜증/Noun&#39;,
+   &#39;이/Josa&#39;,
+   &#39;난다/Verb&#39;],
+  &#39;부정&#39;),
+ ([&#39;비/Noun&#39;, &#39;가/Josa&#39;, &#39;오니/Noun&#39;, &#39;짜증난다/Adjective&#39;], &#39;부정&#39;),
+ ([&#39;친구/Noun&#39;, &#39;가/Josa&#39;, &#39;짜증/Noun&#39;, &#39;낸다/Verb&#39;], &#39;부정&#39;),
+ ([&#39;하늘/Noun&#39;, &#39;이/Josa&#39;, &#39;맑아서/Adjective&#39;, &#39;행복하다/Adjective&#39;], &#39;긍정&#39;),
+ ([&#39;공기/Noun&#39;, &#39;가/Josa&#39;, &#39;맑아서/Adjective&#39;, &#39;좋다/Adjective&#39;], &#39;긍정&#39;),
+ ([&#39;밝게/Verb&#39;, &#39;인사/Noun&#39;, &#39;해주니/Verb&#39;, &#39;행복하다/Adjective&#39;], &#39;긍정&#39;)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">j</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">train_doc</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="n">tokens</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;홍길동/Noun&#39;,
+ &#39;은/Josa&#39;,
+ &#39;좋아/Adjective&#39;,
+ &#39;강아지/Noun&#39;,
+ &#39;는/Josa&#39;,
+ &#39;무지/Noun&#39;,
+ &#39;좋아/Adjective&#39;,
+ &#39;수업/Noun&#39;,
+ &#39;이/Josa&#39;,
+ &#39;재미없어/Adjective&#39;,
+ &#39;홍길동/Noun&#39;,
+ &#39;은/Josa&#39;,
+ &#39;이쁜/Adjective&#39;,
+ &#39;강아지/Noun&#39;,
+ &#39;야/Josa&#39;,
+ &#39;난/Noun&#39;,
+ &#39;수업/Noun&#39;,
+ &#39;마치/Noun&#39;,
+ &#39;고/Josa&#39;,
+ &#39;홍길동/Noun&#39;,
+ &#39;이랑/Josa&#39;,
+ &#39;놀거야/Verb&#39;,
+ &#39;오늘/Noun&#39;,
+ &#39;하루/Noun&#39;,
+ &#39;는/Josa&#39;,
+ &#39;너무/Adverb&#39;,
+ &#39;짜증스러운/Adjective&#39;,
+ &#39;날/Noun&#39;,
+ &#39;이야/Josa&#39;,
+ &#39;하루/Noun&#39;,
+ &#39;가/Josa&#39;,
+ &#39;너무/Adverb&#39;,
+ &#39;짜증스러운/Adjective&#39;,
+ &#39;날/Noun&#39;,
+ &#39;이야/Josa&#39;,
+ &#39;날/Noun&#39;,
+ &#39;이/Josa&#39;,
+ &#39;맑아서/Adjective&#39;,
+ &#39;좋아/Adjective&#39;,
+ &#39;오늘/Noun&#39;,
+ &#39;지하철/Noun&#39;,
+ &#39;에/Josa&#39;,
+ &#39;사람/Noun&#39;,
+ &#39;이/Josa&#39;,
+ &#39;너무/Adverb&#39;,
+ &#39;많아서/Adjective&#39;,
+ &#39;짜증/Noun&#39;,
+ &#39;이/Josa&#39;,
+ &#39;난다/Verb&#39;,
+ &#39;지하철/Noun&#39;,
+ &#39;에서/Josa&#39;,
+ &#39;질서/Noun&#39;,
+ &#39;는/Josa&#39;,
+ &#39;너무/Adverb&#39;,
+ &#39;없어/Adjective&#39;,
+ &#39;짜증/Noun&#39;,
+ &#39;이/Josa&#39;,
+ &#39;난다/Verb&#39;,
+ &#39;비/Noun&#39;,
+ &#39;가/Josa&#39;,
+ &#39;오니/Noun&#39;,
+ &#39;짜증난다/Adjective&#39;,
+ &#39;친구/Noun&#39;,
+ &#39;가/Josa&#39;,
+ &#39;짜증/Noun&#39;,
+ &#39;낸다/Verb&#39;,
+ &#39;하늘/Noun&#39;,
+ &#39;이/Josa&#39;,
+ &#39;맑아서/Adjective&#39;,
+ &#39;행복하다/Adjective&#39;,
+ &#39;공기/Noun&#39;,
+ &#39;가/Josa&#39;,
+ &#39;맑아서/Adjective&#39;,
+ &#39;좋다/Adjective&#39;,
+ &#39;밝게/Verb&#39;,
+ &#39;인사/Noun&#39;,
+ &#39;해주니/Verb&#39;,
+ &#39;행복하다/Adjective&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">term_exists</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
+  <span class="k">return</span> <span class="p">{</span><span class="n">word</span> <span class="p">:</span> <span class="p">(</span><span class="n">word</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">doc</span><span class="p">))</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_train</span> <span class="o">=</span> <span class="p">[(</span><span class="n">term_exists</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">train_doc</span><span class="p">]</span>
+<span class="n">x_train</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[({&#39;가/Josa&#39;: False,
+   &#39;강아지/Noun&#39;: False,
+   &#39;고/Josa&#39;: False,
+   &#39;공기/Noun&#39;: False,
+   &#39;난/Noun&#39;: False,
+   &#39;난다/Verb&#39;: False,
+   &#39;날/Noun&#39;: False,
+   &#39;낸다/Verb&#39;: False,
+   &#39;너무/Adverb&#39;: False,
+   &#39;놀거야/Verb&#39;: False,
+   &#39;는/Josa&#39;: False,
+   &#39;마치/Noun&#39;: False,
+   &#39;많아서/Adjective&#39;: False,
+   &#39;맑아서/Adjective&#39;: False,
+   &#39;무지/Noun&#39;: False,
+   &#39;밝게/Verb&#39;: False,
+   &#39;비/Noun&#39;: False,
+   &#39;사람/Noun&#39;: False,
+   &#39;수업/Noun&#39;: False,
+   &#39;야/Josa&#39;: False,
+   &#39;없어/Adjective&#39;: False,
+   &#39;에/Josa&#39;: False,
+   &#39;에서/Josa&#39;: False,
+   &#39;오늘/Noun&#39;: False,
+   &#39;오니/Noun&#39;: False,
+   &#39;은/Josa&#39;: True,
+   &#39;이/Josa&#39;: False,
+   &#39;이랑/Josa&#39;: False,
+   &#39;이쁜/Adjective&#39;: False,
+   &#39;이야/Josa&#39;: False,
+   &#39;인사/Noun&#39;: False,
+   &#39;재미없어/Adjective&#39;: False,
+   &#39;좋다/Adjective&#39;: False,
+   &#39;좋아/Adjective&#39;: True,
+   &#39;지하철/Noun&#39;: False,
+   &#39;질서/Noun&#39;: False,
+   &#39;짜증/Noun&#39;: False,
+   &#39;짜증난다/Adjective&#39;: False,
+   &#39;짜증스러운/Adjective&#39;: False,
+   &#39;친구/Noun&#39;: False,
+   &#39;하늘/Noun&#39;: False,
+   &#39;하루/Noun&#39;: False,
+   &#39;해주니/Verb&#39;: False,
+   &#39;행복하다/Adjective&#39;: False,
+   &#39;홍길동/Noun&#39;: True},
+  &#39;긍정&#39;),
+ ({&#39;가/Josa&#39;: False,
+   &#39;강아지/Noun&#39;: True,
+   &#39;고/Josa&#39;: False,
+   &#39;공기/Noun&#39;: False,
+   &#39;난/Noun&#39;: False,
+   &#39;난다/Verb&#39;: False,
+   &#39;날/Noun&#39;: False,
+   &#39;낸다/Verb&#39;: False,
+   &#39;너무/Adverb&#39;: False,
+   &#39;놀거야/Verb&#39;: False,
+   &#39;는/Josa&#39;: True,
+   &#39;마치/Noun&#39;: False,
+   &#39;많아서/Adjective&#39;: False,
+   &#39;맑아서/Adjective&#39;: False,
+   &#39;무지/Noun&#39;: True,
+   &#39;밝게/Verb&#39;: False,
+   &#39;비/Noun&#39;: False,
+   &#39;사람/Noun&#39;: False,
+   &#39;수업/Noun&#39;: False,
+   &#39;야/Josa&#39;: False,
+   &#39;없어/Adjective&#39;: False,
+   &#39;에/Josa&#39;: False,
+   &#39;에서/Josa&#39;: False,
+   &#39;오늘/Noun&#39;: False,
+   &#39;오니/Noun&#39;: False,
+   &#39;은/Josa&#39;: False,
+   &#39;이/Josa&#39;: False,
+   &#39;이랑/Josa&#39;: False,
+   &#39;이쁜/Adjective&#39;: False,
+   &#39;이야/Josa&#39;: False,
+   &#39;인사/Noun&#39;: False,
+   &#39;재미없어/Adjective&#39;: False,
+   &#39;좋다/Adjective&#39;: False,
+   &#39;좋아/Adjective&#39;: True,
+   &#39;지하철/Noun&#39;: False,
+   &#39;질서/Noun&#39;: False,
+   &#39;짜증/Noun&#39;: False,
+   &#39;짜증난다/Adjective&#39;: False,
+   &#39;짜증스러운/Adjective&#39;: False,
+   &#39;친구/Noun&#39;: False,
+   &#39;하늘/Noun&#39;: False,
+   &#39;하루/Noun&#39;: False,
+   &#39;해주니/Verb&#39;: False,
+   &#39;행복하다/Adjective&#39;: False,
+   &#39;홍길동/Noun&#39;: False},
+  &#39;긍정&#39;),
+ ({&#39;가/Josa&#39;: False,
+   &#39;강아지/Noun&#39;: False,
+   &#39;고/Josa&#39;: False,
+   &#39;공기/Noun&#39;: False,
+   &#39;난/Noun&#39;: False,
+   &#39;난다/Verb&#39;: False,
+   &#39;날/Noun&#39;: False,
+   &#39;낸다/Verb&#39;: False,
+   &#39;너무/Adverb&#39;: False,
+   &#39;놀거야/Verb&#39;: False,
+   &#39;는/Josa&#39;: False,
+   &#39;마치/Noun&#39;: False,
+   &#39;많아서/Adjective&#39;: False,
+   &#39;맑아서/Adjective&#39;: False,
+   &#39;무지/Noun&#39;: False,
+   &#39;밝게/Verb&#39;: False,
+   &#39;비/Noun&#39;: False,
+   &#39;사람/Noun&#39;: False,
+   &#39;수업/Noun&#39;: True,
+   &#39;야/Josa&#39;: False,
+   &#39;없어/Adjective&#39;: False,
+   &#39;에/Josa&#39;: False,
+   &#39;에서/Josa&#39;: False,
+   &#39;오늘/Noun&#39;: False,
+   &#39;오니/Noun&#39;: False,
+   &#39;은/Josa&#39;: False,
+   &#39;이/Josa&#39;: True,
+   &#39;이랑/Josa&#39;: False,
+   &#39;이쁜/Adjective&#39;: False,
+   &#39;이야/Josa&#39;: False,
+   &#39;인사/Noun&#39;: False,
+   &#39;재미없어/Adjective&#39;: True,
+   &#39;좋다/Adjective&#39;: False,
+   &#39;좋아/Adjective&#39;: False,
+   &#39;지하철/Noun&#39;: False,
+   &#39;질서/Noun&#39;: False,
+   &#39;짜증/Noun&#39;: False,
+   &#39;짜증난다/Adjective&#39;: False,
+   &#39;짜증스러운/Adjective&#39;: False,
+   &#39;친구/Noun&#39;: False,
+   &#39;하늘/Noun&#39;: False,
+   &#39;하루/Noun&#39;: False,
+   &#39;해주니/Verb&#39;: False,
+   &#39;행복하다/Adjective&#39;: False,
+   &#39;홍길동/Noun&#39;: False},
+  &#39;부정&#39;),
+ ({&#39;가/Josa&#39;: False,
+   &#39;강아지/Noun&#39;: True,
+   &#39;고/Josa&#39;: False,
+   &#39;공기/Noun&#39;: False,
+   &#39;난/Noun&#39;: False,
+   &#39;난다/Verb&#39;: False,
+   &#39;날/Noun&#39;: False,
+   &#39;낸다/Verb&#39;: False,
+   &#39;너무/Adverb&#39;: False,
+   &#39;놀거야/Verb&#39;: False,
+   &#39;는/Josa&#39;: False,
+   &#39;마치/Noun&#39;: False,
+   &#39;많아서/Adjective&#39;: False,
+   &#39;맑아서/Adjective&#39;: False,
+   &#39;무지/Noun&#39;: False,
+   &#39;밝게/Verb&#39;: False,
+   &#39;비/Noun&#39;: False,
+   &#39;사람/Noun&#39;: False,
+   &#39;수업/Noun&#39;: False,
+   &#39;야/Josa&#39;: True,
+   &#39;없어/Adjective&#39;: False,
+   &#39;에/Josa&#39;: False,
+   &#39;에서/Josa&#39;: False,
+   &#39;오늘/Noun&#39;: False,
+   &#39;오니/Noun&#39;: False,
+   &#39;은/Josa&#39;: True,
+   &#39;이/Josa&#39;: False,
+   &#39;이랑/Josa&#39;: False,
+   &#39;이쁜/Adjective&#39;: True,
+   &#39;이야/Josa&#39;: False,
+   &#39;인사/Noun&#39;: False,
+   &#39;재미없어/Adjective&#39;: False,
+   &#39;좋다/Adjective&#39;: False,
+   &#39;좋아/Adjective&#39;: False,
+   &#39;지하철/Noun&#39;: False,
+   &#39;질서/Noun&#39;: False,
+   &#39;짜증/Noun&#39;: False,
+   &#39;짜증난다/Adjective&#39;: False,
+   &#39;짜증스러운/Adjective&#39;: False,
+   &#39;친구/Noun&#39;: False,
+   &#39;하늘/Noun&#39;: False,
+   &#39;하루/Noun&#39;: False,
+   &#39;해주니/Verb&#39;: False,
+   &#39;행복하다/Adjective&#39;: False,
+   &#39;홍길동/Noun&#39;: True},
+  &#39;긍정&#39;),
+ ({&#39;가/Josa&#39;: False,
+   &#39;강아지/Noun&#39;: False,
+   &#39;고/Josa&#39;: True,
+   &#39;공기/Noun&#39;: False,
+   &#39;난/Noun&#39;: True,
+   &#39;난다/Verb&#39;: False,
+   &#39;날/Noun&#39;: False,
+   &#39;낸다/Verb&#39;: False,
+   &#39;너무/Adverb&#39;: False,
+   &#39;놀거야/Verb&#39;: True,
+   &#39;는/Josa&#39;: False,
+   &#39;마치/Noun&#39;: True,
+   &#39;많아서/Adjective&#39;: False,
+   &#39;맑아서/Adjective&#39;: False,
+   &#39;무지/Noun&#39;: False,
+   &#39;밝게/Verb&#39;: False,
+   &#39;비/Noun&#39;: False,
+   &#39;사람/Noun&#39;: False,
+   &#39;수업/Noun&#39;: True,
+   &#39;야/Josa&#39;: False,
+   &#39;없어/Adjective&#39;: False,
+   &#39;에/Josa&#39;: False,
+   &#39;에서/Josa&#39;: False,
+   &#39;오늘/Noun&#39;: False,
+   &#39;오니/Noun&#39;: False,
+   &#39;은/Josa&#39;: False,
+   &#39;이/Josa&#39;: False,
+   &#39;이랑/Josa&#39;: True,
+   &#39;이쁜/Adjective&#39;: False,
+   &#39;이야/Josa&#39;: False,
+   &#39;인사/Noun&#39;: False,
+   &#39;재미없어/Adjective&#39;: False,
+   &#39;좋다/Adjective&#39;: False,
+   &#39;좋아/Adjective&#39;: False,
+   &#39;지하철/Noun&#39;: False,
+   &#39;질서/Noun&#39;: False,
+   &#39;짜증/Noun&#39;: False,
+   &#39;짜증난다/Adjective&#39;: False,
+   &#39;짜증스러운/Adjective&#39;: False,
+   &#39;친구/Noun&#39;: False,
+   &#39;하늘/Noun&#39;: False,
+   &#39;하루/Noun&#39;: False,
+   &#39;해주니/Verb&#39;: False,
+   &#39;행복하다/Adjective&#39;: False,
+   &#39;홍길동/Noun&#39;: True},
+  &#39;긍정&#39;),
+ ({&#39;가/Josa&#39;: False,
+   &#39;강아지/Noun&#39;: False,
+   &#39;고/Josa&#39;: False,
+   &#39;공기/Noun&#39;: False,
+   &#39;난/Noun&#39;: False,
+   &#39;난다/Verb&#39;: False,
+   &#39;날/Noun&#39;: True,
+   &#39;낸다/Verb&#39;: False,
+   &#39;너무/Adverb&#39;: True,
+   &#39;놀거야/Verb&#39;: False,
+   &#39;는/Josa&#39;: True,
+   &#39;마치/Noun&#39;: False,
+   &#39;많아서/Adjective&#39;: False,
+   &#39;맑아서/Adjective&#39;: False,
+   &#39;무지/Noun&#39;: False,
+   &#39;밝게/Verb&#39;: False,
+   &#39;비/Noun&#39;: False,
+   &#39;사람/Noun&#39;: False,
+   &#39;수업/Noun&#39;: False,
+   &#39;야/Josa&#39;: False,
+   &#39;없어/Adjective&#39;: False,
+   &#39;에/Josa&#39;: False,
+   &#39;에서/Josa&#39;: False,
+   &#39;오늘/Noun&#39;: True,
+   &#39;오니/Noun&#39;: False,
+   &#39;은/Josa&#39;: False,
+   &#39;이/Josa&#39;: False,
+   &#39;이랑/Josa&#39;: False,
+   &#39;이쁜/Adjective&#39;: False,
+   &#39;이야/Josa&#39;: True,
+   &#39;인사/Noun&#39;: False,
+   &#39;재미없어/Adjective&#39;: False,
+   &#39;좋다/Adjective&#39;: False,
+   &#39;좋아/Adjective&#39;: False,
+   &#39;지하철/Noun&#39;: False,
+   &#39;질서/Noun&#39;: False,
+   &#39;짜증/Noun&#39;: False,
+   &#39;짜증난다/Adjective&#39;: False,
+   &#39;짜증스러운/Adjective&#39;: True,
+   &#39;친구/Noun&#39;: False,
+   &#39;하늘/Noun&#39;: False,
+   &#39;하루/Noun&#39;: True,
+   &#39;해주니/Verb&#39;: False,
+   &#39;행복하다/Adjective&#39;: False,
+   &#39;홍길동/Noun&#39;: False},
+  &#39;부정&#39;),
+ ({&#39;가/Josa&#39;: True,
+   &#39;강아지/Noun&#39;: False,
+   &#39;고/Josa&#39;: False,
+   &#39;공기/Noun&#39;: False,
+   &#39;난/Noun&#39;: False,
+   &#39;난다/Verb&#39;: False,
+   &#39;날/Noun&#39;: True,
+   &#39;낸다/Verb&#39;: False,
+   &#39;너무/Adverb&#39;: True,
+   &#39;놀거야/Verb&#39;: False,
+   &#39;는/Josa&#39;: False,
+   &#39;마치/Noun&#39;: False,
+   &#39;많아서/Adjective&#39;: False,
+   &#39;맑아서/Adjective&#39;: False,
+   &#39;무지/Noun&#39;: False,
+   &#39;밝게/Verb&#39;: False,
+   &#39;비/Noun&#39;: False,
+   &#39;사람/Noun&#39;: False,
+   &#39;수업/Noun&#39;: False,
+   &#39;야/Josa&#39;: False,
+   &#39;없어/Adjective&#39;: False,
+   &#39;에/Josa&#39;: False,
+   &#39;에서/Josa&#39;: False,
+   &#39;오늘/Noun&#39;: False,
+   &#39;오니/Noun&#39;: False,
+   &#39;은/Josa&#39;: False,
+   &#39;이/Josa&#39;: False,
+   &#39;이랑/Josa&#39;: False,
+   &#39;이쁜/Adjective&#39;: False,
+   &#39;이야/Josa&#39;: True,
+   &#39;인사/Noun&#39;: False,
+   &#39;재미없어/Adjective&#39;: False,
+   &#39;좋다/Adjective&#39;: False,
+   &#39;좋아/Adjective&#39;: False,
+   &#39;지하철/Noun&#39;: False,
+   &#39;질서/Noun&#39;: False,
+   &#39;짜증/Noun&#39;: False,
+   &#39;짜증난다/Adjective&#39;: False,
+   &#39;짜증스러운/Adjective&#39;: True,
+   &#39;친구/Noun&#39;: False,
+   &#39;하늘/Noun&#39;: False,
+   &#39;하루/Noun&#39;: True,
+   &#39;해주니/Verb&#39;: False,
+   &#39;행복하다/Adjective&#39;: False,
+   &#39;홍길동/Noun&#39;: False},
+  &#39;부정&#39;),
+ ({&#39;가/Josa&#39;: False,
+   &#39;강아지/Noun&#39;: False,
+   &#39;고/Josa&#39;: False,
+   &#39;공기/Noun&#39;: False,
+   &#39;난/Noun&#39;: False,
+   &#39;난다/Verb&#39;: False,
+   &#39;날/Noun&#39;: True,
+   &#39;낸다/Verb&#39;: False,
+   &#39;너무/Adverb&#39;: False,
+   &#39;놀거야/Verb&#39;: False,
+   &#39;는/Josa&#39;: False,
+   &#39;마치/Noun&#39;: False,
+   &#39;많아서/Adjective&#39;: False,
+   &#39;맑아서/Adjective&#39;: True,
+   &#39;무지/Noun&#39;: False,
+   &#39;밝게/Verb&#39;: False,
+   &#39;비/Noun&#39;: False,
+   &#39;사람/Noun&#39;: False,
+   &#39;수업/Noun&#39;: False,
+   &#39;야/Josa&#39;: False,
+   &#39;없어/Adjective&#39;: False,
+   &#39;에/Josa&#39;: False,
+   &#39;에서/Josa&#39;: False,
+   &#39;오늘/Noun&#39;: False,
+   &#39;오니/Noun&#39;: False,
+   &#39;은/Josa&#39;: False,
+   &#39;이/Josa&#39;: True,
+   &#39;이랑/Josa&#39;: False,
+   &#39;이쁜/Adjective&#39;: False,
+   &#39;이야/Josa&#39;: False,
+   &#39;인사/Noun&#39;: False,
+   &#39;재미없어/Adjective&#39;: False,
+   &#39;좋다/Adjective&#39;: False,
+   &#39;좋아/Adjective&#39;: True,
+   &#39;지하철/Noun&#39;: False,
+   &#39;질서/Noun&#39;: False,
+   &#39;짜증/Noun&#39;: False,
+   &#39;짜증난다/Adjective&#39;: False,
+   &#39;짜증스러운/Adjective&#39;: False,
+   &#39;친구/Noun&#39;: False,
+   &#39;하늘/Noun&#39;: False,
+   &#39;하루/Noun&#39;: False,
+   &#39;해주니/Verb&#39;: False,
+   &#39;행복하다/Adjective&#39;: False,
+   &#39;홍길동/Noun&#39;: False},
+  &#39;긍정&#39;),
+ ({&#39;가/Josa&#39;: False,
+   &#39;강아지/Noun&#39;: False,
+   &#39;고/Josa&#39;: False,
+   &#39;공기/Noun&#39;: False,
+   &#39;난/Noun&#39;: False,
+   &#39;난다/Verb&#39;: True,
+   &#39;날/Noun&#39;: False,
+   &#39;낸다/Verb&#39;: False,
+   &#39;너무/Adverb&#39;: True,
+   &#39;놀거야/Verb&#39;: False,
+   &#39;는/Josa&#39;: False,
+   &#39;마치/Noun&#39;: False,
+   &#39;많아서/Adjective&#39;: True,
+   &#39;맑아서/Adjective&#39;: False,
+   &#39;무지/Noun&#39;: False,
+   &#39;밝게/Verb&#39;: False,
+   &#39;비/Noun&#39;: False,
+   &#39;사람/Noun&#39;: True,
+   &#39;수업/Noun&#39;: False,
+   &#39;야/Josa&#39;: False,
+   &#39;없어/Adjective&#39;: False,
+   &#39;에/Josa&#39;: True,
+   &#39;에서/Josa&#39;: False,
+   &#39;오늘/Noun&#39;: True,
+   &#39;오니/Noun&#39;: False,
+   &#39;은/Josa&#39;: False,
+   &#39;이/Josa&#39;: True,
+   &#39;이랑/Josa&#39;: False,
+   &#39;이쁜/Adjective&#39;: False,
+   &#39;이야/Josa&#39;: False,
+   &#39;인사/Noun&#39;: False,
+   &#39;재미없어/Adjective&#39;: False,
+   &#39;좋다/Adjective&#39;: False,
+   &#39;좋아/Adjective&#39;: False,
+   &#39;지하철/Noun&#39;: True,
+   &#39;질서/Noun&#39;: False,
+   &#39;짜증/Noun&#39;: True,
+   &#39;짜증난다/Adjective&#39;: False,
+   &#39;짜증스러운/Adjective&#39;: False,
+   &#39;친구/Noun&#39;: False,
+   &#39;하늘/Noun&#39;: False,
+   &#39;하루/Noun&#39;: False,
+   &#39;해주니/Verb&#39;: False,
+   &#39;행복하다/Adjective&#39;: False,
+   &#39;홍길동/Noun&#39;: False},
+  &#39;부정&#39;),
+ ({&#39;가/Josa&#39;: False,
+   &#39;강아지/Noun&#39;: False,
+   &#39;고/Josa&#39;: False,
+   &#39;공기/Noun&#39;: False,
+   &#39;난/Noun&#39;: False,
+   &#39;난다/Verb&#39;: True,
+   &#39;날/Noun&#39;: False,
+   &#39;낸다/Verb&#39;: False,
+   &#39;너무/Adverb&#39;: True,
+   &#39;놀거야/Verb&#39;: False,
+   &#39;는/Josa&#39;: True,
+   &#39;마치/Noun&#39;: False,
+   &#39;많아서/Adjective&#39;: False,
+   &#39;맑아서/Adjective&#39;: False,
+   &#39;무지/Noun&#39;: False,
+   &#39;밝게/Verb&#39;: False,
+   &#39;비/Noun&#39;: False,
+   &#39;사람/Noun&#39;: False,
+   &#39;수업/Noun&#39;: False,
+   &#39;야/Josa&#39;: False,
+   &#39;없어/Adjective&#39;: True,
+   &#39;에/Josa&#39;: False,
+   &#39;에서/Josa&#39;: True,
+   &#39;오늘/Noun&#39;: False,
+   &#39;오니/Noun&#39;: False,
+   &#39;은/Josa&#39;: False,
+   &#39;이/Josa&#39;: True,
+   &#39;이랑/Josa&#39;: False,
+   &#39;이쁜/Adjective&#39;: False,
+   &#39;이야/Josa&#39;: False,
+   &#39;인사/Noun&#39;: False,
+   &#39;재미없어/Adjective&#39;: False,
+   &#39;좋다/Adjective&#39;: False,
+   &#39;좋아/Adjective&#39;: False,
+   &#39;지하철/Noun&#39;: True,
+   &#39;질서/Noun&#39;: True,
+   &#39;짜증/Noun&#39;: True,
+   &#39;짜증난다/Adjective&#39;: False,
+   &#39;짜증스러운/Adjective&#39;: False,
+   &#39;친구/Noun&#39;: False,
+   &#39;하늘/Noun&#39;: False,
+   &#39;하루/Noun&#39;: False,
+   &#39;해주니/Verb&#39;: False,
+   &#39;행복하다/Adjective&#39;: False,
+   &#39;홍길동/Noun&#39;: False},
+  &#39;부정&#39;),
+ ({&#39;가/Josa&#39;: True,
+   &#39;강아지/Noun&#39;: False,
+   &#39;고/Josa&#39;: False,
+   &#39;공기/Noun&#39;: False,
+   &#39;난/Noun&#39;: False,
+   &#39;난다/Verb&#39;: False,
+   &#39;날/Noun&#39;: False,
+   &#39;낸다/Verb&#39;: False,
+   &#39;너무/Adverb&#39;: False,
+   &#39;놀거야/Verb&#39;: False,
+   &#39;는/Josa&#39;: False,
+   &#39;마치/Noun&#39;: False,
+   &#39;많아서/Adjective&#39;: False,
+   &#39;맑아서/Adjective&#39;: False,
+   &#39;무지/Noun&#39;: False,
+   &#39;밝게/Verb&#39;: False,
+   &#39;비/Noun&#39;: True,
+   &#39;사람/Noun&#39;: False,
+   &#39;수업/Noun&#39;: False,
+   &#39;야/Josa&#39;: False,
+   &#39;없어/Adjective&#39;: False,
+   &#39;에/Josa&#39;: False,
+   &#39;에서/Josa&#39;: False,
+   &#39;오늘/Noun&#39;: False,
+   &#39;오니/Noun&#39;: True,
+   &#39;은/Josa&#39;: False,
+   &#39;이/Josa&#39;: False,
+   &#39;이랑/Josa&#39;: False,
+   &#39;이쁜/Adjective&#39;: False,
+   &#39;이야/Josa&#39;: False,
+   &#39;인사/Noun&#39;: False,
+   &#39;재미없어/Adjective&#39;: False,
+   &#39;좋다/Adjective&#39;: False,
+   &#39;좋아/Adjective&#39;: False,
+   &#39;지하철/Noun&#39;: False,
+   &#39;질서/Noun&#39;: False,
+   &#39;짜증/Noun&#39;: False,
+   &#39;짜증난다/Adjective&#39;: True,
+   &#39;짜증스러운/Adjective&#39;: False,
+   &#39;친구/Noun&#39;: False,
+   &#39;하늘/Noun&#39;: False,
+   &#39;하루/Noun&#39;: False,
+   &#39;해주니/Verb&#39;: False,
+   &#39;행복하다/Adjective&#39;: False,
+   &#39;홍길동/Noun&#39;: False},
+  &#39;부정&#39;),
+ ({&#39;가/Josa&#39;: True,
+   &#39;강아지/Noun&#39;: False,
+   &#39;고/Josa&#39;: False,
+   &#39;공기/Noun&#39;: False,
+   &#39;난/Noun&#39;: False,
+   &#39;난다/Verb&#39;: False,
+   &#39;날/Noun&#39;: False,
+   &#39;낸다/Verb&#39;: True,
+   &#39;너무/Adverb&#39;: False,
+   &#39;놀거야/Verb&#39;: False,
+   &#39;는/Josa&#39;: False,
+   &#39;마치/Noun&#39;: False,
+   &#39;많아서/Adjective&#39;: False,
+   &#39;맑아서/Adjective&#39;: False,
+   &#39;무지/Noun&#39;: False,
+   &#39;밝게/Verb&#39;: False,
+   &#39;비/Noun&#39;: False,
+   &#39;사람/Noun&#39;: False,
+   &#39;수업/Noun&#39;: False,
+   &#39;야/Josa&#39;: False,
+   &#39;없어/Adjective&#39;: False,
+   &#39;에/Josa&#39;: False,
+   &#39;에서/Josa&#39;: False,
+   &#39;오늘/Noun&#39;: False,
+   &#39;오니/Noun&#39;: False,
+   &#39;은/Josa&#39;: False,
+   &#39;이/Josa&#39;: False,
+   &#39;이랑/Josa&#39;: False,
+   &#39;이쁜/Adjective&#39;: False,
+   &#39;이야/Josa&#39;: False,
+   &#39;인사/Noun&#39;: False,
+   &#39;재미없어/Adjective&#39;: False,
+   &#39;좋다/Adjective&#39;: False,
+   &#39;좋아/Adjective&#39;: False,
+   &#39;지하철/Noun&#39;: False,
+   &#39;질서/Noun&#39;: False,
+   &#39;짜증/Noun&#39;: True,
+   &#39;짜증난다/Adjective&#39;: False,
+   &#39;짜증스러운/Adjective&#39;: False,
+   &#39;친구/Noun&#39;: True,
+   &#39;하늘/Noun&#39;: False,
+   &#39;하루/Noun&#39;: False,
+   &#39;해주니/Verb&#39;: False,
+   &#39;행복하다/Adjective&#39;: False,
+   &#39;홍길동/Noun&#39;: False},
+  &#39;부정&#39;),
+ ({&#39;가/Josa&#39;: False,
+   &#39;강아지/Noun&#39;: False,
+   &#39;고/Josa&#39;: False,
+   &#39;공기/Noun&#39;: False,
+   &#39;난/Noun&#39;: False,
+   &#39;난다/Verb&#39;: False,
+   &#39;날/Noun&#39;: False,
+   &#39;낸다/Verb&#39;: False,
+   &#39;너무/Adverb&#39;: False,
+   &#39;놀거야/Verb&#39;: False,
+   &#39;는/Josa&#39;: False,
+   &#39;마치/Noun&#39;: False,
+   &#39;많아서/Adjective&#39;: False,
+   &#39;맑아서/Adjective&#39;: True,
+   &#39;무지/Noun&#39;: False,
+   &#39;밝게/Verb&#39;: False,
+   &#39;비/Noun&#39;: False,
+   &#39;사람/Noun&#39;: False,
+   &#39;수업/Noun&#39;: False,
+   &#39;야/Josa&#39;: False,
+   &#39;없어/Adjective&#39;: False,
+   &#39;에/Josa&#39;: False,
+   &#39;에서/Josa&#39;: False,
+   &#39;오늘/Noun&#39;: False,
+   &#39;오니/Noun&#39;: False,
+   &#39;은/Josa&#39;: False,
+   &#39;이/Josa&#39;: True,
+   &#39;이랑/Josa&#39;: False,
+   &#39;이쁜/Adjective&#39;: False,
+   &#39;이야/Josa&#39;: False,
+   &#39;인사/Noun&#39;: False,
+   &#39;재미없어/Adjective&#39;: False,
+   &#39;좋다/Adjective&#39;: False,
+   &#39;좋아/Adjective&#39;: False,
+   &#39;지하철/Noun&#39;: False,
+   &#39;질서/Noun&#39;: False,
+   &#39;짜증/Noun&#39;: False,
+   &#39;짜증난다/Adjective&#39;: False,
+   &#39;짜증스러운/Adjective&#39;: False,
+   &#39;친구/Noun&#39;: False,
+   &#39;하늘/Noun&#39;: True,
+   &#39;하루/Noun&#39;: False,
+   &#39;해주니/Verb&#39;: False,
+   &#39;행복하다/Adjective&#39;: True,
+   &#39;홍길동/Noun&#39;: False},
+  &#39;긍정&#39;),
+ ({&#39;가/Josa&#39;: True,
+   &#39;강아지/Noun&#39;: False,
+   &#39;고/Josa&#39;: False,
+   &#39;공기/Noun&#39;: True,
+   &#39;난/Noun&#39;: False,
+   &#39;난다/Verb&#39;: False,
+   &#39;날/Noun&#39;: False,
+   &#39;낸다/Verb&#39;: False,
+   &#39;너무/Adverb&#39;: False,
+   &#39;놀거야/Verb&#39;: False,
+   &#39;는/Josa&#39;: False,
+   &#39;마치/Noun&#39;: False,
+   &#39;많아서/Adjective&#39;: False,
+   &#39;맑아서/Adjective&#39;: True,
+   &#39;무지/Noun&#39;: False,
+   &#39;밝게/Verb&#39;: False,
+   &#39;비/Noun&#39;: False,
+   &#39;사람/Noun&#39;: False,
+   &#39;수업/Noun&#39;: False,
+   &#39;야/Josa&#39;: False,
+   &#39;없어/Adjective&#39;: False,
+   &#39;에/Josa&#39;: False,
+   &#39;에서/Josa&#39;: False,
+   &#39;오늘/Noun&#39;: False,
+   &#39;오니/Noun&#39;: False,
+   &#39;은/Josa&#39;: False,
+   &#39;이/Josa&#39;: False,
+   &#39;이랑/Josa&#39;: False,
+   &#39;이쁜/Adjective&#39;: False,
+   &#39;이야/Josa&#39;: False,
+   &#39;인사/Noun&#39;: False,
+   &#39;재미없어/Adjective&#39;: False,
+   &#39;좋다/Adjective&#39;: True,
+   &#39;좋아/Adjective&#39;: False,
+   &#39;지하철/Noun&#39;: False,
+   &#39;질서/Noun&#39;: False,
+   &#39;짜증/Noun&#39;: False,
+   &#39;짜증난다/Adjective&#39;: False,
+   &#39;짜증스러운/Adjective&#39;: False,
+   &#39;친구/Noun&#39;: False,
+   &#39;하늘/Noun&#39;: False,
+   &#39;하루/Noun&#39;: False,
+   &#39;해주니/Verb&#39;: False,
+   &#39;행복하다/Adjective&#39;: False,
+   &#39;홍길동/Noun&#39;: False},
+  &#39;긍정&#39;),
+ ({&#39;가/Josa&#39;: False,
+   &#39;강아지/Noun&#39;: False,
+   &#39;고/Josa&#39;: False,
+   &#39;공기/Noun&#39;: False,
+   &#39;난/Noun&#39;: False,
+   &#39;난다/Verb&#39;: False,
+   &#39;날/Noun&#39;: False,
+   &#39;낸다/Verb&#39;: False,
+   &#39;너무/Adverb&#39;: False,
+   &#39;놀거야/Verb&#39;: False,
+   &#39;는/Josa&#39;: False,
+   &#39;마치/Noun&#39;: False,
+   &#39;많아서/Adjective&#39;: False,
+   &#39;맑아서/Adjective&#39;: False,
+   &#39;무지/Noun&#39;: False,
+   &#39;밝게/Verb&#39;: True,
+   &#39;비/Noun&#39;: False,
+   &#39;사람/Noun&#39;: False,
+   &#39;수업/Noun&#39;: False,
+   &#39;야/Josa&#39;: False,
+   &#39;없어/Adjective&#39;: False,
+   &#39;에/Josa&#39;: False,
+   &#39;에서/Josa&#39;: False,
+   &#39;오늘/Noun&#39;: False,
+   &#39;오니/Noun&#39;: False,
+   &#39;은/Josa&#39;: False,
+   &#39;이/Josa&#39;: False,
+   &#39;이랑/Josa&#39;: False,
+   &#39;이쁜/Adjective&#39;: False,
+   &#39;이야/Josa&#39;: False,
+   &#39;인사/Noun&#39;: True,
+   &#39;재미없어/Adjective&#39;: False,
+   &#39;좋다/Adjective&#39;: False,
+   &#39;좋아/Adjective&#39;: False,
+   &#39;지하철/Noun&#39;: False,
+   &#39;질서/Noun&#39;: False,
+   &#39;짜증/Noun&#39;: False,
+   &#39;짜증난다/Adjective&#39;: False,
+   &#39;짜증스러운/Adjective&#39;: False,
+   &#39;친구/Noun&#39;: False,
+   &#39;하늘/Noun&#39;: False,
+   &#39;하루/Noun&#39;: False,
+   &#39;해주니/Verb&#39;: True,
+   &#39;행복하다/Adjective&#39;: True,
+   &#39;홍길동/Noun&#39;: False},
+  &#39;긍정&#39;)]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>2.10 Naive Bayes 실행<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">classifier</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">NaiveBayesClassifier</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
+<span class="n">classifier</span><span class="o">.</span><span class="n">show_most_informative_features</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Most Informative Features
+                  가/Josa = True               부정 : 긍정     =      2.6 : 1.0
+               너무/Adverb = False              긍정 : 부정     =      2.2 : 1.0
+                  는/Josa = True               부정 : 긍정     =      1.9 : 1.0
+                  날/Noun = True               부정 : 긍정     =      1.9 : 1.0
+                 짜증/Noun = False              긍정 : 부정     =      1.7 : 1.0
+                  이/Josa = True               부정 : 긍정     =      1.6 : 1.0
+            좋아/Adjective = False              부정 : 긍정     =      1.5 : 1.0
+           맑아서/Adjective = False              부정 : 긍정     =      1.5 : 1.0
+                홍길동/Noun = False              부정 : 긍정     =      1.5 : 1.0
+                  가/Josa = False              긍정 : 부정     =      1.5 : 1.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;난 수업을 마치면 홍길동이랑 놀거야&#39;</span><span class="p">)]</span>
+<span class="n">test_doc</span> <span class="o">=</span> <span class="n">tokenize</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">test_doc</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;난/Noun&#39;,
+ &#39;수업/Noun&#39;,
+ &#39;을/Josa&#39;,
+ &#39;마치/Noun&#39;,
+ &#39;면/Josa&#39;,
+ &#39;홍길동/Noun&#39;,
+ &#39;이랑/Josa&#39;,
+ &#39;놀거야/Verb&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_f</span> <span class="o">=</span> <span class="p">{</span><span class="n">word</span><span class="p">:(</span><span class="n">word</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">test_doc</span><span class="p">}</span>
+<span class="n">classifier</span><span class="o">.</span><span class="n">classify</span><span class="p">(</span><span class="n">test_f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;긍정&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./ml-docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="02-02.html" title="previous page">R | e1071</a>
+    <a class='right-next' id="next-link" href="02-04.html" title="next page">sklearn.naive_bayes</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By CHAE YEONHEE<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

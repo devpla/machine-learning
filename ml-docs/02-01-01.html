@@ -1,0 +1,450 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>확률 (probability) &#8212; Machine Learning</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="R | e1071" href="02-02.html" />
+    <link rel="prev" title="02. 나이브베이즈 (Naive Bayes)" href="02-01-naive-bayes.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Machine Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   머신러닝 (machine learning)
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  MACHINE LEARNING
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="01-01-kNN.html">
+   01. kNN 알고리즘
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-02.html">
+     파이썬 | sklearn.neighbors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-03.html">
+     Feature Scaling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-04.html">
+     실습 | 붓꽃 · 유방암
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-05.html">
+     혼동행렬
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-06.html">
+     R | kNN
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="02-01-naive-bayes.html">
+   02. 나이브베이즈 (Naive Bayes)
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     확률 (probability)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-02.html">
+     R | e1071
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-03.html">
+     nltk.NaiveBayesClassifier
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-04.html">
+     sklearn.naive_bayes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-05.html">
+     Naive Bayes를 이용한 네이버 영화 리뷰 분석
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-06.html">
+     실습 | 네이버 영화 리뷰
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03-01.html">
+   03. 의사결정나무 (DECISION TREE)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/ml-docs/02-01-01.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#marginal-probability">
+   한계확률, 주변확률(marginal probability)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   결합확률
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   조건부확률
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="probability">
+<h1>확률 (probability)<a class="headerlink" href="#probability" title="Permalink to this headline">¶</a></h1>
+<p>경험 혹은 실험결과로 특정한 사건이나 결과가 발생할 가능성 (0 ~ 1)</p>
+<div class="section" id="marginal-probability">
+<h2>한계확률, 주변확률(marginal probability)<a class="headerlink" href="#marginal-probability" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>아무런 조건이 없는 상태에서 사건 A가 발생할 확률</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">P(A)</span></code></p></li>
+</ul>
+<br>
+<ul class="simple">
+<li><p>10명중에 한명을 뽑았을 때 남자일 확률?</p></li>
+<li><p>10명중에 한명을 뽑았을 때 불만족일 확률?</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>만족</p></th>
+<th class="text-align:right head"><p>보통</p></th>
+<th class="text-align:right head"><p>불만족</p></th>
+<th class="text-align:right head"><p>행의합</p></th>
+<th class="text-align:right head"><p>한계확률</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>남성</p></td>
+<td class="text-align:right"><p>2</p></td>
+<td class="text-align:right"><p>1</p></td>
+<td class="text-align:right"><p>1</p></td>
+<td class="text-align:right"><p>4</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>여성</p></td>
+<td class="text-align:right"><p>0</p></td>
+<td class="text-align:right"><p>4</p></td>
+<td class="text-align:right"><p>2</p></td>
+<td class="text-align:right"><p>6</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>열의합</p></td>
+<td class="text-align:right"><p>2</p></td>
+<td class="text-align:right"><p>5</p></td>
+<td class="text-align:right"><p>3</p></td>
+<td class="text-align:right"><p>10</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>한계확률</p></td>
+<td class="text-align:right"><p>0.2</p></td>
+<td class="text-align:right"><p>0.5</p></td>
+<td class="text-align:right"><p>0.3</p></td>
+<td class="text-align:right"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id1">
+<h2>결합확률<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>두개 이상의 사건이 동시에 발생할 가능성을 나타내는 확률</p></li>
+<li><p>사건 A와 사건 B가 동시에 발생할 확률</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">P(A∩B)</span></code></p></li>
+</ul>
+<br>
+<ul class="simple">
+<li><p>10명중에서 남성이면서 만족할 확률은?</p></li>
+<li><p>10명중에서 여성이면서 만족할 확률은?</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>만족</p></th>
+<th class="text-align:right head"><p>보통</p></th>
+<th class="text-align:right head"><p>불만족</p></th>
+<th class="text-align:right head"><p>행의합</p></th>
+<th class="text-align:right head"><p>한계확률</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>남성</p></td>
+<td class="text-align:right"><p>2/10</p></td>
+<td class="text-align:right"><p>1/10</p></td>
+<td class="text-align:right"><p>1/10</p></td>
+<td class="text-align:right"><p>4</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>여성</p></td>
+<td class="text-align:right"><p>0/10</p></td>
+<td class="text-align:right"><p>4/10</p></td>
+<td class="text-align:right"><p>2/10</p></td>
+<td class="text-align:right"><p>6</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>열의합</p></td>
+<td class="text-align:right"><p>2</p></td>
+<td class="text-align:right"><p>5</p></td>
+<td class="text-align:right"><p>3</p></td>
+<td class="text-align:right"><p>10</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>한계확률</p></td>
+<td class="text-align:right"><p>0.2</p></td>
+<td class="text-align:right"><p>0.5</p></td>
+<td class="text-align:right"><p>0.3</p></td>
+<td class="text-align:right"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id2">
+<h2>조건부확률<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>이미 하나의 사건이 발생한 상태에서 또 다른 사건이 발생할 가능성을 나타내는 확률</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>P(A|B) : B가 먼저 발생하고 A가 발생할 확률
+
+            P(A∩B)         
+P(A|B) = -------------
+             P(B)
+</pre></div>
+</div>
+<p>남성이라는 전제 조건 하에서 만족할 확률</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>              P(남성∩만족)       2 / 10     
+P(만족|남성) = ------------- = -----------
+               P(남성)          4 / 10
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./ml-docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="02-01-naive-bayes.html" title="previous page">02. 나이브베이즈 (Naive Bayes)</a>
+    <a class='right-next' id="next-link" href="02-02.html" title="next page">R | e1071</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By CHAE YEONHEE<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

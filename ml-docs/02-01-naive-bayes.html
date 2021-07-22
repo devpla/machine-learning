@@ -1,0 +1,565 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02. 나이브베이즈 (Naive Bayes) &#8212; Machine Learning</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="확률 (probability)" href="02-01-01.html" />
+    <link rel="prev" title="R | kNN" href="01-06.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Machine Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   머신러닝 (machine learning)
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  MACHINE LEARNING
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="01-01-kNN.html">
+   01. kNN 알고리즘
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-02.html">
+     파이썬 | sklearn.neighbors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-03.html">
+     Feature Scaling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-04.html">
+     실습 | 붓꽃 · 유방암
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-05.html">
+     혼동행렬
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-06.html">
+     R | kNN
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   02. 나이브베이즈 (Naive Bayes)
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-01-01.html">
+     확률 (probability)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-02.html">
+     R | e1071
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-03.html">
+     nltk.NaiveBayesClassifier
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-04.html">
+     sklearn.naive_bayes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-05.html">
+     Naive Bayes를 이용한 네이버 영화 리뷰 분석
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-06.html">
+     실습 | 네이버 영화 리뷰
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03-01.html">
+   03. 의사결정나무 (DECISION TREE)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/ml-docs/02-01-naive-bayes.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   2.1 조건부 독립
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   2.2 라플라스 추정량
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="naive-bayes">
+<h1>02. 나이브베이즈 (Naive Bayes)<a class="headerlink" href="#naive-bayes" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>주어진 사전확률정보를 이용하여 사후확률을 예측</p></li>
+<li><p>데이터를 나이브(단순)하게 독립적인 사건으로 가정하고 이 독립사건들을 베이즈 이론에 대입시켜 가장 높은 확률의 레이블로 분류하는 알고리즘</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>            P(A∩B)          P(B|A) * P(A)  
+P(A|B) = ------------- =  -----------------
+             P(B)                P(B)
+
+P(A∩B) = P(A|B) * P(B)
+
+            P(A∩B)    
+P(B|A) = -------------
+             P(A)     
+
+P(A∩B) = P(B|A) * P(A)
+</pre></div>
+</div>
+<br/>  
+<div class="section" id="id1">
+<h2>2.1 조건부 독립<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>특정한 사건이 독립적 사건이라고 가정한다.<br />
+<code class="docutils literal notranslate"><span class="pre">P(A∩B)</span> <span class="pre">=</span> <span class="pre">P(A)</span> <span class="pre">*</span> <span class="pre">P(B)</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>               P(복권∩스팸)       P(복권|스팸) * P(스팸)  
+P(스팸|복권) = --------------- =  -------------------
+                 P(복권)               P(복권)
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">P(스팸|복권)</span></code> : 사후확률</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">P(복권|스팸)</span></code> : likelihood(가능성, 우도), 어떤 일이 있을 가능성</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">P(스팸)</span></code> : 사전확률</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">P(복권)</span></code> : 주변우도 (marginal likelihood)</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>복권<br/>빈도</p></th>
+<th class="text-align:right head"><p>YES</p></th>
+<th class="text-align:right head"><p>NO</p></th>
+<th class="text-align:right head"><p>합</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>스팸</p></td>
+<td class="text-align:right"><p>3</p></td>
+<td class="text-align:right"><p>19</p></td>
+<td class="text-align:right"><p>22</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>햄</p></td>
+<td class="text-align:right"><p>2</p></td>
+<td class="text-align:right"><p>76</p></td>
+<td class="text-align:right"><p>78</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>합</p></td>
+<td class="text-align:right"><p>5</p></td>
+<td class="text-align:right"><p>95</p></td>
+<td class="text-align:right"><p>100</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">P</span><span class="p">(</span><span class="n">스팸</span><span class="o">|</span><span class="n">복권</span><span class="p">)</span> <span class="o">=</span> <span class="n">P</span><span class="p">(</span><span class="n">복권</span><span class="o">|</span><span class="n">스팸</span><span class="p">)</span> <span class="o">*</span> <span class="n">P</span><span class="p">(</span><span class="n">스팸</span><span class="p">)</span> <span class="o">/</span> <span class="n">P</span><span class="p">(</span><span class="n">복권</span><span class="p">)</span>
+           <span class="o">=</span> <span class="p">((</span><span class="mi">3</span><span class="o">/</span><span class="mi">22</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">22</span><span class="o">/</span><span class="mi">100</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">5</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span>
+           <span class="o">=</span> <span class="mf">0.6</span>
+          <span class="o">=</span> <span class="mi">60</span><span class="o">%</span>
+</pre></div>
+</div>
+<p>결론 : 복권이라는 단어가 들어 있다면 스팸일 확률은 60%가 된다.</p>
+<table>
+       <thead>
+           <tr> 
+               <th> </th>
+               <th colspan=2>복권</th>
+               <th colspan=2>돈</th>
+               <th colspan=2>수신취소</th>
+               <th> 합 </th>
+           </tr>
+           <tr>
+               <td> </td>
+               <td align = center>YES</td>
+               <td align = center>NO</td>
+               <td align = center>YES</td>
+               <td align = center>NO</td>
+               <td align = center>YES</td>
+               <td align = center>NO</td>
+               <td> </td>
+           </tr>
+       </thead>
+       <tbody>
+           <tr>
+               <td align = center>스팸</td>
+               <td align = right>3</td>
+               <td align = right>19</td>
+               <td align = right>11</td>
+               <td align = right>11</td>
+               <td align = right>13</td>
+               <td align = right>9</td>
+               <td align = right>22</td>
+           </tr>
+           <tr>
+               <td align = center>햄</td>
+               <td align = right>2</td>
+               <td align = right>76</td>
+               <td align = right>15</td>
+               <td align = right>63</td>
+               <td align = right>21</td>
+               <td align = right>57</td>
+               <td align = right>78</td>
+           </tr>
+           <tr>
+               <td align = center>합</td>
+               <td align = right>5</td>
+               <td align = right>95</td>
+               <td align = right>26</td>
+               <td align = right>74</td>
+               <td align = right>34</td>
+               <td align = right>66</td>
+               <td align = right>100</td>
+           </tr>
+       </tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>복권 = YES, 돈 = NO, 수신취소 = YES
+
+                                 P(복권 ∩ ㄱ돈 ∩ 수신취소 | 스팸) * P(스팸)
+P(스팸 | 복권 ∩ ㄱ돈 ∩ 수신취소) =  ---------------------------------------
+                                       P(복권 ∩ ㄱ돈 ∩ 수신취소)
+
+                  P(복권 | 스팸) * P(ㄱ돈 | 스팸) * P(수신취소 | 스팸) * P(스팸)
+              =  --------------------------------------------------------
+                                P(복권 ∩ ㄱ돈 ∩ 수신취소)       
+
+                ((3/22) * (11/22) * (13/22) * (22/100))
+              = -----------------------------------------
+                    ((5/100) * (74/100) * (34/100))
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>￢ 혹은 ㄱ은 not을 의미한다.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                                 P(복권 ∩ ㄱ돈 ∩ 수신취소 | 햄) * P(햄)
+P(햄 | 복권 ∩ ㄱ돈 ∩ 수신취소) =  ---------------------------------------
+                                       P(복권 ∩ ㄱ돈 ∩ 수신취소)
+
+                  P(복권 | 햄) * P(ㄱ돈 | 햄) * P(수신취소 | 햄) * P(햄)
+              =  --------------------------------------------------------
+                                P(복권 ∩ ㄱ돈 ∩ 수신취소)       
+
+                ((2/78) * (63/78) * (21/78) * (78/100))
+              = -----------------------------------------
+                    ((5/100) * (74/100) * (34/100))
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>P(스팸 | 복권 ∩ ㄱ돈 ∩ 수신취소) ∝ P(복권 ∩ ㄱ돈 ∩ 수신취소 | 스팸) * P(스팸)
+P(햄 | 복권 ∩ ㄱ돈 ∩ 수신취소) ∝ P(복권 ∩ ㄱ돈 ∩ 수신취소 | 햄) * P(햄)
+
+((3/22) * (11/22) * (13/22) * (22/100)) = 0.008863636
+((2/78) * (63/78) * (21/78) * (78/100)) = 0.004349112
+
+스팸일 확률 : 0.008863636 / (0.008863636 + 0.004349112) = 0.6708397
+햄일 확률 : 0.004349112 / (0.008863636 + 0.004349112) = 0.3291603
+</pre></div>
+</div>
+<table>
+       <thead>
+           <tr> 
+               <th> </th>
+               <th colspan=2>복권</th>
+               <th colspan=2>돈</th>
+               <th colspan=2>수신취소</th>
+               <th> 합 </th>
+           </tr>
+           <tr>
+               <td> </td>
+               <td align = center>YES</td>
+               <td align = center>NO</td>
+               <td align = center>YES</td>
+               <td align = center>NO</td>
+               <td align = center>YES</td>
+               <td align = center>NO</td>
+               <td> </td>
+           </tr>
+       </thead>
+       <tbody>
+           <tr>
+               <td align = center>스팸</td>
+               <td align = right>3</td>
+               <td align = right>19</td>
+               <td align = right>22</td>
+               <td align = right>0</td>
+               <td align = right>13</td>
+               <td align = right>9</td>
+               <td align = right>22</td>
+           </tr>
+           <tr>
+               <td align = center>햄</td>
+               <td align = right>2</td>
+               <td align = right>76</td>
+               <td align = right>15</td>
+               <td align = right>63</td>
+               <td align = right>21</td>
+               <td align = right>57</td>
+               <td align = right>78</td>
+           </tr>
+           <tr>
+               <td align = center>합</td>
+               <td align = right>5</td>
+               <td align = right>95</td>
+               <td align = right>37</td>
+               <td align = right>63</td>
+               <td align = right>34</td>
+               <td align = right>66</td>
+               <td align = right>100</td>
+           </tr>
+       </tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>P(스팸 | 복권 ∩ ㄱ돈 ∩ 수신취소) ∝ P(복권 ∩ ㄱ돈 ∩ 수신취소 | 스팸) * P(스팸)
+P(햄 | 복권 ∩ ㄱ돈 ∩ 수신취소) ∝ P(복권 ∩ ㄱ돈 ∩ 수신취소 | 햄) * P(햄)
+
+((3/22) * (0/22) * (13/22) * (22/100)) = 0
+((2/78) * (63/78) * (21/78) * (78/100)) = 0.004349112
+
+스팸일 확률 : 0 / (0 + 0.004349112) = 0
+햄일 확률 : 0.004349112 / (0 + 0.004349112) = 1
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>2.2 라플라스 추정량<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>빈도표의 각 합계에 작은 숫자를 더하는데 특징이 각 클래스에 대해 발생할 확률이 0이 되지 않도록 보장한다. 보편적으로 1로 설정한다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">((</span><span class="mi">4</span><span class="o">/</span><span class="mi">25</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">25</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">14</span><span class="o">/</span><span class="mi">25</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">22</span><span class="o">/</span><span class="mi">100</span><span class="p">))</span> <span class="o">=</span> <span class="mf">0.00078848</span>
+<span class="p">((</span><span class="mi">3</span><span class="o">/</span><span class="mi">81</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">64</span><span class="o">/</span><span class="mi">81</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">22</span><span class="o">/</span><span class="mi">81</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">78</span><span class="o">/</span><span class="mi">100</span><span class="p">))</span> <span class="o">=</span> <span class="mf">0.006199597</span>
+
+<span class="n">스팸일</span> <span class="n">확률</span> <span class="p">:</span> <span class="mf">0.00078848</span> <span class="o">/</span> <span class="p">(</span><span class="mf">0.00078848</span> <span class="o">+</span> <span class="mf">0.006199597</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.1128322</span>
+<span class="n">햄일</span> <span class="n">확률</span> <span class="p">:</span> <span class="mf">0.006199597</span> <span class="o">/</span> <span class="p">(</span><span class="mf">0.00078848</span> <span class="o">+</span> <span class="mf">0.006199597</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.8871678</span>
+</pre></div>
+</div>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./ml-docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="01-06.html" title="previous page">R | kNN</a>
+    <a class='right-next' id="next-link" href="02-01-01.html" title="next page">확률 (probability)</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By CHAE YEONHEE<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

@@ -1,0 +1,844 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>혼동행렬 &#8212; Machine Learning</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="R | kNN" href="01-06.html" />
+    <link rel="prev" title="실습 | 붓꽃 · 유방암" href="01-04.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Machine Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   머신러닝 (machine learning)
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  MACHINE LEARNING
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="01-01-kNN.html">
+   01. kNN 알고리즘
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-02.html">
+     파이썬 | sklearn.neighbors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-03.html">
+     Feature Scaling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-04.html">
+     실습 | 붓꽃 · 유방암
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     혼동행렬
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-06.html">
+     R | kNN
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="02-01-naive-bayes.html">
+   02. 나이브베이즈 (Naive Bayes)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-01-01.html">
+     확률 (probability)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-02.html">
+     R | e1071
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-03.html">
+     nltk.NaiveBayesClassifier
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-04.html">
+     sklearn.naive_bayes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-05.html">
+     Naive Bayes를 이용한 네이버 영화 리뷰 분석
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-06.html">
+     실습 | 네이버 영화 리뷰
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03-01.html">
+   03. 의사결정나무 (DECISION TREE)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/ml-docs/01-05.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/ml-docs/01-05.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/ml-docs/01-05.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#confusion-matrix">
+   혼동행렬 (Confusion Matrix)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     정확도
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     정밀도
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     재현율
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#f1-score">
+     f1-score
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#weighted-mean">
+     참고 | 가중평균(weighted mean)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     참고 | 변화율
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#trimmed-mean">
+     참고 | 절단평균, 절사평균, Trimmed mean
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="id1">
+<h1>혼동행렬<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>작성일 : 2020-10-05</p>
+<hr class="docutils" />
+<div class="section" id="confusion-matrix">
+<h2>혼동행렬 (Confusion Matrix)<a class="headerlink" href="#confusion-matrix" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>모델 성능을 평가할 때 사용되는 지표</p></li>
+<li><p>예측값이 실제값을 얼마나 정확히 예측했는지 보여주는 행렬</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">Y_actual</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;actual&#39;</span><span class="p">)</span>
+<span class="n">Y_predict</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;predict&#39;</span><span class="p">)</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">Y_actual</span><span class="p">,</span> <span class="n">Y_predict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>predict</th>
+      <th>0</th>
+      <th>1</th>
+    </tr>
+    <tr>
+      <th>actual</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="text-align:center head"><p>예측 (예)</p></th>
+<th class="text-align:center head"><p>예측 (아니오)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>실제 (예)</p></td>
+<td class="text-align:center"><p>TP</p></td>
+<td class="text-align:center"><p>FN</p></td>
+</tr>
+<tr class="row-odd"><td><p>실제 (아니오)</p></td>
+<td class="text-align:center"><p>FP</p></td>
+<td class="text-align:center"><p>TN</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TR</span> <span class="pre">(True</span> <span class="pre">Positive)</span></code> : 참긍정, 병에 관해 예라고 예측한 환자가 실제로 병을 가진 경우</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TN</span> <span class="pre">(True</span> <span class="pre">Negative)</span></code> : 참부정 : 병에 관해 아니오라고 예측한 환자가 실제로 병이 없는 경우</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FP</span> <span class="pre">(False</span> <span class="pre">Positive)</span></code> : 거짓 긍정, 병에 관해 예라고 예측한 환자가 실제로 병이 없는 경우</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FN</span> <span class="pre">(False</span> <span class="pre">Negative)</span></code> : <strong>거짓 부정, 병에 관해 아니오라고 예측한 환자가 실제로 병을 가진 경우</strong></p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="text-align:center head"><p>예측 (불량품)</p></th>
+<th class="text-align:center head"><p>예측 (정상)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>실제 (불량품)</p></td>
+<td class="text-align:center"><p>TP</p></td>
+<td class="text-align:center"><p>FN</p></td>
+</tr>
+<tr class="row-odd"><td><p>실제 (정상)</p></td>
+<td class="text-align:center"><p>FP</p></td>
+<td class="text-align:center"><p>TN</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TR</span> <span class="pre">(True</span> <span class="pre">Positive)</span></code> : 참긍정, 불량품을 정확하게 불량품으로 예측</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TN</span> <span class="pre">(True</span> <span class="pre">Negative)</span></code> : 참부정, 정상을 정상으로 예측</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FP</span> <span class="pre">(False</span> <span class="pre">Positive)</span></code> : 거짓 긍정, 정상을 불량품으로 잘못 예측</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FN</span> <span class="pre">(False</span> <span class="pre">Negative)</span></code> : <strong>거짓 부정, 불량품을 정상으로 잘못 예측</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">classification_report</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">Y_actual</span><span class="p">,</span> <span class="n">Y_predict</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[3 2]
+ [1 1]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">Y_actual</span><span class="p">,</span> <span class="n">Y_predict</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           0       0.75      0.60      0.67         5
+           1       0.33      0.50      0.40         2
+
+    accuracy                           0.57         7
+   macro avg       0.54      0.55      0.53         7
+weighted avg       0.63      0.57      0.59         7
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>정확도<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>정확도 = 예측결과와 실제값이 동일한 건수 / 전체 데이터 수<br />
+<code class="docutils literal notranslate"><span class="pre">=</span> <span class="pre">(TP</span> <span class="pre">+</span> <span class="pre">TN)</span> <span class="pre">/</span> <span class="pre">(TP</span> <span class="pre">+</span> <span class="pre">TN</span> <span class="pre">+</span> <span class="pre">FP</span> <span class="pre">+</span> <span class="pre">FN)</span></code><br />
+<code class="docutils literal notranslate"><span class="pre">=</span> <span class="pre">(3</span> <span class="pre">+</span> <span class="pre">1)</span> <span class="pre">/</span> <span class="pre">(3</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">+</span> <span class="pre">2</span> <span class="pre">+</span> <span class="pre">1)</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h3>정밀도<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>정밀도 (precision) : 정밀도는 예 클래스에 속한다고 출력한 값이 실제로 예 클래스에 속하는 비율</p></li>
+<li><p>정밀도 <code class="docutils literal notranslate"><span class="pre">=</span> <span class="pre">TP</span> <span class="pre">/</span> <span class="pre">(TP</span> <span class="pre">+</span> <span class="pre">FP)</span></code><br />
+0 정밀도 <code class="docutils literal notranslate"><span class="pre">=</span> <span class="pre">3</span> <span class="pre">/</span> <span class="pre">(3</span> <span class="pre">+</span> <span class="pre">1)</span></code><br />
+1 정밀도 <code class="docutils literal notranslate"><span class="pre">=</span> <span class="pre">1</span> <span class="pre">/</span> <span class="pre">(2</span> <span class="pre">+</span> <span class="pre">1)</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>재현율<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>재현율 (recall) : 실제값 중에서 모델이 검출한 실제값의 비율을 나타내는 지표<br />
+실제 암환자들이 병원에 갔을 때 암환자라고 예측될 확률</p></li>
+<li><p>재현율 <code class="docutils literal notranslate"><span class="pre">=</span> <span class="pre">TP</span> <span class="pre">/</span> <span class="pre">(TP</span> <span class="pre">+</span> <span class="pre">FN)</span></code><br />
+0 재현율 <code class="docutils literal notranslate"><span class="pre">=</span> <span class="pre">3</span> <span class="pre">/</span> <span class="pre">(3</span> <span class="pre">+</span> <span class="pre">2)</span></code><br />
+1 재현율 <code class="docutils literal notranslate"><span class="pre">=</span> <span class="pre">1</span> <span class="pre">/</span> <span class="pre">(1</span> <span class="pre">+</span> <span class="pre">1)</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="f1-score">
+<h3>f1-score<a class="headerlink" href="#f1-score" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>f1-score : 정밀도와 재현율의 조화평균</p></li>
+<li><p>f1점수 <code class="docutils literal notranslate"><span class="pre">=</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">재현율</span> <span class="pre">*</span> <span class="pre">정밀도</span> <span class="pre">/</span> <span class="pre">(재현율</span> <span class="pre">+</span> <span class="pre">정밀도)</span></code><br />
+0 f1 점수 <code class="docutils literal notranslate"><span class="pre">=</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">0.6</span> <span class="pre">*</span> <span class="pre">0.75</span> <span class="pre">/</span> <span class="pre">(0.6</span> <span class="pre">+</span> <span class="pre">0.75)</span></code>
+1 f1 점수 <code class="docutils literal notranslate"><span class="pre">=</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">0.5</span> <span class="pre">*</span> <span class="pre">0.33</span> <span class="pre">/</span> <span class="pre">(0.5</span> <span class="pre">+</span> <span class="pre">0.33)</span></code></p></li>
+</ul>
+<p>[문제8] 서울과 부산(400km)를 왕복하는데 서울에서 부산 가는데 시속 150km/h로 가고 오는데 시속 100km/h로 왔다면 왕복하는데 걸린 평균 시속은?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">800</span><span class="o">/</span><span class="p">((</span><span class="mi">400</span><span class="o">/</span><span class="mi">150</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">400</span><span class="o">/</span><span class="mi">100</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>120.00000000000001
+</pre></div>
+</div>
+</div>
+</div>
+<p>= 120km/h</p>
+<p>유방암 데이터 classification_report</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">Y_test</span><span class="p">,</span><span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[71,  0],
+       [ 3, 40]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">Y_test</span><span class="p">,</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           B       0.96      1.00      0.98        71
+           M       1.00      0.93      0.96        43
+
+    accuracy                           0.97       114
+   macro avg       0.98      0.97      0.97       114
+weighted avg       0.97      0.97      0.97       114
+</pre></div>
+</div>
+</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">정확도</span> <span class="p">(</span><span class="n">accuracy</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">71</span> <span class="o">+</span> <span class="mi">40</span><span class="p">)</span> <span class="o">/</span> <span class="mi">114</span>
+<span class="n">B</span> <span class="n">정밀도</span> <span class="p">(</span><span class="n">precision</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">71</span> <span class="o">/</span> <span class="mi">71</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">M</span> <span class="n">정밀도</span> <span class="p">(</span><span class="n">precision</span><span class="p">)</span> <span class="o">=</span> <span class="mi">40</span> <span class="o">/</span> <span class="mi">40</span>
+
+<span class="n">B</span> <span class="n">재현율</span> <span class="p">(</span><span class="n">recall</span><span class="p">)</span> <span class="o">=</span> <span class="mi">71</span> <span class="o">/</span> <span class="mi">71</span>
+<span class="n">M</span> <span class="n">재현율</span> <span class="p">(</span><span class="n">recall</span><span class="p">)</span> <span class="o">=</span> <span class="mi">40</span> <span class="o">/</span> <span class="p">(</span><span class="mi">40</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">B</span> <span class="n">F1점수</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="mf">0.96</span> <span class="o">*</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">0.96</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">M</span> <span class="n">F1점수</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="mf">0.93</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="mf">0.93</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="weighted-mean">
+<h3>참고 | 가중평균(weighted mean)<a class="headerlink" href="#weighted-mean" title="Permalink to this headline">¶</a></h3>
+<p>각 항의 수치에 그 중요도에 비례하는 계수를 곱한 다음 산출하는 평균</p>
+<p>[문제9] 수강생이 다른 세 반의 평균은?</p>
+<br/>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>반</p></th>
+<th class="text-align:center head"><p>수강생</p></th>
+<th class="text-align:center head"><p>반평균</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1반</p></td>
+<td class="text-align:center"><p>40</p></td>
+<td class="text-align:center"><p>70</p></td>
+</tr>
+<tr class="row-odd"><td><p>2반</p></td>
+<td class="text-align:center"><p>35</p></td>
+<td class="text-align:center"><p>75</p></td>
+</tr>
+<tr class="row-even"><td><p>3반</p></td>
+<td class="text-align:center"><p>25</p></td>
+<td class="text-align:center"><p>80</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">40</span> <span class="o">*</span> <span class="mi">70</span> <span class="o">+</span> <span class="mi">35</span> <span class="o">*</span> <span class="mi">75</span> <span class="o">+</span> <span class="mi">25</span> <span class="o">*</span> <span class="mi">80</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">40</span> <span class="o">+</span> <span class="mi">35</span> <span class="o">+</span> <span class="mi">25</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>74.25
+</pre></div>
+</div>
+</div>
+</div>
+<p>[문제10] 홍하든, 박커리 두 학생이 확률통계(3학점), 컴퓨터시스템(2학점)을 수강한 결과<br />
+홍하든은 확률통계에서 A학점, 컴퓨터시스템에서 B학점을 받았고<br />
+박커리는 확률통계에서 B학점, 컴퓨터시스템에서 A학점을 받았다.<br />
+A학점은 평점 4, B학점은 평점 3일 때 각 학생들의 평균평점을 구하세요.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 홍하든</span>
+<span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.6
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 박커리</span>
+<span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.4
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>참고 | 변화율<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>[문제10] 전년도 대비 증가율?</p>
+<br/>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>년도</p></th>
+<th class="text-align:right head"><p>수익</p></th>
+<th class="text-align:right head"><p>증가율</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2015</p></td>
+<td class="text-align:right"><p>635</p></td>
+<td class="text-align:right"><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>2016</p></td>
+<td class="text-align:right"><p>998</p></td>
+<td class="text-align:right"><p></p></td>
+</tr>
+<tr class="row-even"><td><p>2017</p></td>
+<td class="text-align:right"><p>1265</p></td>
+<td class="text-align:right"><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>2018</p></td>
+<td class="text-align:right"><p>1701</p></td>
+<td class="text-align:right"><p></p></td>
+</tr>
+<tr class="row-even"><td><p>2019</p></td>
+<td class="text-align:right"><p>2363</p></td>
+<td class="text-align:right"><p></p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2016년</span>
+<span class="p">(</span><span class="mi">998</span> <span class="o">-</span> <span class="mi">635</span><span class="p">)</span> <span class="o">/</span> <span class="mi">635</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>57.16535433070866
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2017년</span>
+<span class="p">(</span><span class="mi">1265</span> <span class="o">-</span> <span class="mi">998</span><span class="p">)</span> <span class="o">/</span> <span class="mi">998</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>26.753507014028056
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1701</span> <span class="o">-</span> <span class="mi">1265</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1265</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>34.466403162055336
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">2363</span> <span class="o">-</span> <span class="mi">1701</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1701</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>38.918283362727806
+</pre></div>
+</div>
+</div>
+</div>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>년도</p></th>
+<th class="text-align:right head"><p>수익</p></th>
+<th class="text-align:right head"><p>증가율</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2015</p></td>
+<td class="text-align:right"><p>635</p></td>
+<td class="text-align:right"><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>2016</p></td>
+<td class="text-align:right"><p>998</p></td>
+<td class="text-align:right"><p>57.2%</p></td>
+</tr>
+<tr class="row-even"><td><p>2017</p></td>
+<td class="text-align:right"><p>1265</p></td>
+<td class="text-align:right"><p>26.8%</p></td>
+</tr>
+<tr class="row-odd"><td><p>2018</p></td>
+<td class="text-align:right"><p>1701</p></td>
+<td class="text-align:right"><p>34.5%</p></td>
+</tr>
+<tr class="row-even"><td><p>2019</p></td>
+<td class="text-align:right"><p>2363</p></td>
+<td class="text-align:right"><p>38.9%</p></td>
+</tr>
+</tbody>
+</table>
+<p>[문제11] 5년동안 연평균 변화율은?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">((</span><span class="mi">998</span><span class="o">/</span><span class="mi">635</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1265</span><span class="o">/</span><span class="mi">998</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1701</span><span class="o">/</span><span class="mi">1265</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2365</span><span class="o">/</span><span class="mi">1701</span><span class="p">))</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.38919865750632154
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">2363</span><span class="o">/</span><span class="mi">635</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.3889048648162128
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="trimmed-mean">
+<h3>참고 | 절단평균, 절사평균, Trimmed mean<a class="headerlink" href="#trimmed-mean" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>자료중에서 큰 관측값이나 작은 관측값을 각각 몇 만큼 버린 나머지 관측값들로 평균을 구한다.</p></li>
+<li><p>2014년 국회의원 재산 공개<br />
+평균 97억 5667만원<br />
+500억 이상 제외한 평균 18억 686만원</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./ml-docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="01-04.html" title="previous page">실습 | 붓꽃 · 유방암</a>
+    <a class='right-next' id="next-link" href="01-06.html" title="next page">R | kNN</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By CHAE YEONHEE<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

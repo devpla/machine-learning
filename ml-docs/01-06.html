@@ -1,0 +1,1549 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>R | kNN &#8212; Machine Learning</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="02. 나이브베이즈 (Naive Bayes)" href="02-01-naive-bayes.html" />
+    <link rel="prev" title="혼동행렬" href="01-05.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Machine Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   머신러닝 (machine learning)
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  MACHINE LEARNING
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="01-01-kNN.html">
+   01. kNN 알고리즘
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-02.html">
+     파이썬 | sklearn.neighbors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-03.html">
+     Feature Scaling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-04.html">
+     실습 | 붓꽃 · 유방암
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-05.html">
+     혼동행렬
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     R | kNN
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="02-01-naive-bayes.html">
+   02. 나이브베이즈 (Naive Bayes)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-01-01.html">
+     확률 (probability)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-02.html">
+     R | e1071
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-03.html">
+     nltk.NaiveBayesClassifier
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-04.html">
+     sklearn.naive_bayes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-05.html">
+     Naive Bayes를 이용한 네이버 영화 리뷰 분석
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-06.html">
+     실습 | 네이버 영화 리뷰
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03-01.html">
+   03. 의사결정나무 (DECISION TREE)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/ml-docs/01-06.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/ml-docs/01-06.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/ml-docs/01-06.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#knn">
+   1.9 토마토 kNN
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     [문제12]
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   1.10 붓꽃 kNN
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     [문제13]
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#feature-scaling">
+     6.2.1 feature scaling
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     6.2.2 학습 및 테스트 데이터 만들기
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     6.2.3 혼동행렬 만들기
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   1.11 기타 실습
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     [문제14]
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     [문제15]
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     [문제16]
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     [문제17]
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="r-knn">
+<h1>R | kNN<a class="headerlink" href="#r-knn" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="knn">
+<h2>1.9 토마토 kNN<a class="headerlink" href="#knn" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>[문제12]<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>R을 이용해서 food.csv 읽어들인 후 토마토 단맛 6, 아삭한 맛 4를 이용해서 거리계산한 값을 dist 컬럼을 추가하고 dist 컬럼의 값을 기준으로 오름차순 순위 컬럼 rank를 생성하세요.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">food</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;c:/data/food.csv&quot;</span><span class="p">,</span> <span class="n">stringsAsFactors</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+<span class="n">food</span><span class="o">$</span><span class="n">dist</span> <span class="o">&lt;-</span> <span class="nf">sqrt</span><span class="p">((</span><span class="n">food</span><span class="o">$</span><span class="n">sweetness</span> <span class="o">-</span> <span class="m">6</span><span class="p">)</span> <span class="o">^</span> <span class="m">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">food</span><span class="o">$</span><span class="n">crunchiness</span> <span class="o">-</span> <span class="m">4</span><span class="p">)</span> <span class="o">^</span> <span class="m">2</span><span class="p">)</span>
+<span class="n">food</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<thead><tr><th scope=col>ingredient</th><th scope=col>sweetness</th><th scope=col>crunchiness</th><th scope=col>class</th><th scope=col>dist</th></tr></thead>
+<tbody>
+	<tr><td>apple     </td><td>10        </td><td> 9        </td><td>Fruits    </td><td>6.403124  </td></tr>
+	<tr><td>bacon     </td><td> 1        </td><td> 4        </td><td>Proteins  </td><td>5.000000  </td></tr>
+	<tr><td>banana    </td><td>10        </td><td> 1        </td><td>Fruits    </td><td>5.000000  </td></tr>
+	<tr><td>carrot    </td><td> 7        </td><td>10        </td><td>Vegetables</td><td>6.082763  </td></tr>
+	<tr><td>celery    </td><td> 3        </td><td>10        </td><td>Vegetables</td><td>6.708204  </td></tr>
+	<tr><td>cheese    </td><td> 1        </td><td> 1        </td><td>Proteins  </td><td>5.830952  </td></tr>
+	<tr><td>cucumber  </td><td> 2        </td><td> 8        </td><td>Vegetables</td><td>5.656854  </td></tr>
+	<tr><td>fish      </td><td> 3        </td><td> 1        </td><td>Proteins  </td><td>4.242641  </td></tr>
+	<tr><td>grape     </td><td> 8        </td><td> 5        </td><td>Fruits    </td><td>2.236068  </td></tr>
+	<tr><td>green bean</td><td> 3        </td><td> 7        </td><td>Vegetables</td><td>4.242641  </td></tr>
+	<tr><td>lettuce   </td><td> 1        </td><td> 9        </td><td>Vegetables</td><td>7.071068  </td></tr>
+	<tr><td>nuts      </td><td> 3        </td><td> 6        </td><td>Proteins  </td><td>3.605551  </td></tr>
+	<tr><td>orange    </td><td> 7        </td><td> 3        </td><td>Fruits    </td><td>1.414214  </td></tr>
+	<tr><td>pear      </td><td>10        </td><td> 7        </td><td>Fruits    </td><td>5.000000  </td></tr>
+	<tr><td>shrimp    </td><td> 2        </td><td> 3        </td><td>Proteins  </td><td>4.123106  </td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">food</span><span class="p">[</span><span class="nf">order</span><span class="p">(</span><span class="n">food</span><span class="o">$</span><span class="n">dist</span><span class="p">),]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<thead><tr><th></th><th scope=col>ingredient</th><th scope=col>sweetness</th><th scope=col>crunchiness</th><th scope=col>class</th><th scope=col>dist</th></tr></thead>
+<tbody>
+	<tr><th scope=row>13</th><td>orange    </td><td> 7        </td><td> 3        </td><td>Fruits    </td><td>1.414214  </td></tr>
+	<tr><th scope=row>9</th><td>grape     </td><td> 8        </td><td> 5        </td><td>Fruits    </td><td>2.236068  </td></tr>
+	<tr><th scope=row>12</th><td>nuts      </td><td> 3        </td><td> 6        </td><td>Proteins  </td><td>3.605551  </td></tr>
+	<tr><th scope=row>15</th><td>shrimp    </td><td> 2        </td><td> 3        </td><td>Proteins  </td><td>4.123106  </td></tr>
+	<tr><th scope=row>8</th><td>fish      </td><td> 3        </td><td> 1        </td><td>Proteins  </td><td>4.242641  </td></tr>
+	<tr><th scope=row>10</th><td>green bean</td><td> 3        </td><td> 7        </td><td>Vegetables</td><td>4.242641  </td></tr>
+	<tr><th scope=row>2</th><td>bacon     </td><td> 1        </td><td> 4        </td><td>Proteins  </td><td>5.000000  </td></tr>
+	<tr><th scope=row>3</th><td>banana    </td><td>10        </td><td> 1        </td><td>Fruits    </td><td>5.000000  </td></tr>
+	<tr><th scope=row>14</th><td>pear      </td><td>10        </td><td> 7        </td><td>Fruits    </td><td>5.000000  </td></tr>
+	<tr><th scope=row>7</th><td>cucumber  </td><td> 2        </td><td> 8        </td><td>Vegetables</td><td>5.656854  </td></tr>
+	<tr><th scope=row>6</th><td>cheese    </td><td> 1        </td><td> 1        </td><td>Proteins  </td><td>5.830952  </td></tr>
+	<tr><th scope=row>4</th><td>carrot    </td><td> 7        </td><td>10        </td><td>Vegetables</td><td>6.082763  </td></tr>
+	<tr><th scope=row>1</th><td>apple     </td><td>10        </td><td> 9        </td><td>Fruits    </td><td>6.403124  </td></tr>
+	<tr><th scope=row>5</th><td>celery    </td><td> 3        </td><td>10        </td><td>Vegetables</td><td>6.708204  </td></tr>
+	<tr><th scope=row>11</th><td>lettuce   </td><td> 1        </td><td> 9        </td><td>Vegetables</td><td>7.071068  </td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">food</span><span class="o">$</span><span class="n">rank</span> <span class="o">&lt;-</span> <span class="nf">rank</span><span class="p">(</span><span class="n">food</span><span class="o">$</span><span class="n">dist</span><span class="p">,</span> <span class="n">ties.method</span> <span class="o">=</span> <span class="s">&#39;min&#39;</span><span class="p">)</span>
+<span class="n">food</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<thead><tr><th scope=col>ingredient</th><th scope=col>sweetness</th><th scope=col>crunchiness</th><th scope=col>class</th><th scope=col>dist</th><th scope=col>rank</th></tr></thead>
+<tbody>
+	<tr><td>apple     </td><td>10        </td><td> 9        </td><td>Fruits    </td><td>6.403124  </td><td>13        </td></tr>
+	<tr><td>bacon     </td><td> 1        </td><td> 4        </td><td>Proteins  </td><td>5.000000  </td><td> 7        </td></tr>
+	<tr><td>banana    </td><td>10        </td><td> 1        </td><td>Fruits    </td><td>5.000000  </td><td> 7        </td></tr>
+	<tr><td>carrot    </td><td> 7        </td><td>10        </td><td>Vegetables</td><td>6.082763  </td><td>12        </td></tr>
+	<tr><td>celery    </td><td> 3        </td><td>10        </td><td>Vegetables</td><td>6.708204  </td><td>14        </td></tr>
+	<tr><td>cheese    </td><td> 1        </td><td> 1        </td><td>Proteins  </td><td>5.830952  </td><td>11        </td></tr>
+	<tr><td>cucumber  </td><td> 2        </td><td> 8        </td><td>Vegetables</td><td>5.656854  </td><td>10        </td></tr>
+	<tr><td>fish      </td><td> 3        </td><td> 1        </td><td>Proteins  </td><td>4.242641  </td><td> 5        </td></tr>
+	<tr><td>grape     </td><td> 8        </td><td> 5        </td><td>Fruits    </td><td>2.236068  </td><td> 2        </td></tr>
+	<tr><td>green bean</td><td> 3        </td><td> 7        </td><td>Vegetables</td><td>4.242641  </td><td> 5        </td></tr>
+	<tr><td>lettuce   </td><td> 1        </td><td> 9        </td><td>Vegetables</td><td>7.071068  </td><td>15        </td></tr>
+	<tr><td>nuts      </td><td> 3        </td><td> 6        </td><td>Proteins  </td><td>3.605551  </td><td> 3        </td></tr>
+	<tr><td>orange    </td><td> 7        </td><td> 3        </td><td>Fruits    </td><td>1.414214  </td><td> 1        </td></tr>
+	<tr><td>pear      </td><td>10        </td><td> 7        </td><td>Fruits    </td><td>5.000000  </td><td> 7        </td></tr>
+	<tr><td>shrimp    </td><td> 2        </td><td> 3        </td><td>Proteins  </td><td>4.123106  </td><td> 4        </td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">food</span><span class="p">[</span><span class="n">food</span><span class="o">$</span><span class="n">rank</span> <span class="o">&lt;=</span> <span class="m">3</span><span class="p">,</span> <span class="s">&#39;class&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol class=list-inline>
+	<li>'Fruits'</li>
+	<li>'Proteins'</li>
+	<li>'Fruits'</li>
+</ol>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">table</span><span class="p">(</span><span class="n">food</span><span class="p">[</span><span class="n">food</span><span class="o">$</span><span class="n">rank</span> <span class="o">&lt;=</span> <span class="m">3</span><span class="p">,</span> <span class="s">&#39;class&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Fruits Proteins 
+       2        1 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">names</span><span class="p">(</span><span class="nf">head</span><span class="p">(</span><span class="nf">sort</span><span class="p">(</span><span class="nf">table</span><span class="p">(</span><span class="n">food</span><span class="p">[</span><span class="n">food</span><span class="o">$</span><span class="n">rank</span> <span class="o">&lt;=</span> <span class="m">3</span><span class="p">,</span> <span class="s">&#39;class&#39;</span><span class="p">]),</span><span class="n">decreasing</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">),</span><span class="m">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">'Fruits'</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">tomato</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">ingredient</span><span class="o">=</span><span class="s">&quot;tomato&quot;</span><span class="p">,</span> <span class="n">sweetness</span> <span class="o">=</span> <span class="m">6</span><span class="p">,</span> <span class="n">crunchiness</span> <span class="o">=</span> <span class="m">4</span><span class="p">)</span>
+
+<span class="c1"># install.packages(&#39;class&#39;)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">class</span><span class="p">)</span>
+
+<span class="n">train</span> <span class="o">&lt;-</span> <span class="n">food</span><span class="p">[,</span><span class="m">2</span><span class="o">:</span><span class="m">3</span><span class="p">]</span>
+<span class="n">train_label</span> <span class="o">&lt;-</span> <span class="n">food</span><span class="p">[,</span><span class="m">4</span><span class="p">]</span>
+<span class="n">test</span> <span class="o">&lt;-</span> <span class="n">tomato</span><span class="p">[,</span><span class="m">2</span><span class="o">:</span><span class="m">3</span><span class="p">]</span>
+
+<span class="nf">knn</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">train_label</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="m">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">Fruits
+<details>
+	<summary style=display:list-item;cursor:pointer>
+		<strong>Levels</strong>:
+	</summary>
+	<ol class=list-inline>
+		<li>'Fruits'</li>
+		<li>'Proteins'</li>
+		<li>'Vegetables'</li>
+	</ol>
+</details></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># install.packages(&#39;ggplot2&#39;)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">food</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">sweetness</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">crunchiness</span><span class="p">))</span><span class="o">+</span>
+  <span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&quot;토마토는 어느 클래스에 속하나요? &quot;</span><span class="p">)</span><span class="o">+</span>
+  <span class="nf">geom_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">class</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">class</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="m">6</span><span class="p">)</span><span class="o">+</span>
+  <span class="nf">geom_text</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">ingredient</span><span class="p">),</span><span class="n">vjust</span><span class="o">=</span><span class="m">-1</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">3</span><span class="p">)</span><span class="o">+</span>
+  <span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">tomato</span><span class="p">,</span> <span class="n">colour</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">5</span><span class="p">)</span><span class="o">+</span>
+  <span class="nf">geom_text</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">tomato</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">ingredient</span><span class="p">),</span><span class="n">vjust</span><span class="o">=</span><span class="m">-1</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/01-06_8_0.png" src="../_images/01-06_8_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>1.10 붓꽃 kNN<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>[문제13]<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>붓꽃 데이터 입니다. kNN으로 분류해주세요.<br />
+<code class="docutils literal notranslate"><span class="pre">SepalLength</span> <span class="pre">=</span> <span class="pre">2.0</span></code><br />
+<code class="docutils literal notranslate"><span class="pre">SepalWidth</span> <span class="pre">=</span> <span class="pre">7.0</span></code><br />
+<code class="docutils literal notranslate"><span class="pre">PetalLength</span> <span class="pre">=</span> <span class="pre">1.0</span></code><br />
+<code class="docutils literal notranslate"><span class="pre">PetalWidth</span> <span class="pre">=</span> <span class="pre">0.1</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">iris</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;c:/data/iris.csv&quot;</span><span class="p">,</span> <span class="n">stringsAsFactors</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+<span class="n">iris_train</span> <span class="o">&lt;-</span> <span class="n">iris</span><span class="p">[,</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">]</span>
+<span class="n">iris_train_label</span> <span class="o">&lt;-</span> <span class="n">iris</span><span class="p">[,</span><span class="m">5</span><span class="p">]</span>
+<span class="n">iris_test</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">SepalLength</span> <span class="o">=</span> <span class="m">2.0</span><span class="p">,</span>
+                        <span class="n">SepalWidth</span> <span class="o">=</span> <span class="m">7.0</span><span class="p">,</span>
+                        <span class="n">PetalLength</span> <span class="o">=</span> <span class="m">1.0</span><span class="p">,</span>
+                        <span class="n">PetalWidth</span> <span class="o">=</span> <span class="m">0.1</span><span class="p">)</span>
+<span class="nf">knn</span><span class="p">(</span><span class="n">iris_train</span><span class="p">,</span> <span class="n">iris_test</span><span class="p">,</span> <span class="n">iris_train_label</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="m">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">Iris-setosa
+<details>
+	<summary style=display:list-item;cursor:pointer>
+		<strong>Levels</strong>:
+	</summary>
+	<ol class=list-inline>
+		<li>'Iris-setosa'</li>
+		<li>'Iris-versicolor'</li>
+		<li>'Iris-virginica'</li>
+	</ol>
+</details></div></div>
+</div>
+</div>
+<div class="section" id="feature-scaling">
+<h3>6.2.1 feature scaling<a class="headerlink" href="#feature-scaling" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>서로 다른 변수의 값 범위를 일정한 수준으로 맞추는 작업</p></li>
+<li><p>표준화(standardization), 정규화(normalization)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">normalize</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span>
+  <span class="nf">return </span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="nf">min</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="nf">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="nf">min</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+<span class="p">}</span>
+ 
+<span class="n">standard</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span>
+  <span class="nf">return </span><span class="p">((</span><span class="n">x</span><span class="o">-</span><span class="nf">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span><span class="o">/</span><span class="p">(</span><span class="nf">sd</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">iris</span><span class="p">[,</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="nf">lapply</span><span class="p">(</span><span class="n">iris</span><span class="p">[,</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">],</span><span class="n">normalize</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>6.2.2 학습 및 테스트 데이터 만들기<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">id</span> <span class="o">&lt;-</span> <span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">,</span> <span class="nf">nrow</span><span class="p">(</span><span class="n">iris</span><span class="p">),</span> <span class="n">replace</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> <span class="n">prob</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0.7</span><span class="p">,</span><span class="m">0.3</span><span class="p">))</span>
+<span class="nf">table</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id
+  1   2 
+104  46 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">iris_train</span> <span class="o">&lt;-</span> <span class="n">iris</span><span class="p">[</span><span class="n">id</span> <span class="o">==</span> <span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">]</span>
+<span class="n">iris_train_label</span> <span class="o">&lt;-</span> <span class="n">iris</span><span class="p">[</span><span class="n">id</span> <span class="o">==</span> <span class="m">1</span><span class="p">,</span><span class="m">5</span><span class="p">]</span>
+<span class="n">iris_test</span> <span class="o">&lt;-</span> <span class="n">iris</span><span class="p">[</span><span class="n">id</span> <span class="o">==</span> <span class="m">2</span><span class="p">,</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">]</span>
+<span class="n">iris_test_label</span> <span class="o">&lt;-</span> <span class="n">iris</span><span class="p">[</span><span class="n">id</span><span class="o">==</span><span class="m">2</span><span class="p">,</span><span class="m">5</span><span class="p">]</span>
+<span class="nf">table</span><span class="p">(</span><span class="n">iris_train_label</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iris_train_label
+    Iris-setosa Iris-versicolor  Iris-virginica 
+             31              38              35 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">table</span><span class="p">(</span><span class="n">iris_test_label</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iris_test_label
+    Iris-setosa Iris-versicolor  Iris-virginica 
+             19              12              15 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">knn</span><span class="p">(</span><span class="n">iris_train</span><span class="p">,</span> <span class="n">iris_test</span><span class="p">,</span><span class="n">iris_train_label</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="m">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol class=list-inline>
+	<li>Iris-setosa</li>
+	<li>Iris-setosa</li>
+	<li>Iris-setosa</li>
+	<li>Iris-setosa</li>
+	<li>Iris-setosa</li>
+	<li>Iris-setosa</li>
+	<li>Iris-setosa</li>
+	<li>Iris-setosa</li>
+	<li>Iris-setosa</li>
+	<li>Iris-setosa</li>
+	<li>Iris-setosa</li>
+	<li>Iris-setosa</li>
+	<li>Iris-setosa</li>
+	<li>Iris-setosa</li>
+	<li>Iris-setosa</li>
+	<li>Iris-setosa</li>
+	<li>Iris-setosa</li>
+	<li>Iris-setosa</li>
+	<li>Iris-setosa</li>
+	<li>Iris-versicolor</li>
+	<li>Iris-versicolor</li>
+	<li>Iris-versicolor</li>
+	<li>Iris-versicolor</li>
+	<li>Iris-versicolor</li>
+	<li>Iris-virginica</li>
+	<li>Iris-versicolor</li>
+	<li>Iris-virginica</li>
+	<li>Iris-versicolor</li>
+	<li>Iris-versicolor</li>
+	<li>Iris-versicolor</li>
+	<li>Iris-versicolor</li>
+	<li>Iris-virginica</li>
+	<li>Iris-virginica</li>
+	<li>Iris-virginica</li>
+	<li>Iris-virginica</li>
+	<li>Iris-virginica</li>
+	<li>Iris-virginica</li>
+	<li>Iris-virginica</li>
+	<li>Iris-virginica</li>
+	<li>Iris-virginica</li>
+	<li>Iris-virginica</li>
+	<li>Iris-virginica</li>
+	<li>Iris-virginica</li>
+	<li>Iris-virginica</li>
+	<li>Iris-virginica</li>
+	<li>Iris-virginica</li>
+</ol>
+
+<details>
+	<summary style=display:list-item;cursor:pointer>
+		<strong>Levels</strong>:
+	</summary>
+	<ol class=list-inline>
+		<li>'Iris-setosa'</li>
+		<li>'Iris-versicolor'</li>
+		<li>'Iris-virginica'</li>
+	</ol>
+</details></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">iris_model</span> <span class="o">&lt;-</span> <span class="nf">knn</span><span class="p">(</span><span class="n">iris_train</span><span class="p">,</span> <span class="n">iris_test</span><span class="p">,</span><span class="n">iris_train_label</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="m">3</span><span class="p">)</span>
+<span class="n">iris_model</span> <span class="o">==</span> <span class="n">iris_test_label</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol class=list-inline>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>FALSE</li>
+	<li>TRUE</li>
+	<li>FALSE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+	<li>TRUE</li>
+</ol>
+</div></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>6.2.3 혼동행렬 만들기<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># install.packages(&quot;gmodels&quot;)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">gmodels</span><span class="p">)</span>
+<span class="nf">CrossTable</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">iris_test_label</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">iris_model</span><span class="p">,</span> <span class="n">prop.chisq</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+   Cell Contents
+|-------------------------|
+|                       N |
+|           N / Row Total |
+|           N / Col Total |
+|         N / Table Total |
+|-------------------------|
+
+ 
+Total Observations in Table:  46 
+
+ 
+                | iris_model 
+iris_test_label |     Iris-setosa | Iris-versicolor |  Iris-virginica |       Row Total | 
+----------------|-----------------|-----------------|-----------------|-----------------|
+    Iris-setosa |              19 |               0 |               0 |              19 | 
+                |           1.000 |           0.000 |           0.000 |           0.413 | 
+                |           1.000 |           0.000 |           0.000 |                 | 
+                |           0.413 |           0.000 |           0.000 |                 | 
+----------------|-----------------|-----------------|-----------------|-----------------|
+Iris-versicolor |               0 |              10 |               2 |              12 | 
+                |           0.000 |           0.833 |           0.167 |           0.261 | 
+                |           0.000 |           1.000 |           0.118 |                 | 
+                |           0.000 |           0.217 |           0.043 |                 | 
+----------------|-----------------|-----------------|-----------------|-----------------|
+ Iris-virginica |               0 |               0 |              15 |              15 | 
+                |           0.000 |           0.000 |           1.000 |           0.326 | 
+                |           0.000 |           0.000 |           0.882 |                 | 
+                |           0.000 |           0.000 |           0.326 |                 | 
+----------------|-----------------|-----------------|-----------------|-----------------|
+   Column Total |              19 |              10 |              17 |              46 | 
+                |           0.413 |           0.217 |           0.370 |                 | 
+----------------|-----------------|-----------------|-----------------|-----------------|
+
+ 
+</pre></div>
+</div>
+</div>
+</div>
+<p>2020-10-06</p>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>1.11 기타 실습<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h3>[문제14]<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>R에서 emp.csv를 읽어들인 후 SAL_YN 컬럼을 추가한 후 값은 SALARY 값이 10000 이상이면 10000 이상, 아니면 10000 미만으로 입력해주세요.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">gmodels</span><span class="p">)</span>
+<span class="n">emp</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;c:/data/emp.csv&quot;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">stringsAsFactors</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span>
+<span class="n">emp</span><span class="o">$</span><span class="n">SAL_YN</span> <span class="o">&lt;-</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">emp</span><span class="o">$</span><span class="n">SALARY</span> <span class="o">&gt;=</span> <span class="m">10000</span><span class="p">,</span> <span class="s">&quot;10000이상&quot;</span><span class="p">,</span><span class="s">&quot;10000미만&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">str</span><span class="p">(</span><span class="n">emp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;data.frame&#39;:	107 obs. of  12 variables:
+ $ EMPLOYEE_ID   : int  100 101 102 103 104 105 106 107 108 109 ...
+ $ FIRST_NAME    : chr  &quot;Steven&quot; &quot;Neena&quot; &quot;Lex&quot; &quot;Alexander&quot; ...
+ $ LAST_NAME     : chr  &quot;King&quot; &quot;Kochhar&quot; &quot;De Haan&quot; &quot;Hunold&quot; ...
+ $ EMAIL         : chr  &quot;SKING&quot; &quot;NKOCHHAR&quot; &quot;LDEHAAN&quot; &quot;AHUNOLD&quot; ...
+ $ PHONE_NUMBER  : chr  &quot;515.123.4567&quot; &quot;515.123.4568&quot; &quot;515.123.4569&quot; &quot;590.423.4567&quot; ...
+ $ HIRE_DATE     : chr  &quot;2003-06-17&quot; &quot;2005-09-21&quot; &quot;2001-01-13&quot; &quot;2006-01-03&quot; ...
+ $ JOB_ID        : chr  &quot;AD_PRES&quot; &quot;AD_VP&quot; &quot;AD_VP&quot; &quot;IT_PROG&quot; ...
+ $ SALARY        : int  24000 17000 17000 9000 6000 4800 4800 4200 12008 9000 ...
+ $ COMMISSION_PCT: num  NA NA NA NA NA NA NA NA NA NA ...
+ $ MANAGER_ID    : int  NA 100 100 102 103 103 103 103 101 108 ...
+ $ DEPARTMENT_ID : int  90 90 90 60 60 60 60 60 100 100 ...
+ $ SAL_YN        : chr  &quot;10000이상&quot; &quot;10000이상&quot; &quot;10000이상&quot; &quot;10000미만&quot; ...
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">CrossTable</span><span class="p">(</span><span class="n">emp</span><span class="o">$</span><span class="n">JOB_ID</span><span class="p">,</span> <span class="n">emp</span><span class="o">$</span><span class="n">SAL_YN</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+   Cell Contents
+|-------------------------|
+|                       N |
+| Chi-square contribution |
+|           N / Row Total |
+|           N / Col Total |
+|         N / Table Total |
+|-------------------------|
+
+ 
+Total Observations in Table:  107 
+
+ 
+             | emp$SAL_YN 
+  emp$JOB_ID | 10000미만 | 10000이상 | Row Total | 
+-------------|-----------|-----------|-----------|
+  AC_ACCOUNT |         1 |         0 |         1 | 
+             |     0.038 |     0.178 |           | 
+             |     1.000 |     0.000 |     0.009 | 
+             |     0.011 |     0.000 |           | 
+             |     0.009 |     0.000 |           | 
+-------------|-----------|-----------|-----------|
+      AC_MGR |         0 |         1 |         1 | 
+             |     0.822 |     3.809 |           | 
+             |     0.000 |     1.000 |     0.009 | 
+             |     0.000 |     0.053 |           | 
+             |     0.000 |     0.009 |           | 
+-------------|-----------|-----------|-----------|
+     AD_ASST |         1 |         0 |         1 | 
+             |     0.038 |     0.178 |           | 
+             |     1.000 |     0.000 |     0.009 | 
+             |     0.011 |     0.000 |           | 
+             |     0.009 |     0.000 |           | 
+-------------|-----------|-----------|-----------|
+     AD_PRES |         0 |         1 |         1 | 
+             |     0.822 |     3.809 |           | 
+             |     0.000 |     1.000 |     0.009 | 
+             |     0.000 |     0.053 |           | 
+             |     0.000 |     0.009 |           | 
+-------------|-----------|-----------|-----------|
+       AD_VP |         0 |         2 |         2 | 
+             |     1.645 |     7.618 |           | 
+             |     0.000 |     1.000 |     0.019 | 
+             |     0.000 |     0.105 |           | 
+             |     0.000 |     0.019 |           | 
+-------------|-----------|-----------|-----------|
+  FI_ACCOUNT |         5 |         0 |         5 | 
+             |     0.192 |     0.888 |           | 
+             |     1.000 |     0.000 |     0.047 | 
+             |     0.057 |     0.000 |           | 
+             |     0.047 |     0.000 |           | 
+-------------|-----------|-----------|-----------|
+      FI_MGR |         0 |         1 |         1 | 
+             |     0.822 |     3.809 |           | 
+             |     0.000 |     1.000 |     0.009 | 
+             |     0.000 |     0.053 |           | 
+             |     0.000 |     0.009 |           | 
+-------------|-----------|-----------|-----------|
+      HR_REP |         1 |         0 |         1 | 
+             |     0.038 |     0.178 |           | 
+             |     1.000 |     0.000 |     0.009 | 
+             |     0.011 |     0.000 |           | 
+             |     0.009 |     0.000 |           | 
+-------------|-----------|-----------|-----------|
+     IT_PROG |         5 |         0 |         5 | 
+             |     0.192 |     0.888 |           | 
+             |     1.000 |     0.000 |     0.047 | 
+             |     0.057 |     0.000 |           | 
+             |     0.047 |     0.000 |           | 
+-------------|-----------|-----------|-----------|
+      MK_MAN |         0 |         1 |         1 | 
+             |     0.822 |     3.809 |           | 
+             |     0.000 |     1.000 |     0.009 | 
+             |     0.000 |     0.053 |           | 
+             |     0.000 |     0.009 |           | 
+-------------|-----------|-----------|-----------|
+      MK_REP |         1 |         0 |         1 | 
+             |     0.038 |     0.178 |           | 
+             |     1.000 |     0.000 |     0.009 | 
+             |     0.011 |     0.000 |           | 
+             |     0.009 |     0.000 |           | 
+-------------|-----------|-----------|-----------|
+      PR_REP |         0 |         1 |         1 | 
+             |     0.822 |     3.809 |           | 
+             |     0.000 |     1.000 |     0.009 | 
+             |     0.000 |     0.053 |           | 
+             |     0.000 |     0.009 |           | 
+-------------|-----------|-----------|-----------|
+    PU_CLERK |         5 |         0 |         5 | 
+             |     0.192 |     0.888 |           | 
+             |     1.000 |     0.000 |     0.047 | 
+             |     0.057 |     0.000 |           | 
+             |     0.047 |     0.000 |           | 
+-------------|-----------|-----------|-----------|
+      PU_MAN |         0 |         1 |         1 | 
+             |     0.822 |     3.809 |           | 
+             |     0.000 |     1.000 |     0.009 | 
+             |     0.000 |     0.053 |           | 
+             |     0.000 |     0.009 |           | 
+-------------|-----------|-----------|-----------|
+      SA_MAN |         0 |         5 |         5 | 
+             |     4.112 |    19.046 |           | 
+             |     0.000 |     1.000 |     0.047 | 
+             |     0.000 |     0.263 |           | 
+             |     0.000 |     0.047 |           | 
+-------------|-----------|-----------|-----------|
+      SA_REP |        24 |         6 |        30 | 
+             |     0.018 |     0.085 |           | 
+             |     0.800 |     0.200 |     0.280 | 
+             |     0.273 |     0.316 |           | 
+             |     0.224 |     0.056 |           | 
+-------------|-----------|-----------|-----------|
+    SH_CLERK |        20 |         0 |        20 | 
+             |     0.767 |     3.551 |           | 
+             |     1.000 |     0.000 |     0.187 | 
+             |     0.227 |     0.000 |           | 
+             |     0.187 |     0.000 |           | 
+-------------|-----------|-----------|-----------|
+    ST_CLERK |        20 |         0 |        20 | 
+             |     0.767 |     3.551 |           | 
+             |     1.000 |     0.000 |     0.187 | 
+             |     0.227 |     0.000 |           | 
+             |     0.187 |     0.000 |           | 
+-------------|-----------|-----------|-----------|
+      ST_MAN |         5 |         0 |         5 | 
+             |     0.192 |     0.888 |           | 
+             |     1.000 |     0.000 |     0.047 | 
+             |     0.057 |     0.000 |           | 
+             |     0.047 |     0.000 |           | 
+-------------|-----------|-----------|-----------|
+Column Total |        88 |        19 |       107 | 
+             |     0.822 |     0.178 |           | 
+-------------|-----------|-----------|-----------|
+
+ 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3>[문제15]<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>유방암 데이터입니다. kNN 알고리즘을 이용해서 훈련 데이터셋, 테스트 데이터셋을 이용해서 분류가 잘 되는지 확인하세요.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;c:/data/wisc_bc_data.csv&quot;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">stringsAsFactors</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span>
+<span class="nf">str</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;data.frame&#39;:	569 obs. of  32 variables:
+ $ id               : int  87139402 8910251 905520 868871 9012568 906539 925291 87880 862989 89827 ...
+ $ diagnosis        : chr  &quot;B&quot; &quot;B&quot; &quot;B&quot; &quot;B&quot; ...
+ $ radius_mean      : num  12.3 10.6 11 11.3 15.2 ...
+ $ texture_mean     : num  12.4 18.9 16.8 13.4 13.2 ...
+ $ perimeter_mean   : num  78.8 69.3 70.9 73 97.7 ...
+ $ area_mean        : num  464 346 373 385 712 ...
+ $ smoothness_mean  : num  0.1028 0.0969 0.1077 0.1164 0.0796 ...
+ $ compactness_mean : num  0.0698 0.1147 0.078 0.1136 0.0693 ...
+ $ concavity_mean   : num  0.0399 0.0639 0.0305 0.0464 0.0339 ...
+ $ points_mean      : num  0.037 0.0264 0.0248 0.048 0.0266 ...
+ $ symmetry_mean    : num  0.196 0.192 0.171 0.177 0.172 ...
+ $ dimension_mean   : num  0.0595 0.0649 0.0634 0.0607 0.0554 ...
+ $ radius_se        : num  0.236 0.451 0.197 0.338 0.178 ...
+ $ texture_se       : num  0.666 1.197 1.387 1.343 0.412 ...
+ $ perimeter_se     : num  1.67 3.43 1.34 1.85 1.34 ...
+ $ area_se          : num  17.4 27.1 13.5 26.3 17.7 ...
+ $ smoothness_se    : num  0.00805 0.00747 0.00516 0.01127 0.00501 ...
+ $ compactness_se   : num  0.0118 0.03581 0.00936 0.03498 0.01485 ...
+ $ concavity_se     : num  0.0168 0.0335 0.0106 0.0219 0.0155 ...
+ $ points_se        : num  0.01241 0.01365 0.00748 0.01965 0.00915 ...
+ $ symmetry_se      : num  0.0192 0.035 0.0172 0.0158 0.0165 ...
+ $ dimension_se     : num  0.00225 0.00332 0.0022 0.00344 0.00177 ...
+ $ radius_worst     : num  13.5 11.9 12.4 11.9 16.2 ...
+ $ texture_worst    : num  15.6 22.9 26.4 15.8 15.7 ...
+ $ perimeter_worst  : num  87 78.3 79.9 76.5 104.5 ...
+ $ area_worst       : num  549 425 471 434 819 ...
+ $ smoothness_worst : num  0.139 0.121 0.137 0.137 0.113 ...
+ $ compactness_worst: num  0.127 0.252 0.148 0.182 0.174 ...
+ $ concavity_worst  : num  0.1242 0.1916 0.1067 0.0867 0.1362 ...
+ $ points_worst     : num  0.0939 0.0793 0.0743 0.0861 0.0818 ...
+ $ symmetry_worst   : num  0.283 0.294 0.3 0.21 0.249 ...
+ $ dimension_worst  : num  0.0677 0.0759 0.0788 0.0678 0.0677 ...
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">normalize</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span>
+  <span class="nf">return </span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="nf">min</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="nf">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="nf">min</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+<span class="p">}</span>
+ 
+<span class="n">standard</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span>
+  <span class="nf">return </span><span class="p">((</span><span class="n">x</span><span class="o">-</span><span class="nf">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span><span class="o">/</span><span class="p">(</span><span class="nf">sd</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[,</span><span class="m">3</span><span class="o">:</span><span class="m">32</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="nf">lapply</span><span class="p">(</span><span class="n">data</span><span class="p">[,</span><span class="m">3</span><span class="o">:</span><span class="m">32</span><span class="p">],</span><span class="n">normalize</span><span class="p">)</span>
+ 
+<span class="n">id</span> <span class="o">&lt;-</span> <span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">,</span> <span class="nf">nrow</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">replace</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> <span class="n">prob</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0.7</span><span class="p">,</span> <span class="m">0.3</span><span class="p">))</span>
+<span class="n">data_train</span> <span class="o">&lt;-</span> <span class="n">data</span><span class="p">[</span><span class="n">id</span> <span class="o">==</span> <span class="m">1</span><span class="p">,</span> <span class="m">3</span><span class="o">:</span><span class="m">32</span><span class="p">]</span>
+<span class="n">data_train_label</span> <span class="o">&lt;-</span> <span class="n">data</span><span class="p">[</span><span class="n">id</span><span class="o">==</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">]</span>
+<span class="n">data_test</span> <span class="o">&lt;-</span> <span class="n">data</span><span class="p">[</span><span class="n">id</span> <span class="o">==</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="o">:</span><span class="m">32</span><span class="p">]</span>
+<span class="n">data_test_label</span> <span class="o">&lt;-</span> <span class="n">data</span><span class="p">[</span><span class="n">id</span><span class="o">==</span><span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">class</span><span class="p">)</span>
+<span class="n">data_model</span> <span class="o">&lt;-</span> <span class="nf">knn</span><span class="p">(</span><span class="n">data_train</span><span class="p">,</span><span class="n">data_test</span><span class="p">,</span><span class="n">data_train_label</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="m">3</span><span class="p">)</span>
+ 
+<span class="nf">CrossTable</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data_test_label</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">data_model</span><span class="p">,</span> <span class="n">prop.chisq</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+   Cell Contents
+|-------------------------|
+|                       N |
+|           N / Row Total |
+|           N / Col Total |
+|         N / Table Total |
+|-------------------------|
+
+ 
+Total Observations in Table:  155 
+
+ 
+                | data_model 
+data_test_label |         B |         M | Row Total | 
+----------------|-----------|-----------|-----------|
+              B |        95 |         1 |        96 | 
+                |     0.990 |     0.010 |     0.619 | 
+                |     0.969 |     0.018 |           | 
+                |     0.613 |     0.006 |           | 
+----------------|-----------|-----------|-----------|
+              M |         3 |        56 |        59 | 
+                |     0.051 |     0.949 |     0.381 | 
+                |     0.031 |     0.982 |           | 
+                |     0.019 |     0.361 |           | 
+----------------|-----------|-----------|-----------|
+   Column Total |        98 |        57 |       155 | 
+                |     0.632 |     0.368 |           | 
+----------------|-----------|-----------|-----------|
+
+ 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># 훈련데이터, 테스트데이터 생성</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
+ 
+<span class="n">idx</span> <span class="o">&lt;-</span> <span class="nf">createDataPartition</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">data</span><span class="o">$</span><span class="n">diagnosis</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="m">0.7</span><span class="p">,</span> <span class="n">list</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">&lt;-</span> <span class="n">data</span><span class="p">[</span><span class="m">-1</span><span class="p">]</span>
+
+<span class="n">wbcd_train</span> <span class="o">&lt;-</span> <span class="n">data</span><span class="p">[</span><span class="n">idx</span><span class="p">,]</span>
+<span class="n">wbcd_test</span> <span class="o">&lt;-</span> <span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="n">idx</span><span class="p">,]</span>
+<span class="n">wbcd_train_labels</span> <span class="o">&lt;-</span> <span class="n">wbcd_train</span><span class="o">$</span><span class="n">diagnosis</span>
+<span class="n">wbcd_test_labels</span> <span class="o">&lt;-</span> <span class="n">wbcd_test</span><span class="o">$</span><span class="n">diagnosis</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">NROW</span><span class="p">(</span><span class="n">wbcd_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">399</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">NROW</span><span class="p">(</span><span class="n">wbcd_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">170</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">table</span><span class="p">(</span><span class="n">wbcd_train</span><span class="o">$</span><span class="n">diagnosis</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  B   M 
+250 149 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">table</span><span class="p">(</span><span class="n">wbcd_test</span><span class="o">$</span><span class="n">diagnosis</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  B   M 
+107  63 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># 정확도</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">class</span><span class="p">)</span>
+<span class="n">wbcd_test_pred</span> <span class="o">&lt;-</span> <span class="nf">knn</span><span class="p">(</span><span class="n">train</span> <span class="o">=</span> <span class="n">wbcd_train</span><span class="p">[</span><span class="m">-1</span><span class="p">],</span> <span class="n">test</span><span class="o">=</span><span class="n">wbcd_test</span><span class="p">[</span><span class="m">-1</span><span class="p">],</span> <span class="n">wbcd_train_labels</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="m">5</span><span class="p">)</span>
+<span class="n">accuracy</span> <span class="o">&lt;-</span> <span class="nf">sum</span><span class="p">(</span><span class="n">wbcd_test_labels</span> <span class="o">==</span> <span class="n">wbcd_test_pred</span><span class="p">)</span> <span class="o">/</span> <span class="nf">NROW</span><span class="p">(</span><span class="n">wbcd_test_labels</span><span class="p">)</span>
+<span class="n">accuracy</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.976470588235294</div></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h3>[문제16]<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>k값 변화율에 따라 정확도를 시각화해주세요.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="m">1</span>
+<span class="n">wbcd_test_pred</span> <span class="o">&lt;-</span> <span class="nf">knn</span><span class="p">(</span><span class="n">train</span> <span class="o">=</span> <span class="n">wbcd_train</span><span class="p">[</span><span class="m">-1</span><span class="p">],</span> <span class="n">test</span> <span class="o">=</span> <span class="n">wbcd_test</span><span class="p">[</span><span class="m">-1</span><span class="p">],</span>
+                     <span class="n">cl</span> <span class="o">=</span> <span class="n">wbcd_train_labels</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+<span class="n">accuracy</span> <span class="o">&lt;-</span> <span class="nf">sum</span><span class="p">(</span><span class="n">wbcd_test_pred</span> <span class="o">==</span> <span class="n">wbcd_test_labels</span><span class="p">)</span> <span class="o">/</span> <span class="nf">length</span><span class="p">(</span><span class="n">wbcd_test_labels</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">accuracy</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.964705882352941</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<thead><tr><th scope=col>i</th><th scope=col>accuracy</th></tr></thead>
+<tbody>
+	<tr><td>1        </td><td>0.9647059</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="nf">seq</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">100</span><span class="p">,</span><span class="m">2</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">wbcd_test_pred</span> <span class="o">&lt;-</span> <span class="nf">knn</span><span class="p">(</span><span class="n">train</span> <span class="o">=</span> <span class="n">wbcd_train</span><span class="p">[</span><span class="m">-1</span><span class="p">],</span> <span class="n">test</span> <span class="o">=</span> <span class="n">wbcd_test</span><span class="p">[</span><span class="m">-1</span><span class="p">],</span>
+                     <span class="n">cl</span> <span class="o">=</span> <span class="n">wbcd_train_labels</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">accuracy</span> <span class="o">&lt;-</span> <span class="nf">sum</span><span class="p">(</span><span class="n">wbcd_test_pred</span> <span class="o">==</span> <span class="n">wbcd_test_labels</span><span class="p">)</span> <span class="o">/</span> <span class="nf">length</span><span class="p">(</span><span class="n">wbcd_test_labels</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">&lt;-</span> <span class="nf">rbind</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<thead><tr><th scope=col>i</th><th scope=col>accuracy</th></tr></thead>
+<tbody>
+	<tr><td> 1       </td><td>0.9647059</td></tr>
+	<tr><td> 3       </td><td>0.9705882</td></tr>
+	<tr><td> 5       </td><td>0.9764706</td></tr>
+	<tr><td> 7       </td><td>0.9705882</td></tr>
+	<tr><td> 9       </td><td>0.9647059</td></tr>
+	<tr><td>11       </td><td>0.9588235</td></tr>
+	<tr><td>13       </td><td>0.9647059</td></tr>
+	<tr><td>15       </td><td>0.9647059</td></tr>
+	<tr><td>17       </td><td>0.9705882</td></tr>
+	<tr><td>19       </td><td>0.9705882</td></tr>
+	<tr><td>21       </td><td>0.9705882</td></tr>
+	<tr><td>23       </td><td>0.9705882</td></tr>
+	<tr><td>25       </td><td>0.9705882</td></tr>
+	<tr><td>27       </td><td>0.9647059</td></tr>
+	<tr><td>29       </td><td>0.9529412</td></tr>
+	<tr><td>31       </td><td>0.9529412</td></tr>
+	<tr><td>33       </td><td>0.9529412</td></tr>
+	<tr><td>35       </td><td>0.9529412</td></tr>
+	<tr><td>37       </td><td>0.9470588</td></tr>
+	<tr><td>39       </td><td>0.9470588</td></tr>
+	<tr><td>41       </td><td>0.9470588</td></tr>
+	<tr><td>43       </td><td>0.9470588</td></tr>
+	<tr><td>45       </td><td>0.9470588</td></tr>
+	<tr><td>47       </td><td>0.9411765</td></tr>
+	<tr><td>49       </td><td>0.9411765</td></tr>
+	<tr><td>51       </td><td>0.9470588</td></tr>
+	<tr><td>53       </td><td>0.9470588</td></tr>
+	<tr><td>55       </td><td>0.9411765</td></tr>
+	<tr><td>57       </td><td>0.9411765</td></tr>
+	<tr><td>59       </td><td>0.9352941</td></tr>
+	<tr><td>61       </td><td>0.9470588</td></tr>
+	<tr><td>63       </td><td>0.9470588</td></tr>
+	<tr><td>65       </td><td>0.9470588</td></tr>
+	<tr><td>67       </td><td>0.9529412</td></tr>
+	<tr><td>69       </td><td>0.9529412</td></tr>
+	<tr><td>71       </td><td>0.9470588</td></tr>
+	<tr><td>73       </td><td>0.9470588</td></tr>
+	<tr><td>75       </td><td>0.9470588</td></tr>
+	<tr><td>77       </td><td>0.9470588</td></tr>
+	<tr><td>79       </td><td>0.9411765</td></tr>
+	<tr><td>81       </td><td>0.9294118</td></tr>
+	<tr><td>83       </td><td>0.9294118</td></tr>
+	<tr><td>85       </td><td>0.9294118</td></tr>
+	<tr><td>87       </td><td>0.9294118</td></tr>
+	<tr><td>89       </td><td>0.9294118</td></tr>
+	<tr><td>91       </td><td>0.9235294</td></tr>
+	<tr><td>93       </td><td>0.9235294</td></tr>
+	<tr><td>95       </td><td>0.9235294</td></tr>
+	<tr><td>97       </td><td>0.9235294</td></tr>
+	<tr><td>99       </td><td>0.9235294</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">accuracy</span><span class="p">))</span><span class="o">+</span>
+    <span class="nf">geom_line</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">accuracy</span><span class="p">))</span><span class="o">+</span>
+    <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span> <span class="o">=</span> <span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">100</span><span class="p">,</span><span class="m">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/01-06_45_0.png" src="../_images/01-06_45_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id10">
+<h3>[문제17]<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>모델의 정밀도, 재현율, F1점수 계산해주세요.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">CrossTable</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">wbcd_test_labels</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">wbcd_test_pred</span><span class="p">,</span> <span class="n">prop.chisq</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+   Cell Contents
+|-------------------------|
+|                       N |
+|           N / Row Total |
+|           N / Col Total |
+|         N / Table Total |
+|-------------------------|
+
+ 
+Total Observations in Table:  170 
+
+ 
+                 | wbcd_test_pred 
+wbcd_test_labels |         B |         M | Row Total | 
+-----------------|-----------|-----------|-----------|
+               B |       105 |         2 |       107 | 
+                 |     0.981 |     0.019 |     0.629 | 
+                 |     0.905 |     0.037 |           | 
+                 |     0.618 |     0.012 |           | 
+-----------------|-----------|-----------|-----------|
+               M |        11 |        52 |        63 | 
+                 |     0.175 |     0.825 |     0.371 | 
+                 |     0.095 |     0.963 |           | 
+                 |     0.065 |     0.306 |           | 
+-----------------|-----------|-----------|-----------|
+    Column Total |       116 |        54 |       170 | 
+                 |     0.682 |     0.318 |           | 
+-----------------|-----------|-----------|-----------|
+
+ 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># 정확도 (accuracy)</span>
+<span class="p">(</span><span class="m">105</span> <span class="o">+</span> <span class="m">52</span><span class="p">)</span> <span class="o">/</span> <span class="m">170</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.923529411764706</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Benign 정밀도 (precision)</span>
+<span class="m">105</span> <span class="o">/</span> <span class="p">(</span><span class="m">105</span> <span class="o">+</span> <span class="m">11</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.905172413793103</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Malignant 정밀도 (precision)</span>
+<span class="m">52</span> <span class="o">/</span> <span class="p">(</span><span class="m">52</span> <span class="o">+</span> <span class="m">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.962962962962963</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Benign 재현율 (recall)</span>
+<span class="m">105</span> <span class="o">/</span> <span class="p">(</span><span class="m">105</span> <span class="o">+</span> <span class="m">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.981308411214953</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Malignant 재현율 (recall)</span>
+<span class="m">52</span> <span class="o">/</span> <span class="p">(</span><span class="m">52</span> <span class="o">+</span> <span class="m">11</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.825396825396825</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Benign F1 점수</span>
+<span class="m">2</span> <span class="o">*</span> <span class="m">0.91</span> <span class="o">*</span> <span class="m">0.98</span> <span class="o">/</span> <span class="p">(</span><span class="m">0.91</span> <span class="o">+</span> <span class="m">0.98</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.943703703703704</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Malignant F1 점수</span>
+<span class="m">2</span> <span class="o">*</span> <span class="m">0.96</span> <span class="o">*</span> <span class="m">0.83</span> <span class="o">/</span> <span class="p">(</span><span class="m">0.96</span> <span class="o">+</span> <span class="m">0.83</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.890279329608939</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Benign 정밀도</span>
+<span class="nf">posPredValue</span><span class="p">(</span><span class="n">wbcd_test_pred</span><span class="p">,</span> <span class="nf">as.factor</span><span class="p">(</span><span class="n">wbcd_test_labels</span><span class="p">),</span> <span class="n">positive</span> <span class="o">=</span> <span class="s">&quot;B&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.905172413793103</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Malignant 정밀도</span>
+<span class="nf">posPredValue</span><span class="p">(</span><span class="n">wbcd_test_pred</span><span class="p">,</span> <span class="nf">as.factor</span><span class="p">(</span><span class="n">wbcd_test_labels</span><span class="p">),</span> <span class="n">positive</span> <span class="o">=</span> <span class="s">&quot;M&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.962962962962963</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Benign 민감도, 재현율</span>
+<span class="nf">sensitivity</span><span class="p">(</span><span class="n">wbcd_test_pred</span><span class="p">,</span> <span class="nf">as.factor</span><span class="p">(</span><span class="n">wbcd_test_labels</span><span class="p">),</span> <span class="n">positive</span> <span class="o">=</span> <span class="s">&quot;B&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.981308411214953</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Malignant 민감도, 재현율</span>
+<span class="nf">sensitivity</span><span class="p">(</span><span class="n">wbcd_test_pred</span><span class="p">,</span> <span class="nf">as.factor</span><span class="p">(</span><span class="n">wbcd_test_labels</span><span class="p">),</span> <span class="n">positive</span> <span class="o">=</span> <span class="s">&quot;M&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.825396825396825</div></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            kernelName: "ir",
+            path: "./ml-docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="01-05.html" title="previous page">혼동행렬</a>
+    <a class='right-next' id="next-link" href="02-01-naive-bayes.html" title="next page">02. 나이브베이즈 (Naive Bayes)</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By CHAE YEONHEE<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
