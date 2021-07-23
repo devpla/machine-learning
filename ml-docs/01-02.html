@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>파이썬 | sklearn.neighbors &#8212; Machine Learning</title>
+    <title>Python | sklearn.neighbors &#8212; Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -52,7 +52,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Feature Scaling" href="01-03.html" />
-    <link rel="prev" title="01. kNN 알고리즘" href="01-01-kNN.html" />
+    <link rel="prev" title="01. k-최근접 이웃 (k-NN)" href="01-01-kNN.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -95,7 +95,7 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="01-01-kNN.html">
-   01. kNN 알고리즘
+   01. k-최근접 이웃 (k-NN)
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -105,7 +105,7 @@
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     파이썬 | sklearn.neighbors
+     Python | sklearn.neighbors
     </a>
    </li>
    <li class="toctree-l2">
@@ -271,74 +271,14 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#knn-sklearn-neighbors">
-   kNN 라이브러리 :: sklearn.neighbors
+  <a class="reference internal nav-link" href="#sklearn-neighbors">
+   sklearn.neighbors
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     1.4 과일
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     1.5 성별
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id3">
-       [문제3]
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#id4">
-         sklearn.neighbors 사용
-        </a>
-       </li>
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#id5">
-         알고리즘 원리 이용
-        </a>
-       </li>
-      </ul>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id6">
-     1.6 상품 구매 여부
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id7">
-       [문제4]
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bmi">
-     1.7 bmi
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id8">
-       [문제5]
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id9">
-       sklearn.neighbors 사용
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id10">
-       알고리즘 원리 이용
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   실습
+  </a>
  </li>
 </ul>
 
@@ -351,14 +291,12 @@
         
               <div>
                 
-  <div class="section" id="sklearn-neighbors">
-<h1>파이썬 | sklearn.neighbors<a class="headerlink" href="#sklearn-neighbors" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="python-sklearn-neighbors">
+<h1>Python | sklearn.neighbors<a class="headerlink" href="#python-sklearn-neighbors" title="Permalink to this headline">¶</a></h1>
 <p>작성일 : 2020-09-28</p>
 <hr class="docutils" />
-<div class="section" id="knn-sklearn-neighbors">
-<h2>kNN 라이브러리 :: sklearn.neighbors<a class="headerlink" href="#knn-sklearn-neighbors" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id1">
-<h3>1.4 과일<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="sklearn-neighbors">
+<h2>sklearn.neighbors<a class="headerlink" href="#sklearn-neighbors" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -618,11 +556,9 @@ Name: class, dtype: object
 </div>
 </div>
 <br></div>
-<div class="section" id="id2">
-<h3>1.5 성별<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="id3">
-<h4>[문제3]<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
-<p>키, 몸무게에 따른 성별을 분류해주세요.</p>
+<div class="section" id="id1">
+<h2>실습<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>[문제3] 키, 몸무게에 따른 성별을 분류해주세요.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="mi">158</span><span class="p">,</span><span class="mi">64</span><span class="p">],</span>
  <span class="p">[</span><span class="mi">170</span><span class="p">,</span><span class="mi">86</span><span class="p">],</span>
  <span class="p">[</span><span class="mi">183</span><span class="p">,</span><span class="mi">84</span><span class="p">],</span>
@@ -637,11 +573,11 @@ Name: class, dtype: object
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">[155,70]</span></code> 성별을 분류해주세요.</p>
-<div class="section" id="id4">
-<h5>sklearn.neighbors 사용<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">158</span><span class="p">,</span><span class="mi">64</span><span class="p">],</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sklearn.neighbors 사용</span>
+
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">158</span><span class="p">,</span><span class="mi">64</span><span class="p">],</span>
  <span class="p">[</span><span class="mi">170</span><span class="p">,</span><span class="mi">86</span><span class="p">],</span>
  <span class="p">[</span><span class="mi">183</span><span class="p">,</span><span class="mi">84</span><span class="p">],</span>
  <span class="p">[</span><span class="mi">191</span><span class="p">,</span><span class="mi">80</span><span class="p">],</span>
@@ -672,12 +608,11 @@ Name: class, dtype: object
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id5">
-<h5>알고리즘 원리 이용<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="n">x_train</span> <span class="o">-</span> <span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 알고리즘 원리 이용</span>
+
+<span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="n">x_train</span> <span class="o">-</span> <span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">))</span>
 <span class="n">indices</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">argsort</span><span class="p">()[:</span><span class="mi">3</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">:</span>
   <span class="nb">print</span><span class="p">(</span><span class="n">label</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
@@ -720,14 +655,7 @@ female
 </div>
 </div>
 <br/>  
-</div>
-</div>
-</div>
-<div class="section" id="id6">
-<h3>1.6 상품 구매 여부<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="id7">
-<h4>[문제4]<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
-<p>상품 구매 여부를 kNN 알고리즘을 이용해서 분류해주세요.</p>
+<p>[문제4] 상품 구매 여부를 kNN 알고리즘을 이용해서 분류해주세요.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">나이</span> <span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="n">월수입</span> <span class="p">:</span> <span class="mi">50</span>
 <span class="n">나이</span> <span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="n">월수입</span> <span class="p">:</span> <span class="mi">150</span>
 </pre></div>
@@ -995,14 +923,8 @@ female
 </div>
 </div>
 </div>
-<br></div>
-</div>
-<div class="section" id="bmi">
-<h3>1.7 bmi<a class="headerlink" href="#bmi" title="Permalink to this headline">¶</a></h3>
-<p>작성일 : 2020-09-29</p>
-<div class="section" id="id8">
-<h4>[문제5]<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
-<p>bmi 데이터를 이용해서 키 : 178, 몸무게 71 분류해주세요.</p>
+<br><p>작성일 : 2020-09-29</p>
+<p>[문제5] bmi 데이터를 이용해서 키 : 178, 몸무게 71 분류해주세요.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -1115,12 +1037,11 @@ female
 <p>20000 rows × 3 columns</p>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="id9">
-<h4>sklearn.neighbors 사용<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">bmi</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sklearn.neighbors 사용</span>
+
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">bmi</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
 <span class="n">x_train</span>
 </pre></div>
 </div>
@@ -1159,12 +1080,11 @@ female
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id10">
-<h4>알고리즘 원리 이용<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="n">x_train</span> <span class="o">-</span> <span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 알고리즘 원리 이용</span>
+
+<span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="n">x_train</span> <span class="o">-</span> <span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 <span class="n">indices</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">argsort</span><span class="p">()[:</span><span class="mi">3</span><span class="p">]</span>
 <span class="n">label</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
 </pre></div>
@@ -1210,8 +1130,6 @@ normal
 </div>
 </div>
 </div>
-</div>
-</div>
 
     <script type="text/x-thebe-config">
     {
@@ -1238,7 +1156,7 @@ normal
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="01-01-kNN.html" title="previous page">01. kNN 알고리즘</a>
+    <a class='left-prev' id="prev-link" href="01-01-kNN.html" title="previous page">01. k-최근접 이웃 (k-NN)</a>
     <a class='right-next' id="next-link" href="01-03.html" title="next page">Feature Scaling</a>
 
         </div>

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>01. kNN 알고리즘 &#8212; Machine Learning</title>
+    <title>01. k-최근접 이웃 (k-NN) &#8212; Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,7 +51,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="파이썬 | sklearn.neighbors" href="01-02.html" />
+    <link rel="next" title="Python | sklearn.neighbors" href="01-02.html" />
     <link rel="prev" title="머신러닝 (machine learning)" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -95,7 +95,7 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
   <a class="current reference internal" href="#">
-   01. kNN 알고리즘
+   01. k-최근접 이웃 (k-NN)
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -105,7 +105,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="01-02.html">
-     파이썬 | sklearn.neighbors
+     Python | sklearn.neighbors
     </a>
    </li>
    <li class="toctree-l2">
@@ -271,90 +271,53 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#knn-k-nearest-neighbors">
-   kNN (k - Nearest Neighbors) 알고리즘
+  <a class="reference internal nav-link" href="#id1">
+   1.1 원리
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   1.2 거리계산 알고리즘
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#k-nn">
+   1.3 k-NN 알고리즘
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     1.1 원리
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     1.2 거리계산 알고리즘
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     1.3 kNN 알고리즘
+     참고 | 자료형 별 연산
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id4">
-       [문제1]
+      <a class="reference internal nav-link" href="#list">
+       (1) list
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id5">
-       [해설1]
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id6">
-       참고 | 자료형 별 연산
+      <a class="reference internal nav-link" href="#array">
+       (2) array
       </a>
       <ul class="nav section-nav flex-column">
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#list">
-         list
-        </a>
-       </li>
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#array">
-         array
-        </a>
-       </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#broadcasting">
          broadcasting
         </a>
        </li>
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#dictionary">
-         dictionary
-        </a>
-       </li>
       </ul>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id7">
-       원리 이해
+      <a class="reference internal nav-link" href="#dictionary">
+       (3) dictionary
       </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id8">
-       [문제2]
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#series">
-         Series로 풀기
-        </a>
-       </li>
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#id9">
-         array로 풀기
-        </a>
-       </li>
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#counter">
-         Counter 이용
-        </a>
-       </li>
-      </ul>
      </li>
     </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     k-NN의 원리 이해
+    </a>
    </li>
   </ul>
  </li>
@@ -369,15 +332,13 @@
         
               <div>
                 
-  <div class="section" id="knn">
-<h1>01. kNN 알고리즘<a class="headerlink" href="#knn" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="k-k-nn">
+<h1>01. k-최근접 이웃 (k-NN)<a class="headerlink" href="#k-k-nn" title="Permalink to this headline">¶</a></h1>
 <p>작성일 : 2020-09-28</p>
 <hr class="docutils" />
-<div class="section" id="knn-k-nearest-neighbors">
-<h2>kNN (k - Nearest Neighbors) 알고리즘<a class="headerlink" href="#knn-k-nearest-neighbors" title="Permalink to this headline">¶</a></h2>
-<p>KNN, K-최근접 이웃 알고리즘은 <strong>특정공간내에서 입력과 제일 근접한 k개의 요소를 찾아, 더 많이 일치하는 것으로 분류하는 알고리즘</strong>이다.</p>
+<p><strong>K-최근접 이웃</strong>(k-NN, k-Nearest Neighbors) 알고리즘은 <strong>특정공간내에서 입력과 제일 근접한 k개의 요소를 찾아, 더 많이 일치하는 것으로 분류하는 알고리즘</strong>이다.</p>
 <div class="section" id="id1">
-<h3>1.1 원리<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h2>1.1 원리<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>사회적인 관점</p></th>
@@ -392,7 +353,7 @@
 </table>
 <br></div>
 <div class="section" id="id2">
-<h3>1.2 거리계산 알고리즘<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h2>1.2 거리계산 알고리즘<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>유클리드 거리 (Euclidean distance)</p></li>
 <li><p>두 점 사이의 거리</p></li>
@@ -411,8 +372,8 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id3">
-<h3>1.3 kNN 알고리즘<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="k-nn">
+<h2>1.3 k-NN 알고리즘<a class="headerlink" href="#k-nn" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>유클리드 거리계산을 해서 오름차순으로 정렬</p></li>
 <li><p>k = 3일 경우 가장 가까운 거리의 3개 선택, 이를 다수결로 분류</p></li>
@@ -420,9 +381,7 @@
 <li><p>k값은 홀수로 하는 것이 일반적</p></li>
 </ul>
 <p><img alt="knn" src="https://miro.medium.com/max/810/0*QyWp7J6eSz0tayc0.png" /></p>
-<div class="section" id="id4">
-<h4>[문제1]<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
-<p>거리계산을 한 후 가장 가까운 3개만 추출해주세요.</p>
+<p>[문제1] 거리계산을 한 후 가장 가까운 3개만 추출해주세요.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">point</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
@@ -461,9 +420,7 @@
 </div>
 </div>
 </div>
-<br></div>
-<div class="section" id="id5">
-<h4>[해설1]<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<br><p>[해설1]</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -504,11 +461,10 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id6">
-<h4>참고 | 자료형 별 연산<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id3">
+<h3>참고 | 자료형 별 연산<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="list">
-<h5>list<a class="headerlink" href="#list" title="Permalink to this headline">¶</a></h5>
+<h4>(1) list<a class="headerlink" href="#list" title="Permalink to this headline">¶</a></h4>
 <p>리스트 형식으로 연산을 하기 위해서는 인덱싱 필요</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -536,7 +492,7 @@
 </div>
 </div>
 <div class="section" id="array">
-<h5>array<a class="headerlink" href="#array" title="Permalink to this headline">¶</a></h5>
+<h4>(2) array<a class="headerlink" href="#array" title="Permalink to this headline">¶</a></h4>
 <p>array로 변환할 경우</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -553,7 +509,6 @@
        [ 1, -4],
        [ 0, -2]])
 </pre></div>
-</div>
 </div>
 </div>
 </div>
@@ -616,8 +571,9 @@
 </div>
 </div>
 </div>
+</div>
 <div class="section" id="dictionary">
-<h5>dictionary<a class="headerlink" href="#dictionary" title="Permalink to this headline">¶</a></h5>
+<h4>(3) dictionary<a class="headerlink" href="#dictionary" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dic</span> <span class="o">=</span> <span class="p">{}</span>
@@ -678,8 +634,8 @@
 </div>
 <br/>  </div>
 </div>
-<div class="section" id="id7">
-<h4>원리 이해<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id4">
+<h3>k-NN의 원리 이해<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">재료</span>   <span class="n">단맛</span>   <span class="n">아삭한맛</span>   <span class="n">종류</span>     <span class="n">거리</span>
 <span class="o">-------------------------------------------------------</span>
 <span class="n">포도</span>     <span class="mi">8</span>      <span class="mi">5</span>      <span class="n">과일</span>    <span class="n">sqrt</span><span class="p">((</span><span class="mi">6</span><span class="o">-</span><span class="mi">8</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">4</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="mf">2.23606797749979</span>
@@ -703,10 +659,7 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="id8">
-<h4>[문제2]<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
-<p>food.csv 읽어들인 후 토마토 단맛 6, 아삭한맛 4를 이용해서 거리계산한 dist 컬럼에 입력해주세요. dist 컬럼의 값을 오름차순으로 rank 컬럼에 추가해주세요.</p>
+<p>[문제2] food.csv 읽어들인 후 토마토 단맛 6, 아삭한맛 4를 이용해서 거리계산한 dist 컬럼에 입력해주세요. dist 컬럼의 값을 오름차순으로 rank 컬럼에 추가해주세요.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -855,8 +808,7 @@
 종속변수에 영향을 주는 변수들 (sweetness, crunchiness)</p></li>
 <li><p>종속변수 : 영향을 받는 변수 (class) → 레이블</p></li>
 </ul>
-<div class="section" id="series">
-<h5>Series로 풀기<a class="headerlink" href="#series" title="Permalink to this headline">¶</a></h5>
+<p>(1) Series로 풀기</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tomato</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
@@ -1122,9 +1074,7 @@ Name: class, dtype: int64
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id9">
-<h5>array로 풀기<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h5>
+<p>(2) array로 풀기</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">food</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;c:/data/food.csv&#39;</span><span class="p">)</span>
@@ -1362,9 +1312,7 @@ Name: class, dtype: int64
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="counter">
-<h5>Counter 이용<a class="headerlink" href="#counter" title="Permalink to this headline">¶</a></h5>
+<p>(3) Counter 이용</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">food</span><span class="p">[</span><span class="s1">&#39;rank&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">food</span><span class="p">[</span><span class="s1">&#39;dist&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;dense&#39;</span><span class="p">)</span>
@@ -1408,8 +1356,6 @@ Name: class, dtype: object
 </div>
 <br/>  </div>
 </div>
-</div>
-</div>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -1440,7 +1386,7 @@ Name: class, dtype: object
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="index.html" title="previous page">머신러닝 (machine learning)</a>
-    <a class='right-next' id="next-link" href="01-02.html" title="next page">파이썬 | sklearn.neighbors</a>
+    <a class='right-next' id="next-link" href="01-02.html" title="next page">Python | sklearn.neighbors</a>
 
         </div>
         
