@@ -411,7 +411,7 @@
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -428,7 +428,7 @@
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 데이터 수집</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 데이터 수집</span>
 <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
 <span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
 　
@@ -489,7 +489,7 @@ https://github.com/chaeyeonhee/Naver-movie-review/blob/main/movie_review_data_se
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">movie_data_set</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;movie_review_data_set.csv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -497,7 +497,7 @@ https://github.com/chaeyeonhee/Naver-movie-review/blob/main/movie_review_data_se
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">movie_data_set</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie_data_set</span>
 </pre></div>
 </div>
 </div>
@@ -611,7 +611,7 @@ https://github.com/chaeyeonhee/Naver-movie-review/blob/main/movie_review_data_se
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">movie_data_set</span><span class="p">[</span><span class="n">movie_data_set</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;긍정&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie_data_set</span><span class="p">[</span><span class="n">movie_data_set</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;긍정&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -725,7 +725,7 @@ https://github.com/chaeyeonhee/Naver-movie-review/blob/main/movie_review_data_se
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">movie_data_set</span><span class="p">[</span><span class="n">movie_data_set</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;부정&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie_data_set</span><span class="p">[</span><span class="n">movie_data_set</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;부정&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -848,7 +848,7 @@ https://github.com/chaeyeonhee/Naver-movie-review/blob/main/movie_review_data_se
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">konlpy.tag</span> <span class="kn">import</span> <span class="n">Okt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">konlpy.tag</span> <span class="kn">import</span> <span class="n">Okt</span>
 <span class="n">pos_tagger</span> <span class="o">=</span> <span class="n">Okt</span><span class="p">()</span>
 
 <span class="n">X</span> <span class="o">=</span> <span class="p">[</span><span class="n">pos_tagger</span><span class="o">.</span><span class="n">morphs</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">movie_data_set</span><span class="p">[</span><span class="s1">&#39;review&#39;</span><span class="p">]]</span>
@@ -867,7 +867,7 @@ https://github.com/chaeyeonhee/Naver-movie-review/blob/main/movie_review_data_se
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">contents_vectorize</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">contents_vectorize</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">X</span><span class="p">:</span>
   <span class="n">txt</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
@@ -1887,7 +1887,7 @@ https://github.com/chaeyeonhee/Naver-movie-review/blob/main/movie_review_data_se
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">contents_vectorize</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">contents_vectorize</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1902,7 +1902,7 @@ https://github.com/chaeyeonhee/Naver-movie-review/blob/main/movie_review_data_se
 <h3>4.2 학습 및 테스트 데이터 나누기<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 
 <span class="n">Y</span> <span class="o">=</span> <span class="n">movie_data_set</span><span class="o">.</span><span class="n">type</span>
 
@@ -1913,7 +1913,7 @@ https://github.com/chaeyeonhee/Naver-movie-review/blob/main/movie_review_data_se
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
 <span class="n">Counter</span><span class="p">(</span><span class="n">Y_train</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1926,7 +1926,7 @@ https://github.com/chaeyeonhee/Naver-movie-review/blob/main/movie_review_data_se
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Counter</span><span class="p">(</span><span class="n">Y_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Counter</span><span class="p">(</span><span class="n">Y_test</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1941,7 +1941,7 @@ https://github.com/chaeyeonhee/Naver-movie-review/blob/main/movie_review_data_se
 <h3>4.3 TDM (Term-Document Matrix) 으로 변환<a class="headerlink" href="#tdm-term-document-matrix" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
 
 <span class="n">cv</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">()</span>
 <span class="n">X_train</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
@@ -1961,7 +1961,7 @@ https://github.com/chaeyeonhee/Naver-movie-review/blob/main/movie_review_data_se
 <h3>4.4 Naive Bayes 실행<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">MultinomialNB</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">MultinomialNB</span>
 
 <span class="n">nb</span> <span class="o">=</span> <span class="n">MultinomialNB</span><span class="p">()</span>
 <span class="n">nb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">)</span>
@@ -1976,7 +1976,7 @@ https://github.com/chaeyeonhee/Naver-movie-review/blob/main/movie_review_data_se
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X_test</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_test</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1989,7 +1989,7 @@ https://github.com/chaeyeonhee/Naver-movie-review/blob/main/movie_review_data_se
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">txt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="s1">&#39;어린 승이 연기한 배우 너무 귀엽더라 ㅎㅎ 가족들과 보기에 딱 좋은 힐링무비~~&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">txt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="s1">&#39;어린 승이 연기한 배우 너무 귀엽더라 ㅎㅎ 가족들과 보기에 딱 좋은 힐링무비~~&#39;</span><span class="p">)</span>
 <span class="n">x_test</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span>
 <span class="n">nb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
 </pre></div>
@@ -2003,7 +2003,7 @@ https://github.com/chaeyeonhee/Naver-movie-review/blob/main/movie_review_data_se
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">txt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="s1">&#39;좋은 배우 써 놓고 내용은 정말 하타치입니다..웃음 포인트 감동 포인트 하나 없습니다&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">txt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="s1">&#39;좋은 배우 써 놓고 내용은 정말 하타치입니다..웃음 포인트 감동 포인트 하나 없습니다&#39;</span><span class="p">)</span>
 <span class="n">x_test</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span>
 <span class="n">nb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
 </pre></div>
@@ -2020,7 +2020,7 @@ https://github.com/chaeyeonhee/Naver-movie-review/blob/main/movie_review_data_se
 <h3>4.6 테스트 데이터 실행 및 결과 확인<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">Y_test</span><span class="p">,</span> <span class="n">nb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)))</span>
 </pre></div>
 </div>
@@ -2046,7 +2046,7 @@ weighted avg       0.84      0.84      0.84      1000
 <h3>5.1 학습 및 테스트 데이터 나누기<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 
 <span class="n">X</span> <span class="o">=</span> <span class="n">movie_data_set</span><span class="o">.</span><span class="n">review</span>
 <span class="n">Y</span> <span class="o">=</span> <span class="n">movie_data_set</span><span class="o">.</span><span class="n">type</span>
@@ -2058,7 +2058,7 @@ weighted avg       0.84      0.84      0.84      1000
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
 <span class="n">Counter</span><span class="p">(</span><span class="n">Y_train</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2071,7 +2071,7 @@ weighted avg       0.84      0.84      0.84      1000
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Counter</span><span class="p">(</span><span class="n">Y_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Counter</span><span class="p">(</span><span class="n">Y_test</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2083,7 +2083,7 @@ weighted avg       0.84      0.84      0.84      1000
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">train_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;review&#39;</span> <span class="p">:</span> <span class="n">X_train</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;review&#39;</span> <span class="p">:</span> <span class="n">X_train</span><span class="p">,</span>
                            <span class="s1">&#39;type&#39;</span> <span class="p">:</span> <span class="n">Y_train</span><span class="p">})</span>
 <span class="n">test_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;review&#39;</span> <span class="p">:</span> <span class="n">X_test</span><span class="p">,</span>
                            <span class="s1">&#39;type&#39;</span> <span class="p">:</span> <span class="n">Y_test</span><span class="p">})</span>
@@ -2096,7 +2096,7 @@ weighted avg       0.84      0.84      0.84      1000
 <h3>5.2 데이터 토큰화<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">konlpy.tag</span> <span class="kn">import</span> <span class="n">Okt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">konlpy.tag</span> <span class="kn">import</span> <span class="n">Okt</span>
 <span class="n">pos_tagger</span> <span class="o">=</span> <span class="n">Okt</span><span class="p">()</span>
 
 <span class="n">train_data</span> <span class="o">=</span> <span class="n">train_data</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
@@ -2115,7 +2115,7 @@ weighted avg       0.84      0.84      0.84      1000
 <h3>5.3 Term 존재 여부 분류<a class="headerlink" href="#term" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">term_exists</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">term_exists</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
   <span class="k">return</span> <span class="p">{</span><span class="n">word</span> <span class="p">:</span> <span class="p">(</span><span class="n">word</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">doc</span><span class="p">))</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">}</span>
 
 <span class="n">x_train</span> <span class="o">=</span> <span class="p">[(</span><span class="n">term_exists</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">train_doc</span><span class="p">]</span>
@@ -2128,7 +2128,7 @@ weighted avg       0.84      0.84      0.84      1000
 <h3>5.4 Naive Bayes 실행<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">classifier</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">NaiveBayesClassifier</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">classifier</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">NaiveBayesClassifier</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
 <span class="n">classifier</span><span class="o">.</span><span class="n">show_most_informative_features</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -2157,7 +2157,7 @@ weighted avg       0.84      0.84      0.84      1000
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;어린 승이 연기한 배우 너무 귀엽더라 ㅎㅎ 가족들과 보기에 딱 좋은 힐링무비~~&#39;</span><span class="p">)]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;어린 승이 연기한 배우 너무 귀엽더라 ㅎㅎ 가족들과 보기에 딱 좋은 힐링무비~~&#39;</span><span class="p">)]</span>
 <span class="n">test_doc</span> <span class="o">=</span> <span class="n">tokenize</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
 <span class="n">test_f</span> <span class="o">=</span> <span class="p">{</span><span class="n">word</span><span class="p">:(</span><span class="n">word</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">test_doc</span><span class="p">}</span>
@@ -2173,7 +2173,7 @@ weighted avg       0.84      0.84      0.84      1000
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;좋은 배우 써 놓고 내용은 정말 하타치입니다..웃음 포인트 감동 포인트 하나 없습니다&#39;</span><span class="p">)]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;좋은 배우 써 놓고 내용은 정말 하타치입니다..웃음 포인트 감동 포인트 하나 없습니다&#39;</span><span class="p">)]</span>
 <span class="n">test_doc</span> <span class="o">=</span> <span class="n">tokenize</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
 <span class="n">test_f</span> <span class="o">=</span> <span class="p">{</span><span class="n">word</span><span class="p">:(</span><span class="n">word</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">test_doc</span><span class="p">}</span>
@@ -2189,7 +2189,7 @@ weighted avg       0.84      0.84      0.84      1000
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;곽도원 때문에 예매해서봣는데,,그냥 유치뽕짝,,10대들이나좋아할듯,, 내가본영화중 시간버린 기억에남을작품&#39;</span><span class="p">)]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;곽도원 때문에 예매해서봣는데,,그냥 유치뽕짝,,10대들이나좋아할듯,, 내가본영화중 시간버린 기억에남을작품&#39;</span><span class="p">)]</span>
 <span class="n">test_doc</span> <span class="o">=</span> <span class="n">tokenize</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
 <span class="n">test_f</span> <span class="o">=</span> <span class="p">{</span><span class="n">word</span><span class="p">:(</span><span class="n">word</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">test_doc</span><span class="p">}</span>
@@ -2205,7 +2205,7 @@ weighted avg       0.84      0.84      0.84      1000
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;오드리햅번 넘 사랑스럽고 아름다움~♡영화에 나오는 명소들도 하나하나씩 다시금 추억이 떠오르고 보는 내내 설레이는 영화&#39;</span><span class="p">)]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;오드리햅번 넘 사랑스럽고 아름다움~♡영화에 나오는 명소들도 하나하나씩 다시금 추억이 떠오르고 보는 내내 설레이는 영화&#39;</span><span class="p">)]</span>
 <span class="n">test_doc</span> <span class="o">=</span> <span class="n">tokenize</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
 <span class="n">test_f</span> <span class="o">=</span> <span class="p">{</span><span class="n">word</span><span class="p">:(</span><span class="n">word</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">test_doc</span><span class="p">}</span>
@@ -2224,7 +2224,7 @@ weighted avg       0.84      0.84      0.84      1000
 <h3>5.6 테스트 데이터 실행 및 결과 조회<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test_result</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_result</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">test_data</span><span class="o">.</span><span class="n">review</span><span class="p">:</span>
   <span class="n">test</span> <span class="o">=</span> <span class="p">[(</span><span class="n">i</span><span class="p">)]</span>
@@ -2238,7 +2238,7 @@ weighted avg       0.84      0.84      0.84      1000
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test_actual</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">movie_test</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;actual&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_actual</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">movie_test</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;actual&#39;</span><span class="p">)</span>
 <span class="n">test_predict</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">test_result</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;predict&#39;</span><span class="p">)</span>
 
 <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">test_actual</span><span class="p">,</span> <span class="n">test_predict</span><span class="p">)</span>
@@ -2290,14 +2290,14 @@ weighted avg       0.84      0.84      0.84      1000
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">classification_report</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">classification_report</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">test_actual</span><span class="p">,</span> <span class="n">test_predict</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">test_actual</span><span class="p">,</span> <span class="n">test_predict</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -2310,7 +2310,7 @@ weighted avg       0.84      0.84      0.84      1000
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">test_actual</span><span class="p">,</span> <span class="n">test_predict</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">test_actual</span><span class="p">,</span> <span class="n">test_predict</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -2333,7 +2333,7 @@ weighted avg       0.89      0.88      0.88      1000
 <h2>6. 일치하지 않는 데이터 확인<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">movie_test</span><span class="p">[</span><span class="n">movie_test</span><span class="o">.</span><span class="n">type</span> <span class="o">!=</span> <span class="n">test_predict</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie_test</span><span class="p">[</span><span class="n">movie_test</span><span class="o">.</span><span class="n">type</span> <span class="o">!=</span> <span class="n">test_predict</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -2447,7 +2447,7 @@ weighted avg       0.89      0.88      0.88      1000
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">movie_test</span><span class="p">[</span><span class="n">movie_test</span><span class="o">.</span><span class="n">type</span> <span class="o">!=</span> <span class="n">test_predict</span><span class="p">]</span><span class="o">.</span><span class="n">review</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">movie_test</span><span class="p">[</span><span class="n">movie_test</span><span class="o">.</span><span class="n">type</span> <span class="o">!=</span> <span class="n">test_predict</span><span class="p">]</span><span class="o">.</span><span class="n">review</span><span class="p">:</span>
   <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
 </div>

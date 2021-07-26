@@ -327,7 +327,7 @@
 <h1>R | e1071<a class="headerlink" href="#r-e1071" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
 <h2>2.3 영화 장르 취향<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<div class="cell docutils container">
+<div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">movie</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;c:/data/movie.csv&quot;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
 <span class="n">movie</span>
@@ -381,7 +381,7 @@
 </table>
 </div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># install.packages(&quot;e1071&quot;)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">e1071</span><span class="p">)</span>
@@ -519,7 +519,7 @@ movie$장르        NO       YES
 <br>
 <p><code class="docutils literal notranslate"><span class="pre">poisonous</span></code> : 독버섯<br />
 <code class="docutils literal notranslate"><span class="pre">edible</span></code> : 식용버섯</p>
-<div class="cell docutils container">
+<div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">mushroom</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;c:/data/mushrooms.csv&quot;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
 <span class="n">mushroom</span>
@@ -630,7 +630,7 @@ movie$장르        NO       YES
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">nb</span> <span class="o">&lt;-</span> <span class="nf">naiveBayes</span><span class="p">(</span><span class="n">mushroom</span><span class="p">[</span><span class="m">2</span><span class="o">:</span><span class="m">23</span><span class="p">],</span> <span class="n">mushroom</span><span class="o">$</span><span class="n">type</span><span class="p">,</span> <span class="n">laplace</span> <span class="o">=</span> <span class="m">0</span><span class="p">)</span>
 <span class="n">nb</span>
@@ -798,7 +798,7 @@ mushroom$type       waste       woods
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">&lt;-</span> <span class="nf">predict</span><span class="p">(</span><span class="n">nb</span><span class="p">,</span> <span class="n">mushroom</span><span class="p">[</span><span class="m">2</span><span class="o">:</span><span class="m">23</span><span class="p">])</span>
 <span class="n">result</span>
@@ -8943,7 +8943,7 @@ mushroom$type       waste       woods
 	</ol>
 </details></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">mushroom</span><span class="p">[</span><span class="n">mushroom</span><span class="o">$</span><span class="n">type</span> <span class="o">!=</span> <span class="n">result</span><span class="p">,]</span>
 </pre></div>
@@ -9035,7 +9035,7 @@ mushroom$type       waste       woods
 <div class="cell_output docutils container">
 <div class="output text_html">0</div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">lapply</span><span class="p">(</span><span class="n">mushroom</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
 </pre></div>
@@ -9092,7 +9092,7 @@ mushroom$type       waste       woods
 </dl>
 </div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">sapply</span><span class="p">(</span><span class="n">mushroom</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
 </pre></div>
@@ -9149,7 +9149,7 @@ mushroom$type       waste       woods
 </dl>
 </div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">sapply</span><span class="p">(</span><span class="n">mushroom</span><span class="p">,</span> <span class="n">f</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span><span class="nf">return</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">x</span><span class="p">)))})</span>
 </pre></div>
@@ -9206,7 +9206,7 @@ mushroom$type       waste       woods
 </dl>
 </div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">sapply</span><span class="p">(</span><span class="n">mushroom</span><span class="p">,</span> <span class="n">f</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span><span class="nf">return</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">x</span><span class="p">)))})</span>
 </pre></div>
@@ -9637,7 +9637,7 @@ mushroom_test[, 1] |    edible | poisonous | Row Total |
 </div>
 <div class="section" id="id6">
 <h2>2.5  메일 분류<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
-<div class="cell docutils container">
+<div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">mail</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;c:/data/mail.csv&quot;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">stringsAsFactors</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
 <span class="n">mail</span>
